@@ -24,8 +24,6 @@
 "    -> Moving around, tabs and buffers
 "    -> Status line
 "    -> Editing mappings
-"    -> vimgrep searching and cope displaying
-"    -> Spell checking
 "    -> Misc
 "    -> Gui Related
 "    -> Fast editing and reloading of vimrc configs
@@ -61,12 +59,6 @@ let mapleader = " "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Avoid garbled characters in Chinese language windows OS
-" let $LANG='en'
-" set langmenu=en
-" source $VIMRUNTIME/delmenu.vim
-" source $VIMRUNTIME/menu.vim
-
 " Turn on the Wild menu
 set wildmenu
 
@@ -127,27 +119,28 @@ set tm=500
 " Enable syntax highlighting
 syntax enable
 
+" Enable true color
 set t_Co=256
 
-let g:airline_powerline_fonts = 1  " 支持 powerline 字体
-let g:airline_theme='angr'  " murmur配色不错
+" Background
+set background=dark
 
-if !exists('g:airline_symbols')
-let g:airline_symbols = {}
-endif
-let g:airline_left_sep = '▶'
-let g:airline_left_alt_sep = '❯'
-let g:airline_right_sep = '◀'
-let g:airline_right_alt_sep = '❮'
-let g:airline_symbols.linenr = '¶'
-let g:airline_symbols.branch = '⎇'
+" Colorschme
+colorscheme desert
 
-" Set utf8 as standard encoding and en_US as the standard language
+" Set utf8 as standard encoding and zh_CN as the standard language
+let $LANG='zh_CN'
 set encoding=utf8
+set langmenu=zh_CN.UTF-8
+language messages zh_CN.utf-8
+
+set ambiwidth=double
 
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
 
+" Set gui font
+set guifont=Sarasa\ Mono\ CL:h16
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups and undo
@@ -240,9 +233,6 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 " Always show the status line
 set laststatus=2
 
-" Format the status line
-" set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ Column:\ %c
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Editing mappings
@@ -280,15 +270,13 @@ set guioptions-=R
 set guioptions-=l
 set guioptions-=L
 
-" Colorscheme
-set background=dark
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Fast editing and reloading of vimrc configs
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map <leader>e :e! $MYVIMRC<cr>
 autocmd! bufwritepost $MYVIMRC source $MYVIMRC
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Command mode related
@@ -297,17 +285,51 @@ autocmd! bufwritepost $MYVIMRC source $MYVIMRC
 cnoremap <C-A> <Home>
 cnoremap <C-E> <End>
 
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugins
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Add plugins by vim-plug
 call plug#begin()
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'tpope/vim-surround'
+
 Plug 'easymotion/vim-easymotion'
+
+Plug 'tpope/vim-surround'
+
 Plug 'preservim/nerdtree'
+
 Plug 'mhinz/vim-startify'
+
+Plug 'tommcdo/vim-exchange'
+
+Plug 'kana/vim-textobj-user'
+Plug 'kana/vim-textobj-entire'
+
+Plug 'vim-scripts/argtextobj.vim'
+
 call plug#end()
+
+" => Airline
+" Set airline theme
+let g:airline_theme='angr'
+
+" Support powerline font
+let g:airline_powerline_fonts = 1  
+
+if !exists('g:airline_symbols')
+let g:airline_symbols = {}
+endif
+let g:airline_left_sep = '▶'
+let g:airline_left_alt_sep = '❯'
+let g:airline_right_sep = '◀'
+let g:airline_right_alt_sep = '❮'
+let g:airline_symbols.linenr = '¶'
+let g:airline_symbols.branch = '⎇'
+
+" => Nerdtree
+let NERDTreeShowHidden = 1
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -348,6 +370,9 @@ noremap s <nop>
 
 " Nerd tree
 map <leader>w :NERDTreeToggle<CR>
+
+" easymotion
+map <leader>f <Plug>(easymotion-s)
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -413,3 +438,5 @@ autocmd VimEnter *
             \ |   NERDTree
             \ |   wincmd w
 	    \ | endif
+
+autocmd GUIEnter * simalt ~x
