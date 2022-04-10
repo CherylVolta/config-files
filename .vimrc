@@ -331,6 +331,13 @@ let g:airline_symbols.branch = '⎇'
 " => Nerdtree
 let NERDTreeShowHidden = 1
 
+" => Easymotion
+hi link EasyMotionTarget ErrorMsg
+hi link EasyMotionTarget2First MatchParen
+hi link EasyMotionTarget2Second MatchParen
+hi link EasyMotionMoveHL Search
+hi link EasyMotionIncSearch Search
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Custom Key Map
@@ -371,8 +378,11 @@ noremap s <nop>
 " Nerd tree
 map <leader>w :NERDTreeToggle<CR>
 
-" easymotion
-map <leader>f <Plug>(easymotion-s)
+" Easymotion
+map <leader>f <Plug>(easymotion-sn)
+
+" No Highlight
+nmap <leader>nh :noh<CR>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
