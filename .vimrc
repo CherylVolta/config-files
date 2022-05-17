@@ -316,7 +316,7 @@ call plug#end()
 let g:airline_theme='angr'
 
 " Support powerline font
-let g:airline_powerline_fonts = 1  
+let g:airline_powerline_fonts = 1
 
 if !exists('g:airline_symbols')
 let g:airline_symbols = {}
@@ -450,11 +450,10 @@ endfunction
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Auto Cmd
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-autocmd VimEnter *
-            \   if !argc()
-            \ |   Startify
-            \ |   NERDTree
-            \ |   wincmd w
-	    \ | endif
+autocmd VimEnter * if !argc()
+            \| Startify
+            \| NERDTree
+            \| wincmd w
+            \| endif
 
 autocmd GUIEnter * simalt ~x
