@@ -140,7 +140,7 @@ set ambiwidth=double
 set ffs=unix,dos,mac
 
 " Set gui font
-set guifont=Sarasa\ Mono\ Slab\ CL:h16
+set guifont=LXGW_WenKai_Mono:h18
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups and undo
