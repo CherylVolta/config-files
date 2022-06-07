@@ -1,4 +1,4 @@
-# configfiles
+# config-files
 
 ## 一些软件的配置文件
 
@@ -6,6 +6,6 @@
 
 - vim
 
-- clash
+- clash for windows
 
 - windows terminal
