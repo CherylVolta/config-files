@@ -1,11 +1,9 @@
-# config-files
+# Config files backup for some applications
 
-## 一些软件的配置文件
+Including:
 
-包括：
+- Vim
 
-- vim
+- Clash for Windows
 
-- clash for windows
-
-- windows terminal
+- Windows Terminal
