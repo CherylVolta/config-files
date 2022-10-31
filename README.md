@@ -4,8 +4,8 @@
 
 Including:
 
-- Vim
+-   Vim
 
-- Clash for Windows
+-   Clash for Windows
 
-- Windows Terminal
+-   Windows Terminal

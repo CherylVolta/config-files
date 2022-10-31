@@ -1,0 +1,5 @@
+rule provider
+https://github.com/Loyalsoldier/clash-rules
+
+parser & mixin profile
+https://github.com/Waoap/config-files/tree/main/clash_for_windows
