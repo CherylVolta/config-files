@@ -1,149 +1,125 @@
 # author: Waoap
-# version: 1.1
-# update: 2022/6/7 14:44
+# version: 5.0
+# update: 2022/10/31 21:07
 mixin: # Mixin 配置文件
-  dns:
-    enable: true
-    ipv6: true # true/false 是否启用 ipv6 支持
-    # 从 v0.18.8 版本开始，TUN 模式建议使用 fake-ip 模式，redir-host 将无法进行远端 DNS 解析
-    enhanced-mode: fake-ip # redir-host/fake-ip
-    use-hosts: true # 查询 hosts 并返回 IP 记录
-    hosts:
-      "mtalk.google.com": 108.177.125.188
-      "services.googleapis.cn": 74.125.203.94
-      "raw.githubusercontent.com": 151.101.76.133
-    # Hostnames in this list will not be resolved with fake IPs
-    # i.e. questions to these domain names will always be answered with their
-    # real IP addresses
-    default-nameserver: # 用于 DoH/DoT 的 Bootstrap Server
-      - 223.5.5.5 # 阿里公共 DNS
-      - 119.29.29.29 # DNSPod 公共 DNS
-      - 180.76.76.76 # Baidu 公共 DNS
-    fake-ip-range: 198.18.0.1/16 # Fake IP 地址池 (CIDR 形式)
-    fake-ip-filter: # 微软系 APP 无法登陆使用等问题，通过添加 fake-ip-filter 解决
-      # === Local ===
-      - "*.lan"
-      - "*.local"
-      # === Linksys Wireless Router ===
-      - "*.linksys.com"
-      - "*.linksyssmartwifi.com"
-      # === Apple Software Update Service ===
-      - "swscan.apple.com"
-      - "mesu.apple.com"
-      # === Microsoft Windows Serivice ===
-      - "*.msftncsi.com"
-      # - "*.msftconnecttest.com"
-      - "*.ipv6.microsoft.com"
-      # === NTP Service ===
-      - "time.*.com"
-      - "time.*.gov"
-      - "time.*.edu.cn"
-      - "time.*.apple.com"
-
-      - "time1.*.com"
-      - "time2.*.com"
-      - "time3.*.com"
-      - "time4.*.com"
-      - "time5.*.com"
-      - "time6.*.com"
-      - "time7.*.com"
-
-      - "ntp.*.com"
-      - "ntp.*.com"
-      - "ntp1.*.com"
-      - "ntp2.*.com"
-      - "ntp3.*.com"
-      - "ntp4.*.com"
-      - "ntp5.*.com"
-      - "ntp6.*.com"
-      - "ntp7.*.com"
-
-      - "*.time.edu.cn"
-      - "*.ntp.org.cn"
-      - "+.pool.ntp.org"
-
-      - "time1.cloud.tencent.com"
-      # === Music Service ===
-      ## NetEase
-      - "+.music.163.com"
-      - "*.126.net"
-      ## Baidu
-      - "musicapi.taihe.com"
-      - "music.taihe.com"
-      ## Kugou
-      - "songsearch.kugou.com"
-      - "trackercdn.kugou.com"
-      ## Kuwo
-      - "*.kuwo.cn"
-      ## JOOX
-      - "api-jooxtt.sanook.com"
-      - "api.joox.com"
-      - "joox.com"
-      ## QQ
-      - "+.y.qq.com"
-      - "+.music.tc.qq.com"
-      - "aqqmusic.tc.qq.com"
-      - "+.stream.qqmusic.qq.com"
-      ## Xiami
-      - "*.xiami.com"
-      ## Migu
-      - "+.music.migu.cn"
-      # === Game Service ===
-      ## Nintendo Switch
-      - "+.srv.nintendo.net"
-      ## Sony PlayStation
-      - "+.stun.playstation.net"
-      ## Microsoft Xbox
-      - "xbox.*.microsoft.com"
-      - "+.xboxlive.com"
-      # === Other ===
-      ## QQ Quick Login
-      - "localhost.ptlogin2.qq.com"
-      ## Golang
-      - "proxy.golang.org"
-      ## STUN Server
-      - "stun.*.*"
-      - "stun.*.*.*"
-      # ... ...
-    nameserver: # GeoIP 为 CN 时使用的 DNS NameServer（使用DoH/DoT）
-      # - tls://dns.alidns.com:853 # 阿里 DoT
-      # - tls://doh.pub:853 # DNSPod DoT
-      # - https://dns.alidns.com/dns-query  # 阿里 DoH
-      # - https://doh.pub/dns-query   # DNSPod DoH
-      - 223.6.6.6
-      - 223.5.5.5
-      - 119.29.29.29
-      # ... ...
-    fallback: # GeoIP 不是 CN 时使用的 DNS NameServer（使用DoH/DoT）
-      # - tls://dns.google:853 # Google DoT
-      # - tls://one.one.one.one:853 # cloudflare DoT
-      # - https://dns.google/dns-query # cloudflare DoH
-      # - https://1.1.1.1/dns-query # Google DoH
-      - 8.8.8.8
-      - 1.1.1.1
-      # ... ...
-    fallback-filter:
-      geoip: true # 启用 GeoIP
-      ip-cidr:
-        - 240.0.0.0/4
-        - 0.0.0.0/32
-        - 127.0.0.1/8
-      domain:
-        - +.google.com
-        - +.facebook.com
-        - +.twitter.com
-        - +.youtube.com
-        - +.xn--ngstr-lra8j.com
-        - +.google.cn
-        - +.googleapis.cn
-        - +.googleapis.com
-        - +.gvt1.com
-  # interface-name: Ethernet  # 出口网卡名称（已注释），建议使用自动检测出口网卡模式👇
-  tun: # Tun 配置
-    enable: true
-    # 使用 system statck 需要 Clash Premium 2021.05.08 及更高版本
-    stack: system # gvisor/system 使用 system stack 请按照本文后面防火墙放行程序
-    dns-hijack:
-      - 198.18.0.2:53 # 本地劫持 DNS 地址，无需修改
-    auto-route: true
-    auto-detect-interface: true # 自动检测出口网卡
+    dns:
+        enable: true
+        ipv6: true
+        # 从 v0.18.8 版本开始，TUN 模式建议使用 fake-ip 模式，redir-host 将无法进行远端 DNS 解析
+        enhanced-mode: fake-ip # redir-host/fake-ip
+        fake-ip-range: 198.18.0.1/16 # Fake IP 地址池 (CIDR 形式)
+        fake-ip-filter: # 微软系 APP 无法登陆使用等问题，通过添加 fake-ip-filter 解决
+            # === Local ===
+            - "*.lan"
+            - "*.local"
+            # === Microsoft Windows Serivice ===
+            - "*.msftncsi.com"
+            - "*.msftconnecttest.com"
+            - "*.ipv6.microsoft.com"
+            # === NTP Service ===
+            - "time.*.com"
+            - "time.*.gov"
+            - "time.*.edu.cn"
+            - "*.time.edu.cn"
+            - "time1.*.com"
+            - "time2.*.com"
+            - "time3.*.com"
+            - "time4.*.com"
+            - "time5.*.com"
+            - "time6.*.com"
+            - "time7.*.com"
+            - "ntp.*.com"
+            - "ntp1.*.com"
+            - "ntp2.*.com"
+            - "ntp3.*.com"
+            - "ntp4.*.com"
+            - "ntp5.*.com"
+            - "ntp6.*.com"
+            - "ntp7.*.com"
+            - "*.ntp.org.cn"
+            - "*.pool.ntp.org"
+            # === Music Service ===
+            ## NetEase
+            - "*.music.163.com"
+            - "*.126.net"
+            ## Baidu
+            - "musicapi.taihe.com"
+            - "music.taihe.com"
+            ## Kugou
+            - "songsearch.kugou.com"
+            - "trackercdn.kugou.com"
+            ## Kuwo
+            - "*.kuwo.cn"
+            ## JOOX
+            - "api-jooxtt.sanook.com"
+            - "api.joox.com"
+            - "joox.com"
+            ## QQ
+            - "*.y.qq.com"
+            - "*.music.tc.qq.com"
+            - "aqqmusic.tc.qq.com"
+            - "*.stream.qqmusic.qq.com"
+            ## Xiami
+            - "*.xiami.com"
+            ## Migu
+            - "*.music.migu.cn"
+            # === Game Service ===
+            ## Nintendo Switch
+            - "*.n.n.srv.nintendo.net"
+            ## Sony PlayStation
+            - "*.stun.playstation.net"
+            ## Microsoft Xbox
+            - "xbox.*.*.microsoft.com"
+            - "*.*.xboxlive.com"
+            # === Others ===
+            ## QQ Quick Login
+            - "localhost.ptlogin2.qq.com"
+            ## Golang
+            - "proxy.golang.org"
+            ## STUN Server
+            - "stun.*.*"
+            - "stun.*.*.*"
+            - "stun.*.*.*.*"
+            - "stun.*.*.*.*.*"
+            ## WORKGROUP
+            - WORKGROUP
+        nameserver: # GeoIP 为 CN 时使用的 DNS NameServer
+            - 223.5.5.5 # 阿里DNS
+            - 180.76.76.76 # 百度DNS
+            - 119.29.29.29 # 腾讯DNS
+            - 117.50.11.11 # ONE DNS拦截版 恶意网站拦截、广告过滤
+            - 117.50.10.10 # ONE DNS纯净版 直接返回其真实的响应结果
+            - 114.114.114.114 # 114DNS
+        fallback: # GeoIP 不是 CN 时使用的 DNS NameServer
+            # - 8.8.8.8 # 谷歌DNS
+            # - 1.1.1.1 # Cloudflare DNS
+            - tls://dns.rubyfish.cn:853
+            - tls://1.0.0.1:853
+            - tls://dns.google:853
+            - https://dns.rubyfish.cn/dns-query
+            - https://cloudflare-dns.com/dns-query
+            - https://dns.google/dns-query
+        fallback-filter:
+            geoip: true # 启用 GeoIP
+            ip-cidr:
+                - 240.0.0.0/4
+                - 0.0.0.0/32
+                - 127.0.0.1/8
+            domain:
+                - "*.google.com"
+                - "*.facebook.com"
+                - "*.twitter.com"
+                - "*.youtube.com"
+                - "*.xn--ngstr-lra8j.com"
+                - "*.google.cn"
+                - "*.googleapis.cn"
+                - "*.googleapis.com"
+                - "*.gvt1.com"
+    tun: # Tun 配置
+        enable: true
+        # 使用 system statck 需要 Clash Premium 2021.05.08 及更高版本
+        stack: system # gvisor/system 使用 system stack 需要在防火墙放行程序
+        dns-hijack:
+            - 192.168.0.2:53 # 本地劫持 DNS 地址，无需修改
+        auto-route: true
+        auto-detect-interface: true # 自动检测出口网卡
