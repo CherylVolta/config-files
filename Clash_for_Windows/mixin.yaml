@@ -83,23 +83,26 @@ mixin: # Mixin 配置文件
             - "stun.*.*.*.*.*"
             ## WORKGROUP
             - WORKGROUP
+        default-nameserver:
+            - 117.50.10.10 # ONE DNS纯净版 直接返回其真实的响应结果
+            - 8.8.8.8 # 谷歌DNS
+            - 1.1.1.1 # Cloudflare DNS
         nameserver: # GeoIP 为 CN 时使用的 DNS NameServer
             - 223.5.5.5 # 阿里DNS
             - 180.76.76.76 # 百度DNS
             - 119.29.29.29 # 腾讯DNS
-            - 117.50.11.11 # ONE DNS拦截版 恶意网站拦截、广告过滤
+            # - 117.50.11.11 # ONE DNS拦截版 恶意网站拦截、广告过滤
             - 117.50.10.10 # ONE DNS纯净版 直接返回其真实的响应结果
             - 114.114.114.114 # 114DNS
         fallback: # GeoIP 不是 CN 时使用的 DNS NameServer
-            - 8.8.8.8 # 谷歌DNS
-            - 84.200.69.80 # DNS Watch
-            - 1.1.1.1 # Cloudflare DNS
-            # - tls://dns.rubyfish.cn:853
-            # - tls://1.0.0.1:853
-            # - tls://dns.google:853
-            # - https://dns.rubyfish.cn/dns-query
-            # - https://cloudflare-dns.com/dns-query
-            # - https://dns.google/dns-query
+            # - 8.8.8.8 # 谷歌DNS
+            # - 1.1.1.1 # Cloudflare DNS
+            - tls://dns.rubyfish.cn:853
+            - tls://1.0.0.1:853
+            - tls://dns.google:853
+            - https://dns.rubyfish.cn/dns-query
+            - https://cloudflare-dns.com/dns-query
+            - https://dns.google/dns-query
         fallback-filter:
             geoip: true # 启用 GeoIP
             ip-cidr:

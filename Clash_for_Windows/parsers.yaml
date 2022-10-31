@@ -80,28 +80,31 @@ parsers: # array
           # 添加规则
           prepend-rules: # 规则由上往下遍历，如上面规则已经命中，则不再往下处理
               # 自定义规则，在这里添加自己的新规则
-              # - IP-CIDR6,::/0,DIRECT
-              # - DOMAIN,www.msftconnecttest.com,PROXY
+              - DOMAIN,www.msftconnecttest.com,PROXY
 
               # provider 的匹配规则
               - RULE-SET,applications,DIRECT
               - RULE-SET,private,DIRECT
               - RULE-SET,reject,REJECT
 
-              - RULE-SET,icloud,DIRECT # 这两个为国内可直连地址，如果希望走代理改为PROXY
-              - RULE-SET,apple,DIRECT #
-              - RULE-SET,direct,DIRECT
-              - RULE-SET,google,PROXY
-              - RULE-SET,gfw,PROXY
-              - RULE-SET,tld-not-cn,PROXY
-              - RULE-SET,greatfire,PROXY
-              - RULE-SET,proxy,PROXY
+              # - RULE-SET,icloud,DIRECT # 白名单用
+              # - RULE-SET,apple,DIRECT # 白名单用
+              # - RULE-SET,google,PROXY # 白名单用
 
-              - RULE-SET,lancidr,DIRECT
-              - RULE-SET,cncidr,DIRECT
+              #   - RULE-SET,proxy,PROXY # 白名单用
+              #   - RULE-SET,direct,DIRECT # 白名单用
+
+              - RULE-SET,tld-not-cn,PROXY # 黑名单用
+              - RULE-SET,gfw,PROXY # 黑名单用
+              - RULE-SET,greatfire,PROXY # 黑名单用
+
+              # - RULE-SET,lancidr,DIRECT # 白名单用
+              # - RULE-SET,cncidr,DIRECT # 白名单用
               - RULE-SET,telegramcidr,PROXY
-              - GEOIP,LAN,DIRECT
-              - GEOIP,CN,DIRECT
+
+              # - GEOIP,LAN,DIRECT # 白名单用
+              # - GEOIP,CN,DIRECT # 白名单用
+
               - MATCH,🔯 代理模式 # 规则之外的匹配代理模式（黑、白名单模式）
           # 添加规则集
           mix-rule-providers:
@@ -119,40 +122,40 @@ parsers: # array
                   path: ./ruleset/reject.yaml
                   interval: 86400
 
-              icloud: # iCloud 域名列表
-                  type: http
-                  behavior: domain
-                  url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/icloud.txt"
-                  path: ./ruleset/icloud.yaml
-                  interval: 86400
+              #   icloud: # iCloud 域名列表
+              #       type: http
+              #       behavior: domain
+              #       url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/icloud.txt"
+              #       path: ./ruleset/icloud.yaml
+              #       interval: 86400
 
-              apple: # Apple 在中国大陆可直连的域名列表
-                  type: http
-                  behavior: domain
-                  url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/apple.txt"
-                  path: ./ruleset/apple.yaml
-                  interval: 86400
+              #   apple: # Apple 在中国大陆可直连的域名列表
+              #       type: http
+              #       behavior: domain
+              #       url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/apple.txt"
+              #       path: ./ruleset/apple.yaml
+              #       interval: 86400
 
-              google: # Google 在中国大陆可直连的域名列表（慎用）
-                  type: http
-                  behavior: domain
-                  url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/google.txt"
-                  path: ./ruleset/google.yaml
-                  interval: 86400
+              #   google: # Google 在中国大陆可直连的域名列表（慎用）
+              #       type: http
+              #       behavior: domain
+              #       url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/google.txt"
+              #       path: ./ruleset/google.yaml
+              #       interval: 86400
 
-              direct: # 直连域名列表
-                  type: http
-                  behavior: domain
-                  url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/direct.txt"
-                  path: ./ruleset/direct.yaml
-                  interval: 86400
+              #   direct: # 直连域名列表
+              #       type: http
+              #       behavior: domain
+              #       url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/direct.txt"
+              #       path: ./ruleset/direct.yaml
+              #       interval: 86400
 
-              proxy: # 代理域名列表
-                  type: http
-                  behavior: domain
-                  url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/proxy.txt"
-                  path: ./ruleset/proxy.yaml
-                  interval: 86400
+              #   proxy: # 代理域名列表
+              #       type: http
+              #       behavior: domain
+              #       url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/proxy.txt"
+              #       path: ./ruleset/proxy.yaml
+              #       interval: 86400
 
               private: # 私有网络专用域名列表
                   type: http
@@ -189,16 +192,16 @@ parsers: # array
                   path: ./ruleset/telegramcidr.yaml
                   interval: 86400
 
-              cncidr: # 中国大陆 IP 地址列表
-                  type: http
-                  behavior: ipcidr
-                  url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/cncidr.txt"
-                  path: ./ruleset/cncidr.yaml
-                  interval: 86400
+              #   cncidr: # 中国大陆 IP 地址列表
+              #       type: http
+              #       behavior: ipcidr
+              #       url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/cncidr.txt"
+              #       path: ./ruleset/cncidr.yaml
+              #       interval: 86400
 
-              lancidr: # 局域网 IP 及保留 IP 地址列表
-                  type: http
-                  behavior: ipcidr
-                  url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/lancidr.txt"
-                  path: ./ruleset/lancidr.yaml
-                  interval: 86400
+              #   lancidr: # 局域网 IP 及保留 IP 地址列表
+              #       type: http
+              #       behavior: ipcidr
+              #       url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/lancidr.txt"
+              #       path: ./ruleset/lancidr.yaml
+              #       interval: 86400
