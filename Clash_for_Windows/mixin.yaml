@@ -1,6 +1,6 @@
 # author: Waoap
 # version: 1.0.0
-# update: 2022/10/31 23:14
+# update: 2022/11/1 17:33
 mixin: # Mixin 配置文件
     dns:
         enable: true
@@ -8,79 +8,79 @@ mixin: # Mixin 配置文件
         # 从 v0.18.8 版本开始，TUN 模式建议使用 fake-ip 模式，redir-host 将无法进行远端 DNS 解析
         enhanced-mode: fake-ip # redir-host/fake-ip
         fake-ip-range: 198.18.0.1/16 # Fake IP 地址池 (CIDR 形式)
-        fake-ip-filter: # 微软系 APP 无法登陆使用等问题，通过添加 fake-ip-filter 解决
+        fake-ip-filter:
             # === Local ===
-            - "*.lan"
-            - "*.local"
+            - '*.lan'
+            - '*.local'
             # === Microsoft Windows Serivice ===
-            - "*.msftncsi.com"
-            - "*.msftconnecttest.com"
-            - "*.ipv6.microsoft.com"
+            - '*.msftncsi.com'
+            - '*.msftconnecttest.com'
             # === NTP Service ===
-            - "time.*.com"
-            - "time.*.gov"
-            - "time.*.edu.cn"
-            - "*.time.edu.cn"
-            - "time1.*.com"
-            - "time2.*.com"
-            - "time3.*.com"
-            - "time4.*.com"
-            - "time5.*.com"
-            - "time6.*.com"
-            - "time7.*.com"
-            - "ntp.*.com"
-            - "ntp1.*.com"
-            - "ntp2.*.com"
-            - "ntp3.*.com"
-            - "ntp4.*.com"
-            - "ntp5.*.com"
-            - "ntp6.*.com"
-            - "ntp7.*.com"
-            - "*.ntp.org.cn"
-            - "*.pool.ntp.org"
+            - time.*.com
+            - time.*.gov
+            - time.*.edu.cn
+            - '*.time.edu.cn'
+            - time1.*.com
+            - time2.*.com
+            - time3.*.com
+            - time4.*.com
+            - time5.*.com
+            - time6.*.com
+            - time7.*.com
+            - ntp.*.com
+            - ntp1.*.com
+            - ntp2.*.com
+            - ntp3.*.com
+            - ntp4.*.com
+            - ntp5.*.com
+            - ntp6.*.com
+            - ntp7.*.com
+            - ntp.*.*.cn
+            - '*.ntp.org.cn'
+            - '*.pool.ntp.org'
             # === Music Service ===
             ## NetEase
-            - "*.music.163.com"
-            - "*.126.net"
+            - '*.music.163.com'
+            - '*.126.net'
             ## Baidu
-            - "musicapi.taihe.com"
-            - "music.taihe.com"
+            - musicapi.taihe.com
+            - music.taihe.com
             ## Kugou
-            - "songsearch.kugou.com"
-            - "trackercdn.kugou.com"
+            - songsearch.kugou.com
+            - trackercdn.kugou.com
             ## Kuwo
-            - "*.kuwo.cn"
+            - '*.kuwo.cn'
             ## JOOX
-            - "api-jooxtt.sanook.com"
-            - "api.joox.com"
-            - "joox.com"
+            - api-jooxtt.sanook.com
+            - api.joox.com
+            - joox.com
             ## QQ
-            - "*.y.qq.com"
-            - "*.music.tc.qq.com"
-            - "aqqmusic.tc.qq.com"
-            - "*.stream.qqmusic.qq.com"
+            - '*.y.qq.com'
+            - '*.music.tc.qq.com'
+            - aqqmusic.tc.qq.com
+            - '*.stream.qqmusic.qq.com'
             ## Xiami
-            - "*.xiami.com"
+            - '*.xiami.com'
             ## Migu
-            - "*.music.migu.cn"
+            - '*.music.migu.cn'
             # === Game Service ===
             ## Nintendo Switch
-            - "*.n.n.srv.nintendo.net"
+            - '*.n.n.srv.nintendo.net'
             ## Sony PlayStation
-            - "*.stun.playstation.net"
+            - '*.stun.playstation.net'
             ## Microsoft Xbox
-            - "xbox.*.*.microsoft.com"
-            - "*.*.xboxlive.com"
+            - xbox.*.*.microsoft.com
+            - '*.*.xboxlive.com'
             # === Others ===
             ## QQ Quick Login
-            - "localhost.ptlogin2.qq.com"
+            - localhost.ptlogin2.qq.com
             ## Golang
-            - "proxy.golang.org"
+            - proxy.golang.org
             ## STUN Server
-            - "stun.*.*"
-            - "stun.*.*.*"
-            - "stun.*.*.*.*"
-            - "stun.*.*.*.*.*"
+            - +.stun.*.*
+            - +.stun.*.*.*
+            - +.stun.*.*.*.*
+            - +.stun.*.*.*.*.*
             ## WORKGROUP
             - WORKGROUP
         default-nameserver:
@@ -110,15 +110,15 @@ mixin: # Mixin 配置文件
                 - 0.0.0.0/32
                 - 127.0.0.1/8
             domain:
-                - "*.google.com"
-                - "*.facebook.com"
-                - "*.twitter.com"
-                - "*.youtube.com"
-                - "*.xn--ngstr-lra8j.com"
-                - "*.google.cn"
-                - "*.googleapis.cn"
-                - "*.googleapis.com"
-                - "*.gvt1.com"
+                - +.google.com
+                - +.facebook.com
+                - +.twitter.com
+                - +.youtube.com
+                - +.xn--ngstr-lra8j.com
+                - +.google.cn
+                - +.googleapis.cn
+                - +.googleapis.com
+                - +.gvt1.com
     tun: # Tun 配置
         enable: true
         # 使用 system statck 需要 Clash Premium 2021.05.08 及更高版本
