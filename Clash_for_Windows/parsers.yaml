@@ -8,10 +8,11 @@ parsers: # array
       code: |
           module.exports.parse = (raw, { yaml }) => {
             const rawObj = yaml.parse(raw)
+            const dns = {}
             const proxyGroups = []
             const ruleProviders = []
             const rules = []
-            return yaml.stringify({ ...rawObj, 'proxy-groups': proxyGroups, 'rule-providers': ruleProviders, rules })
+            return yaml.stringify({ ...rawObj, dns,'proxy-groups': proxyGroups, 'rule-providers': ruleProviders, rules })
           }
       # 建立自己的配置
       yaml:
