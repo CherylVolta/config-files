@@ -67,6 +67,7 @@ parsers: # array
           prepend-rules: # 规则由上往下遍历，如上面规则已经命中，则不再往下处理
               # 自定义规则，在这里添加自己的新规则
               - DOMAIN,www.msftconnecttest.com,PROXY
+              - DOMAIN,fastly.jsdelivr.net,DIRECT
 
               # provider 的匹配规则
               - RULE-SET,applications,DIRECT
