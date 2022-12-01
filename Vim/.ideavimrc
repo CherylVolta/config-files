@@ -1,22 +1,15 @@
-noremap s <nop>
-
 " leader
-"" in use:
-"" a b c d 'e' f 'g' h i j k l 'm' 'n' 'o' p 'q' r s t u v 'w' 'x' y 'z'
-nnoremap <space> <nop>
-let mapleader = " "
+let mapleader = ' '
 
-" show
-set showmode
-
-" movement
-set scrolloff=7
-
-" search
+" settings
 set hlsearch
 set incsearch
 set smartcase
 set ignorecase
+set number relativenumber   " 显示行号，相对行号
+set scrolloff=7
+set ruler
+set wrap                    " 超长软换行
 
 " plugins
 set easymotion
@@ -26,22 +19,19 @@ set exchange
 set highlightedyank
 set textobj-entire
 set NERDTree
+"" plugin settings
+set keep-english-in-normal-and-restore-in-insert    " 自动切换输入法
+map <leader>f <Plug>(easymotion-s)                  " 搜索
+map <leader>t :NERDTreeToggle<CR>                   " 打开边栏
+nnoremap <leader>d :NERDTreeFocus<CR>               " 聚焦边栏
 
-" plugin settings
-set keep-english-in-normal-and-restore-in-insert
-"" easymotion
-map <leader>f <Plug>(easymotion-s)
-"" nerdtree
-map <leader>t :NERDTreeToggle<CR>
-nnoremap <leader>d :NERDTreeFocus<CR>
-
-" basic key mapping
-noremap ; :
+" basic key map
+noremap s <nop>
 "" $ & ^
 nnoremap L $
-vnoremap H ^
-vnoremap L $
 nnoremap H ^
+vnoremap L $
+vnoremap H ^
 "" j & k
 nnoremap k gk
 nnoremap gk k
@@ -49,7 +39,7 @@ nnoremap j gj
 nnoremap gj j
 "" esc
 inoremap kj <esc>
-"" swap implementations of ` and ' jump to markers
+""  ` & '
 "" by default, ' jumps to the marked line,
 "" ` jumps to the marked line and column, so swap them
 nnoremap ' `
@@ -63,59 +53,40 @@ nnoremap gr gt
 "" copy and paste
 noremap <Leader>y "*y
 noremap <Leader>p "*p
-vnoremap Y "+y
-"" others
-" cnoremap <C-j> <t_kd>
-" cnoremap <C-k> <t_ku>
-cnoremap <C-a> <Home>
-cnoremap <C-e> <End>
-
-" edit vimrc
+"" command line home & end
+cnoremap <C-h> <Home>
+cnoremap <C-l> <End>
+"" edit vimrc
 nnoremap <leader>ve :e C:/Users/Waoap/.ideavimrc<CR>
 nnoremap <leader>vw :w!<CR>
 nnoremap <leader>vs :so C:/Users/Waoap/.ideavimrc<CR>
 
-" window operation
-nnoremap <leader>j <C-W>j
-nnoremap <leader>k <C-W>k
-nnoremap <leader>h <C-W>h
-nnoremap <leader>l <C-W>l
-
 " idea specific settings
 set ideajoin
 set idearefactormode=keep
-
-" intellij built in key map
-nnoremap <leader>a :action GotoAction<CR>
+"" intellij built in key map
 nnoremap <leader>b :action Bookmarks<CR>
-nnoremap <leader>c :action GotoClass<CR>
-nnoremap <leader>s :action SearchEverywhere<CR>
-nnoremap <leader>se :action FindInPath<CR>
+"nnoremap <leader>c :action GotoClass<CR>
+nnoremap <leader>x :action FindInPath<CR>   " 在文件（默认在项目文件）中查找代码
 nnoremap <leader>r :action RecentFiles<CR>
-nnoremap <leader>i :action SelectInProjectView<CR>
-
-" navigation
+"" navigation
+"nnoremap ga :action GotoAction<CR>
 nnoremap gs :action GotoSuperMethod<CR>
-nnoremap gl :action JumpToLastChange<CR>
+"nnoremap gl :action JumpToLastChange<CR>
 nnoremap gi :action GotoImplementation<CR>
 nnoremap gd :action GotoDeclaration<CR>
 nnoremap gf :action FileStructurePopup<CR>
-
-" toggle track vim action Id
-" nnoremap ta :action VimFindActionIdAction<CR>
-
-" run, build and debug
-"" use ','
+"" run, build and debug
 nnoremap ,d :action Debug<CR>
 nnoremap ,r :action Run<CR>
 nnoremap ,c :action CompileDirty<CR>
 nnoremap ,b :action ToggleLineBreakpoint<CR>
-nnoremap ,v :action ViewBreakpoints<CR>
+nnoremap ,p :action ViewBreakpoints<CR>
 nnoremap ,s :action Stop<CR>
-
-" code actions
-"" use '\'
+"" code actions
 nnoremap \u :action FindUsages<CR>
 nnoremap \r :action RenameElement<CR>
 nnoremap \f :action ReformatCode<CR>
 nnoremap \s :action SaveAll<CR>
+" toggle track vim action Id
+" nnoremap ta :action VimFindActionIdAction<CR>
