@@ -70,7 +70,7 @@ nnoremap <leader>b :action Bookmarks<CR>
 nnoremap <leader>x :action FindInPath<CR>   " 在文件（默认在项目文件）中查找代码
 nnoremap <leader>r :action RecentFiles<CR>
 "" navigation
-"nnoremap ga :action GotoAction<CR>
+nnoremap ga :action GotoAction<CR>
 nnoremap gs :action GotoSuperMethod<CR>
 "nnoremap gl :action JumpToLastChange<CR>
 nnoremap gi :action GotoImplementation<CR>
@@ -88,5 +88,6 @@ nnoremap \u :action FindUsages<CR>
 nnoremap \r :action RenameElement<CR>
 nnoremap \f :action ReformatCode<CR>
 nnoremap \s :action SaveAll<CR>
-" toggle track vim action Id
-" nnoremap ta :action VimFindActionIdAction<CR>
+nnoremap \p :action Replace<CR>
+"" toggle track vim action Id
+nnoremap ta :action VimFindActionIdAction<CR>
