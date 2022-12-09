@@ -1,6 +1,6 @@
 # author: Waoap
-# version: 1.0.0
-# update: 2022/11/19 17:33
+# version: 22.12.9
+# update: 2022/12/9
 mixin: # Mixin 配置文件
     dns:
         enable: true
