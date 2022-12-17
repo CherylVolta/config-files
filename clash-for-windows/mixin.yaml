@@ -1,0 +1,123 @@
+# author: Waoap
+# version: 22.12.9
+# update: 2022/12/9
+mixin: # Mixin 配置文件
+  dns:
+    enable: true
+    ipv6: true
+    # 从 v0.18.8 版本开始，TUN 模式建议使用 fake-ip 模式，redir-host 将无法进行远端 DNS 解析
+    enhanced-mode: fake-ip # redir-host/fake-ip
+    fake-ip-filter:
+      # === Local ===
+      - '*.lan'
+      - '*.local'
+
+      # === Microsoft Windows Serivice ===
+      - '*.msftncsi.com'
+      - '*.msftconnecttest.com'
+
+      # === NTP Service ===
+      - time.*.com
+      - time.*.gov
+      - time.*.edu.cn
+      - '*.time.edu.cn'
+      - time1.*.com
+      - time2.*.com
+      - time3.*.com
+      - time4.*.com
+      - time5.*.com
+      - time6.*.com
+      - time7.*.com
+      - ntp.*.com
+      - ntp1.*.com
+      - ntp2.*.com
+      - ntp3.*.com
+      - ntp4.*.com
+      - ntp5.*.com
+      - ntp6.*.com
+      - ntp7.*.com
+      - ntp.*.*.cn
+      - '*.ntp.org.cn'
+      - '*.pool.ntp.org'
+
+      # === Music Service ===
+      ## NetEase
+      - '*.music.163.com'
+      - '*.126.net'
+      ## Baidu
+      - musicapi.taihe.com
+      - music.taihe.com
+      ## Kugou
+      - songsearch.kugou.com
+      - trackercdn.kugou.com
+      ## Kuwo
+      - '*.kuwo.cn'
+      ## JOOX
+      - api-jooxtt.sanook.com
+      - api.joox.com
+      - joox.com
+      ## QQ
+      - '*.y.qq.com'
+      - '*.music.tc.qq.com'
+      - aqqmusic.tc.qq.com
+      - '*.stream.qqmusic.qq.com'
+
+      # === Game Service ===
+      ## Nintendo Switch
+      - '*.n.n.srv.nintendo.net'
+      ## Sony PlayStation
+      - '*.stun.playstation.net'
+      ## Microsoft Xbox
+      - xbox.*.*.microsoft.com
+      - '*.*.xboxlive.com'
+
+      # === Others ===
+      - wlsy.cqut.edu.cn
+      ## QQ Quick Login
+      - localhost.ptlogin2.qq.com
+      ## Golang
+      - proxy.golang.org
+      ## STUN Server
+      - +.stun.*.*
+      - +.stun.*.*.*
+      - +.stun.*.*.*.*
+      - +.stun.*.*.*.*.*
+      ## WORKGROUP
+      - WORKGROUP
+    default-nameserver:
+      - 223.5.5.5 # 阿里DNS
+      - 119.29.29.29 # 腾讯DNS
+      - 1.1.1.1 # Cloudflare DNS
+      - 1.0.0.1 # Cloudflare DNS
+    nameserver: # GeoIP 为 CN 时使用的 DNS NameServer
+      - 223.5.5.5 # 阿里DNS
+      - 180.76.76.76 # 百度DNS
+      - 119.29.29.29 # 腾讯DNS
+      - 114.114.114.114 # 114DNS
+    fallback: # GeoIP 不是 CN 时使用的 DNS NameServer
+      - 'https://dns.google/dns-query'
+      - 'https://1.1.1.1/dns-query'
+      - 'https://1.0.0.1/dns-query'
+      - 'https://doh.dns.sb/dns-query'
+    fallback-filter:
+      geoip: true # 启用 GeoIP
+      geoip-code: CN
+      ip-cidr:
+        - 240.0.0.0/4
+      domain:
+        - '+.google.com'
+        - '+.facebook.com'
+        - '+.twitter.com'
+        - '+.youtube.com'
+        - '+.xn--ngstr-lra8j.com'
+        - '+.google.cn'
+        - '+.googleapis.cn'
+        - '+.googleapis.com'
+        - '+.gvt1.com'
+  tun: # Tun 配置
+    enable: true
+    stack: system # 使用 system stack 需要在防火墙放行程序
+    dns-hijack:
+      - any:53
+    auto-route: true
+    auto-detect-interface: true

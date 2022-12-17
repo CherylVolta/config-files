@@ -4,8 +4,14 @@
 
 Including:
 
--   Vim
+- Vim
 
--   Clash for Windows
+  1. .ideavimrc
 
--   Windows Terminal
+  2. .vimrc
+
+- Clash for Windows
+
+- Windows Terminal
+
+- Git

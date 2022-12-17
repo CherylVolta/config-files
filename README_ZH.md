@@ -7,3 +7,5 @@
 - Clash for Windows
 
 - Windows Terminal
+
+- Git
