@@ -12,6 +12,14 @@ Including:
 
 - Clash for Windows
 
+  1. mixin.yaml
+
+  2. parser.yaml
+
 - Windows Terminal
 
+  1. settings.json
+
 - Git
+
+  1. .gitignore
