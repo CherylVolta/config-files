@@ -6,7 +6,7 @@
 
     1. .ideavimrc
 
-    2. .vimrc
+    2. .vimrc （弃用）
 
 - Clash for Windows
 
@@ -18,6 +18,6 @@
 
     1. settings.json
 
-- Git
+- Git .gitignore
 
-    1. .gitignore
+    1. IntelliJ IDEA

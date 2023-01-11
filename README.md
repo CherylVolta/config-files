@@ -8,7 +8,7 @@ Including:
 
     1. .ideavimrc
 
-    2. .vimrc
+    2. .vimrc (Deprecated)
 
 - Clash for Windows
 
@@ -20,6 +20,6 @@ Including:
 
     1. settings.json
 
-- Git
+- Git .gitignore
 
-    1. .gitignore
+    1. IntelliJ IDEA
