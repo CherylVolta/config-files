@@ -12,9 +12,11 @@ Including:
 
 - Clash for Windows
 
-    1. mixin.yaml
+    1. cfw-settings.yaml
 
-    2. parser.yaml
+    2. mixin.yaml
+
+    3. parser.yaml
 
 - Windows Terminal
 
