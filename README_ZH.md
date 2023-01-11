@@ -3,23 +3,13 @@
 包括：
 
 - Vim
-
-    1. .ideavimrc
-
-    2. .vimrc （弃用）
-
+  - .ideavimrc
+  - .vimrc （弃用）
 - Clash for Windows
-
-    1. cfw-settings.yaml
-
-    2. mixin.yaml
-
-    3. parser.yaml
-
+  - cfw-settings.yaml
+  - mixin.yaml
+  - parser.yaml
 - Windows Terminal
-
-    1. settings.json
-
+  - settings.json
 - Git .gitignore
-
-    1. IntelliJ IDEA
+  - IntelliJ IDEA
