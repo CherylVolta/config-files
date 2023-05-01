@@ -1,6 +1,5 @@
 # author: Waoap
-# version: 23.01.23
-# update: 2023/01/23
+# version: 2023.04.24
 parsers: # array
   # - reg: ^.*$ 匹配所有订阅，或  - url: https://example.com/profile.yaml 指定订阅
   - reg: ^.*$
@@ -24,17 +23,17 @@ parsers: # array
       #   url-test           # 自动选择延迟最低的节点
       #   fallback           # 节点故障时自动切换下一个
       #   laod-balance       # 均衡使用分组内的节点
-      #   url: http://www.gstatic.com/generate_204       # 测试地址 非select类型分组必要
-      #   interval: 300      # 自动测试间隔时间，单位秒 非select类型分组必要
-      #   tolerance: 50      # 允许的偏差，节点之间延迟差小于该值不切换 非必要
+      #   url: http://www.apple.com/library/test/success.html         # 测试地址 非select类型分组必要
+      #   interval: 60       # 自动测试间隔时间，单位秒 非select类型分组 必要
+      #   tolerance: 150     # 允许偏差的 ms，节点之间延迟差小于该值不切换 非必要
       #   proxies:
       #       - 节点名称或其他分组套娃
       prepend-proxy-groups: # 建立策略组
         - name: ✈️ 自动选择
           type: url-test
-          url: http://www.gstatic.com/generate_204
-          interval: 300
-          tolerance: 50
+          url: http://www.apple.com/library/test/success.html
+          interval: 60
+          tolerance: 150
 
         - name: 🥰 节点选择
           type: select

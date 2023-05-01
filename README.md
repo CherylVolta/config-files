@@ -2,23 +2,22 @@
 
 [中文说明](README_ZH.md)
 
-Including:
+1. File Naming Convention:
 
-- Vim
+   `[{PROFILE_NAME}-]{UPDATE_TIME}.{SUFFIX}`
 
-  - .ideavimrc
-  - .vimrc (Deprecated)
+2. Including:
 
-- Clash for Windows
+   - Vim
 
-  - cfw-settings.yaml
-  - mixin.yaml
-  - parser.yaml
+     - .ideavimrc
 
-- Windows Terminal
+   - Clash for Windows
 
-  - settings.json
+     - cfw-settings.yaml
+     - mixin.yaml
+     - parser.yaml
 
-- Git .gitignore
+   - Windows Terminal
 
-  - IntelliJ IDEA
+     - settings.json

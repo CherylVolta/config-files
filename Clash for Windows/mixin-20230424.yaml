@@ -1,21 +1,17 @@
 # author: Waoap
-# version: 22.12.9
-# update: 2022/12/9
-mixin: # Mixin 配置文件
-  dns:
+# version: 2023.04.24
+mixin: # Mixin 配置
+  dns: # DNS 配置
     enable: true
     ipv6: true
-    # 从 v0.18.8 版本开始，TUN 模式建议使用 fake-ip 模式，redir-host 将无法进行远端 DNS 解析
-    enhanced-mode: fake-ip # redir-host/fake-ip
-    fake-ip-filter:
+    enhanced-mode: fake-ip # redir-host / fake-ip（推荐）
+    fake-ip-filter: # 不使用 fake-ip 的列表
       # === Local ===
       - '*.lan'
       - '*.local'
-
       # === Microsoft Windows Serivice ===
       - '*.msftncsi.com'
       - '*.msftconnecttest.com'
-
       # === NTP Service ===
       - time.*.com
       - time.*.gov
@@ -39,7 +35,6 @@ mixin: # Mixin 配置文件
       - ntp.*.*.cn
       - '*.ntp.org.cn'
       - '*.pool.ntp.org'
-
       # === Music Service ===
       ## NetEase
       - '*.music.163.com'
@@ -61,7 +56,6 @@ mixin: # Mixin 配置文件
       - '*.music.tc.qq.com'
       - aqqmusic.tc.qq.com
       - '*.stream.qqmusic.qq.com'
-
       # === Game Service ===
       ## Nintendo Switch
       - '*.n.n.srv.nintendo.net'
@@ -70,7 +64,6 @@ mixin: # Mixin 配置文件
       ## Microsoft Xbox
       - xbox.*.*.microsoft.com
       - '*.*.xboxlive.com'
-
       # === Others ===
       - wlsy.cqut.edu.cn
       ## QQ Quick Login
@@ -84,36 +77,32 @@ mixin: # Mixin 配置文件
       - +.stun.*.*.*.*.*
       ## WORKGROUP
       - WORKGROUP
-    default-nameserver:
-      - 223.5.5.5 # 阿里DNS
-      - 119.29.29.29 # 腾讯DNS
-      - 1.1.1.1 # Cloudflare DNS
-      - 1.0.0.1 # Cloudflare DNS
+    default-nameserver: # 用于查询下面的 DoH/DoT
+      - '223.5.5.5'
+      - '114.114.114.114'
+      - '8.8.8.8'
     nameserver: # GeoIP 为 CN 时使用的 DNS NameServer
-      - 223.5.5.5 # 阿里DNS
-      - 180.76.76.76 # 百度DNS
-      - 119.29.29.29 # 腾讯DNS
-      - 114.114.114.114 # 114DNS
+      - '10.103.255.254' # 上级网关DNS，请根据实际设置（宿舍宽带）
+      - '223.5.5.5' # 这里开始的DNS可以换成其他DNS，尽可能多设置几个，无需考虑污染
+      - '114.114.114.114'
     fallback: # GeoIP 不是 CN 时使用的 DNS NameServer
-      - 'https://dns.google/dns-query'
-      - 'https://1.1.1.1/dns-query'
-      - 'https://1.0.0.1/dns-query'
-      - 'https://doh.dns.sb/dns-query'
-    fallback-filter:
-      geoip: true # 启用 GeoIP
-      geoip-code: CN
-      ip-cidr:
-        - 240.0.0.0/4
-      domain:
-        - '+.google.com'
-        - '+.facebook.com'
-        - '+.twitter.com'
-        - '+.youtube.com'
-        - '+.xn--ngstr-lra8j.com'
-        - '+.google.cn'
-        - '+.googleapis.cn'
-        - '+.googleapis.com'
-        - '+.gvt1.com'
+      - 'tls://dns.google'
+      - 'tls://dns.rubyfish.cn'
+    # fallback-filter: #好像不是很需要
+    #   geoip: true # 启用 GeoIP
+    #   geoip-code: CN
+    #   ip-cidr:
+    #     - 240.0.0.0/4
+    #   domain:
+    #     - '+.google.com'
+    #     - '+.facebook.com'
+    #     - '+.twitter.com'
+    #     - '+.youtube.com'
+    #     - '+.xn--ngstr-lra8j.com'
+    #     - '+.google.cn'
+    #     - '+.googleapis.cn'
+    #     - '+.googleapis.com'
+    #     - '+.gvt1.com'
   tun: # Tun 配置
     enable: true
     stack: system # 使用 system stack 需要在防火墙放行程序

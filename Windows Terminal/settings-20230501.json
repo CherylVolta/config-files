@@ -3,19 +3,19 @@
   "$schema": "https://aka.ms/terminal-profiles-schema",
   "actions": [
     {
-      "command": "find",
-      "keys": "ctrl+shift+f"
+      "command": {
+        "action": "copy",
+        "singleLine": false
+      },
+      "keys": "ctrl+c"
     },
     {
       "command": "paste",
       "keys": "ctrl+v"
     },
     {
-      "command": {
-        "action": "copy",
-        "singleLine": false
-      },
-      "keys": "ctrl+c"
+      "command": "find",
+      "keys": "ctrl+shift+f"
     },
     {
       "command": {
@@ -28,81 +28,38 @@
   ],
   "copyFormatting": "none",
   "copyOnSelect": false,
-  "defaultProfile": "{5fb123f1-af88-5b5c-8953-d14a8def1978}",
-  "launchMode": "maximized",
+  "defaultProfile": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
+  "initialCols": 140,
   "profiles": {
     "defaults": {
       "backgroundImage": "desktopWallpaper",
-      "backgroundImageOpacity": 0.56000000000000005,
-      "colorScheme": "Campbell",
+      "backgroundImageOpacity": 0.28,
       "cursorShape": "underscore",
       "font": {
-        "face": "\u7b49\u8ddd\u66f4\u7eb1\u9ed1\u4f53 Slab SC",
-        "size": 16,
-        "weight": "bold"
+        "face": "Sarasa Mono Slab TC",
+        "size": 14.0
       },
-      "opacity": 84,
-      "startingDirectory": "E:\\Desktop",
+      "opacity": 90,
       "useAcrylic": true
     },
     "list": [
       {
+        "commandline": "%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
         "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
         "hidden": false,
         "name": "Windows PowerShell"
       },
       {
-        "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
-        "hidden": false,
-        "name": "PowerShell",
-        "source": "Windows.Terminal.PowershellCore"
-      },
-      {
-        "guid": "{5fb123f1-af88-5b5c-8953-d14a8def1978}",
-        "hidden": false,
-        "name": "PowerShell 7",
-        "source": "Windows.Terminal.PowershellCore"
-      },
-      {
+        "commandline": "%SystemRoot%\\System32\\cmd.exe",
         "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
         "hidden": false,
-        "name": "Command"
+        "name": "\u547d\u4ee4\u63d0\u793a\u7b26"
       },
       {
         "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
         "hidden": false,
         "name": "Azure Cloud Shell",
         "source": "Windows.Terminal.Azure"
-      },
-      {
-        "guid": "{2ece5bfe-50ed-5f3a-ab87-5cd4baafed2b}",
-        "hidden": false,
-        "name": "Git Bash",
-        "source": "Git"
-      },
-      {
-        "guid": "{3bdc7c82-0c7c-5a9a-8be6-e3f1eed6a73e}",
-        "hidden": false,
-        "name": "Developer Command Prompt for VS 2022",
-        "source": "Windows.Terminal.VisualStudio"
-      },
-      {
-        "guid": "{31d7208d-a3d7-5c76-937d-d14d3acc9871}",
-        "hidden": false,
-        "name": "Developer PowerShell for VS 2022",
-        "source": "Windows.Terminal.VisualStudio"
-      },
-      {
-        "guid": "{16208362-94fc-5b1f-a491-5b2624d5ab56}",
-        "hidden": true,
-        "name": "Visual Studio Debug Console",
-        "source": "VSDebugConsole"
-      },
-      {
-        "guid": "{07b52e3e-de2c-5db4-bd2d-ba144ed6c273}",
-        "hidden": false,
-        "name": "Ubuntu-20.04",
-        "source": "Windows.Terminal.Wsl"
       }
     ]
   },
@@ -292,29 +249,6 @@
       "yellow": "#C4A000"
     },
     {
-      "background": "#300A24",
-      "black": "#171421",
-      "blue": "#0037DA",
-      "brightBlack": "#767676",
-      "brightBlue": "#08458F",
-      "brightCyan": "#2C9FB3",
-      "brightGreen": "#26A269",
-      "brightPurple": "#A347BA",
-      "brightRed": "#C01C28",
-      "brightWhite": "#F2F2F2",
-      "brightYellow": "#A2734C",
-      "cursorColor": "#FFFFFF",
-      "cyan": "#3A96DD",
-      "foreground": "#FFFFFF",
-      "green": "#26A269",
-      "name": "Ubuntu-20.04-ColorScheme",
-      "purple": "#881798",
-      "red": "#C21A23",
-      "selectionBackground": "#FFFFFF",
-      "white": "#CCCCCC",
-      "yellow": "#A2734C"
-    },
-    {
       "background": "#000000",
       "black": "#000000",
       "blue": "#000080",
@@ -337,5 +271,6 @@
       "white": "#C0C0C0",
       "yellow": "#808000"
     }
-  ]
+  ],
+  "themes": []
 }

@@ -1,22 +1,21 @@
 # 一些程序配置文件的备份
 
-包括：
+1. 文件命名格式：
 
-- Vim
+   `[{配置文件名}-]{更新时间}.{后缀名}`
 
-  - .ideavimrc
-  - .vimrc （弃用）
+2. 包括：
 
-- Clash for Windows
+   - Vim
 
-  - cfw-settings.yaml
-  - mixin.yaml
-  - parser.yaml
+     - .ideavimrc
 
-- Windows Terminal
+   - Clash for Windows
 
-  - settings.json
+     - cfw-settings.yaml
+     - mixin.yaml
+     - parser.yaml
 
-- Git .gitignore
+   - Windows Terminal
 
-  - IntelliJ IDEA
+     - settings.json
