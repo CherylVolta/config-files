@@ -1,5 +1,5 @@
 # author: Waoap
-# version: 2023.04.24
+# version: 2023.05.03
 mixin: # Mixin 配置
   dns: # DNS 配置
     enable: true
@@ -78,16 +78,17 @@ mixin: # Mixin 配置
       ## WORKGROUP
       - WORKGROUP
     default-nameserver: # 用于查询下面的 DoH/DoT
+      - '114.114.115.115'
       - '223.5.5.5'
-      - '114.114.114.114'
-      - '8.8.8.8'
+      - '1.0.0.1'
     nameserver: # GeoIP 为 CN 时使用的 DNS NameServer
-      - '10.103.255.254' # 上级网关DNS，请根据实际设置（宿舍宽带）
-      - '223.5.5.5' # 这里开始的DNS可以换成其他DNS，尽可能多设置几个，无需考虑污染
-      - '114.114.114.114'
+      - '202.202.145.6' # 上级网关DNS，请根据实际设置（宿舍宽带）
+      - '114.114.115.115' # 这里开始的DNS可以换成其他DNS，尽可能多设置几个，无需考虑污染
+      - '223.5.5.5'
     fallback: # GeoIP 不是 CN 时使用的 DNS NameServer
-      - 'tls://dns.google'
-      - 'tls://dns.rubyfish.cn'
+      - 'https://doh.opendns.com/dns-query'
+      - 'https://dns.google/dns-query'
+      - 'https://cloudflare-dns.com/dns-query'
     # fallback-filter: #好像不是很需要
     #   geoip: true # 启用 GeoIP
     #   geoip-code: CN
