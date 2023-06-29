@@ -1,0 +1,25 @@
+# author: Waoap
+# version: 2023.06.29
+showNewVersionIcon: true
+hideAfterStartup: true
+randomControllerPort: true
+runTimeFormat: 'hh : mm : ss'
+trayOrders:
+  - - icon
+  - - status
+    - traffic
+    - text
+hideTrayIcon: false
+connShowProcess: true
+showTrayProxyDelayIndicator: true
+mixinText: # 见 mixin.yaml
+profileParsersText: # 见 parsers.yaml
+connMode: false
+connProfile: true
+connProxy: 0
+latencyTimeout: .nan
+fontFamily: Sarasa Mono TC
+proxyOrder: 1
+proxyDelayType: 1
+latencyUrl: http://www.apple.com/library/test/success.html
+theme: 0

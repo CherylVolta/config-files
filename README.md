@@ -2,21 +2,25 @@
 
 [中文说明](README_ZH.md)
 
-1. File Naming Convention:
+1. Directory Structure:
 
-   `[{PROFILE_NAME}-]{UPDATE_TIME}.{SUFFIX}`
+   `{Application-Name}/{Update-Date}/{Config-Files}`
 
 2. Including:
-
-   - Vim
-
-     - .ideavimrc
 
    - Clash for Windows
 
      - cfw-settings.yaml
      - mixin.yaml
      - parser.yaml
+
+   - Prettier
+
+     - .prettierrc
+
+   - Vim
+
+     - .ideavimrc
 
    - Windows Terminal
 

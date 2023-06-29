@@ -26,20 +26,27 @@
       "keys": "alt+shift+d"
     }
   ],
+  "centerOnLaunch": true,
   "copyFormatting": "none",
   "copyOnSelect": false,
   "defaultProfile": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
-  "initialCols": 140,
+  "initialCols": 120,
+  "initialRows": 30,
+  "newTabMenu": [
+    {
+      "type": "remainingProfiles"
+    }
+  ],
   "profiles": {
     "defaults": {
-      "backgroundImage": "desktopWallpaper",
-      "backgroundImageOpacity": 0.28,
+      "backgroundImageOpacity": 0.0,
+      "colorScheme": "Tango Dark",
       "cursorShape": "underscore",
       "font": {
-        "face": "Unispace",
+        "face": "Cascadia Code PL",
         "size": 14.0
       },
-      "opacity": 90,
+      "opacity": 30,
       "useAcrylic": true
     },
     "list": [
@@ -272,5 +279,44 @@
       "yellow": "#808000"
     }
   ],
-  "themes": []
+  "theme": "light",
+  "themes": [
+    {
+      "name": "legacyDark",
+      "tab": {
+        "background": null,
+        "showCloseButton": "always",
+        "unfocusedBackground": null
+      },
+      "window": {
+        "applicationTheme": "dark",
+        "useMica": false
+      }
+    },
+    {
+      "name": "legacyLight",
+      "tab": {
+        "background": null,
+        "showCloseButton": "always",
+        "unfocusedBackground": null
+      },
+      "window": {
+        "applicationTheme": "light",
+        "useMica": false
+      }
+    },
+    {
+      "name": "legacySystem",
+      "tab": {
+        "background": null,
+        "showCloseButton": "always",
+        "unfocusedBackground": null
+      },
+      "window": {
+        "applicationTheme": "system",
+        "useMica": false
+      }
+    }
+  ],
+  "useAcrylicInTabRow": true
 }
