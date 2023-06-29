@@ -30,8 +30,8 @@
   "copyFormatting": "none",
   "copyOnSelect": false,
   "defaultProfile": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
-  "initialCols": 120,
-  "initialRows": 30,
+  "initialCols": 130,
+  "initialRows": 26,
   "newTabMenu": [
     {
       "type": "remainingProfiles"
@@ -40,13 +40,13 @@
   "profiles": {
     "defaults": {
       "backgroundImageOpacity": 0.0,
-      "colorScheme": "Tango Dark",
+      "colorScheme": "One Half Dark",
       "cursorShape": "underscore",
       "font": {
-        "face": "Cascadia Code PL",
-        "size": 14.0
+        "face": "Sarasa Mono TC",
+        "size": 16.0
       },
-      "opacity": 30,
+      "opacity": 80,
       "useAcrylic": true
     },
     "list": [
@@ -279,7 +279,7 @@
       "yellow": "#808000"
     }
   ],
-  "theme": "light",
+  "theme": "dark",
   "themes": [
     {
       "name": "legacyDark",
