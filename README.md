@@ -14,6 +14,10 @@
      - mixin.yaml
      - parser.yaml
 
+   - Git
+
+     - .gitconfig
+
    - Prettier
 
      - .prettierrc
@@ -25,3 +29,7 @@
    - Windows Terminal
 
      - settings.json
+
+   - ZSH
+
+     - .zshrc
