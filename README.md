@@ -18,6 +18,10 @@
 
      - .gitconfig
 
+   - Jetbrains IDE
+
+     - GitHub_Dark_Material.icls
+
    - Prettier
 
      - .prettierrc
