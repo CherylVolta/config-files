@@ -1,0 +1,163 @@
+" -- leader --
+let mapleader = ' '
+
+" -- plugins --
+" >> settings
+"    高亮复制
+set highlightedyank
+"    cs/ys/... 快速操作引号等“包围”
+set surround
+"    multi cursor
+set multiple-cursors
+"    快速跳转
+set easymotion
+"    高效编辑方法参数
+set argtextobj
+"    ae/ie 整个文件
+set textobj-entire
+"    文件树
+set NERDTree
+"    自动切换输入法
+set keep-english-in-normal-and-restore-in-insert
+" >> key maps
+"    搜索
+nnoremap <leader>s <Plug>(easymotion-s)
+"    切换边栏
+nnoremap <leader>n :NERDTreeToggle<CR>
+"    聚焦边栏
+nnoremap <leader>m :NERDTreeFocus<CR>
+
+" -- basic --
+" >> settings
+"    搜索时忽略大小写
+set ignorecase
+"    智能大小写
+set smartcase
+"    显示行号，相对行号
+set number relativenumber
+"    ...
+set scrolloff=7
+" >> key maps
+"    nop
+noremap s <nop>
+noremap t <nop>
+"    home & end
+nnoremap L $
+nnoremap H ^
+vnoremap L $
+vnoremap H ^
+cnoremap <C-H> <Home>
+cnoremap <C-L> <End>
+"    j & k
+nnoremap k gk
+nnoremap gk k
+nnoremap j gj
+nnoremap gj j
+"    ESC
+inoremap kj <ESC>
+"    ` & '
+"    when use m to mark a place, by default,
+"    ' jumps to the marked line,
+"    ` jumps to the marked line and column, so swap them.
+nnoremap ' `
+nnoremap ` '
+"    reselect visual block after indent/outdent.
+vnoremap < <gv
+vnoremap > >gv
+"    tag
+nnoremap ge gT
+nnoremap gr gt
+"    copy and paste
+noremap <Leader>y "*y
+noremap <Leader>p "*p
+"    edit vimrc
+nnoremap <leader>ev :e ~\.ideavimrc<CR>
+nnoremap <leader>es :action IdeaVim.ReloadVimRc.reload<CR>
+
+" -- idea specific --
+" >> settings
+"    J 启用 idea 连接支持
+set ideajoin
+"    进入重构保持模式不变
+set idearefactormode=keep
+" >> key maps
+"    >> popup actions
+"    随处搜索
+nnoremap <leader>w :action SearchEverywhere<CR>
+"    最近打开的文件
+nnoremap <leader>f :action RecentFiles<CR>
+"    文件结构
+nnoremap <leader>t :action FileStructurePopup<CR>
+"    在文件中查找
+nnoremap <leader>x :action FindInPath<CR>
+"    最近的项目
+nnoremap <leader>j :action ManageRecentProjects<CR>
+"   编辑/选择运行/调试配置
+nnoremap <leader>c :action ChooseRunConfiguration<CR>
+"    >> project actions
+"    调试
+nnoremap .d :action Debug<CR>
+"    步进
+nnoremap .i :action StepInto<CR>
+"    步过
+nnoremap .o :action StepOver<CR>
+"    步出
+nnoremap .p :action StepOut<CR>
+"    恢复
+nnoremap .z :action Resume<CR>
+"    监听表达式
+nnoremap .v :action EvaluateExpression<CR>
+"    运行
+nnoremap .r :action Run<CR>
+"    编译
+nnoremap .c :action CompileDirty<CR>
+"    停止
+nnoremap .s :action Stop<CR>
+"    重载 maven 项目
+nnoremap .m :action Maven.Reimport<CR>
+"    >> code actions
+"    查看断点
+nnoremap \v :action ViewBreakpoints<CR>
+"    切换断点
+nnoremap \b :action ToggleLineBreakpoint<CR>
+"    忽略断点
+nnoremap \n :action XDebugger.MuteBreakpoints<CR>
+"    切换书签
+nnoremap \m :action ToggleBookmark<CR>
+"    重命名
+nnoremap \r :action RenameElement<CR>
+"    替换
+nnoremap \p :action Replace<CR>
+"    格式化
+nnoremap \f :action ReformatCode<CR>
+"    保存所有
+nnoremap \s :action SaveAll<CR>
+"    查找用法
+nnoremap \u :action FindUsages<CR>
+"    >> code navigations
+"    跳转到父类方法
+nnoremap ts :action GotoSuperMethod<CR>
+"    跳转到上次修改的地方
+nnoremap tc :action JumpToLastChange<CR>
+"    跳转到实现
+nnoremap ti :action GotoImplementation<CR>
+"    跳转到声明
+nnoremap td :action GotoDeclaration<CR>
+"    展示快速文档
+nnoremap tq :action QuickJavaDoc<CR>
+"    展示形参信息
+nnoremap tp :action ParameterInfo<CR>
+"    调用层次结构
+nnoremap thc :action CallHierarchy<CR>
+"    类型层次结构
+nnoremap tht :action TypeHierarchy<CR>
+"    方法层次结构
+nnoremap thm :action MethodHierarchy<CR>
+"    >> 切换追踪 IDE 操作 id
+nnoremap ta :action VimFindActionIdAction<CR>
+
+" -- others --
+"    previous method
+nnoremap [[ :action MethodUp<CR>
+"    next method
+nnoremap ]] :action MethodDown<CR>
