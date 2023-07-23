@@ -1,0 +1,93 @@
+" leader
+let mapleader = ' '
+
+" settings
+set hlsearch
+set incsearch
+set smartcase
+set ignorecase
+set number relativenumber                             " 显示行号，相对行号
+set scrolloff=7
+set ruler
+set wrap                                              " 超长软换行
+
+" plugins
+set easymotion
+set surround
+set argtextobj
+set exchange
+set highlightedyank
+set textobj-entire
+set NERDTree
+"" plugin settings
+set keep-english-in-normal-and-restore-in-insert      " 自动切换输入法
+map <leader>f <Plug>(easymotion-s)                    " 搜索
+map <leader>t :NERDTreeToggle<CR>                     " 打开边栏
+nnoremap <leader>d :NERDTreeFocus<CR>                 " 聚焦边栏
+
+" basic key map
+noremap s <nop>
+"" $ & ^
+nnoremap L $
+nnoremap H ^
+vnoremap L $
+vnoremap H ^
+"" j & k
+nnoremap k gk
+nnoremap gk k
+nnoremap j gj
+nnoremap gj j
+"" esc
+inoremap kj <esc>
+""  ` & '
+"" by default, ' jumps to the marked line,
+"" ` jumps to the marked line and column, so swap them
+nnoremap ' `
+nnoremap ` '
+"" reselect visual block after indent/outdent.
+vnoremap < <gv
+vnoremap > >g
+"" tag
+nnoremap ge gT
+nnoremap gr gt
+"" copy and paste
+noremap <Leader>y "*y
+noremap <Leader>p "*p
+"" command line home & end
+cnoremap <C-h> <Home>
+cnoremap <C-l> <End>
+"" edit vimrc
+nnoremap <leader>ve :e C:/Users/Oddy/.ideavimrc<CR>
+nnoremap <leader>vw :w!<CR>
+nnoremap <leader>vs :so C:/Users/Oddy/.ideavimrc<CR>
+
+" idea specific settings
+set ideajoin
+set idearefactormode=keep
+"" open popup window
+nnoremap <leader>c :action GotoClass<CR>              " 搜索类
+nnoremap <leader>a :action GotoAction<CR>             " 搜索 action
+nnoremap <leader>r :action RecentFiles<CR>            " 最近打开的文件
+nnoremap <leader>s :action FileStructurePopup<CR>     " 跳转到文件结构
+nnoremap <leader>g :action FindInPath<CR>             " 在文件（默认在项目文件）中查找代码
+"" run, build and debug
+nnoremap ,d :action Debug<CR>                         " 调试
+nnoremap ,r :action Run<CR>                           " 运行
+nnoremap ,c :action CompileDirty<CR>                  " 编译
+nnoremap ,s :action Stop<CR>                          " 停止
+"" code actions
+nnoremap \m :action Bookmarks<CR>                     " 书签
+nnoremap \b :action ToggleLineBreakpoint<CR>          " 切换断点
+nnoremap \v :action ViewBreakpoints<CR>               " 查看断点
+nnoremap \r :action RenameElement<CR>                 " 重命名
+nnoremap \p :action Replace<CR>                       " 替换
+nnoremap \f :action ReformatCode<CR>                  " 格式化
+nnoremap \s :action SaveAll<CR>                       " 保存所有
+nnoremap \u :action FindUsages<CR>                    " 查找用法
+"" code navigations
+nnoremap gs :action GotoSuperMethod<CR>               " 跳转到父类方法
+nnoremap gc :action JumpToLastChange<CR>              " 跳转到上次修改的地方
+nnoremap gi :action GotoImplementation<CR>            " 跳转到实现
+nnoremap gd :action GotoDeclaration<CR>               " 跳转到声明
+"" toggle track vim action Id
+nnoremap ta :action VimFindActionIdAction<CR>
