@@ -11,8 +11,6 @@
    - Clash for Windows
 
      - cfw-settings.yaml
-     - mixin.yaml
-     - parser.yaml
 
    - Git
 
