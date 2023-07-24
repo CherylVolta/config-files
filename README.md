@@ -18,9 +18,9 @@
 
      - .gitconfig
 
-   - Jetbrains IDE
+   - JetBrains IDE
 
-     - GitHub_Dark_Material.icls
+     - settings.zip
 
    - Prettier
 
