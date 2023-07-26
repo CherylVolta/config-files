@@ -16,6 +16,7 @@
 
    - JetBrains IDE
 
+     - CodingStyle.xml
      - settings.zip
 
    - Prettier
