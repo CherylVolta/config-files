@@ -21,11 +21,11 @@ set NERDTree
 set keep-english-in-normal-and-restore-in-insert
 " >> key maps
 "    搜索
-nnoremap <leader>s <Plug>(easymotion-s)
+nmap <leader>s <Plug>(easymotion-s)
 "    切换边栏
-nnoremap <leader>n :NERDTreeToggle<CR>
+nmap <leader>n :NERDTreeToggle<CR>
 "    聚焦边栏
-nnoremap <leader>m :NERDTreeFocus<CR>
+nmap <leader>m :NERDTreeFocus<CR>
 
 " -- basic --
 " >> settings
@@ -54,7 +54,7 @@ nnoremap gk k
 nnoremap j gj
 nnoremap gj j
 "    ESC
-inoremap kj <ESC>
+inoremap ,, <ESC>
 "    ` & '
 "    when use m to mark a place, by default,
 "    ' jumps to the marked line,
@@ -71,8 +71,8 @@ nnoremap gr gt
 noremap <Leader>y "*y
 noremap <Leader>p "*p
 "    edit vimrc
-nnoremap <leader>ev :e ~\.ideavimrc<CR>
-nnoremap <leader>es :action IdeaVim.ReloadVimRc.reload<CR>
+nmap <leader>ev :e ~\.ideavimrc<CR>
+nmap <leader>es :action IdeaVim.ReloadVimRc.reload<CR>
 
 " -- idea specific --
 " >> settings
@@ -82,82 +82,82 @@ set ideajoin
 set idearefactormode=keep
 " >> key maps
 "    >> popup actions
-"    随处搜索
-nnoremap <leader>w :action SearchEverywhere<CR>
+"    关闭当前文件
+nmap <leader>w :action CloseContent<CR>
 "    最近打开的文件
-nnoremap <leader>f :action RecentFiles<CR>
-"    文件结构
-nnoremap <leader>t :action FileStructurePopup<CR>
+nmap <leader>f :action RecentFiles<CR>
+"    项目结构
+nmap <leader>t :action ShowProjectStructureSettings<CR>
 "    在文件中查找
-nnoremap <leader>x :action FindInPath<CR>
+nmap <leader>x :action FindInPath<CR>
 "    最近的项目
-nnoremap <leader>j :action ManageRecentProjects<CR>
+nmap <leader>j :action ManageRecentProjects<CR>
 "   编辑/选择运行/调试配置
-nnoremap <leader>c :action ChooseRunConfiguration<CR>
+nmap <leader>r :action ChooseRunConfiguration<CR>
 "    >> project actions
 "    调试
-nnoremap .d :action Debug<CR>
+nmap .d :action Debug<CR>
 "    步进
-nnoremap .i :action StepInto<CR>
+nmap .i :action StepInto<CR>
 "    步过
-nnoremap .o :action StepOver<CR>
+nmap .o :action StepOver<CR>
 "    步出
-nnoremap .p :action StepOut<CR>
+nmap .p :action StepOut<CR>
 "    恢复
-nnoremap .z :action Resume<CR>
+nmap .z :action Resume<CR>
 "    监听表达式
-nnoremap .v :action EvaluateExpression<CR>
+nmap .v :action EvaluateExpression<CR>
 "    运行
-nnoremap .r :action Run<CR>
-"    编译
-nnoremap .c :action CompileDirty<CR>
+nmap .r :action Run<CR>
+"    构建
+nmap .b :action Build<CR>
 "    停止
-nnoremap .s :action Stop<CR>
+nmap .s :action Stop<CR>
 "    重载 maven 项目
-nnoremap .m :action Maven.Reimport<CR>
+nmap .m :action Maven.Reimport<CR>
 "    >> code actions
 "    查看断点
-nnoremap \v :action ViewBreakpoints<CR>
+nmap \v :action ViewBreakpoints<CR>
 "    切换断点
-nnoremap \b :action ToggleLineBreakpoint<CR>
+nmap \b :action ToggleLineBreakpoint<CR>
 "    忽略断点
-nnoremap \n :action XDebugger.MuteBreakpoints<CR>
+nmap \n :action XDebugger.MuteBreakpoints<CR>
 "    切换书签
-nnoremap \m :action ToggleBookmark<CR>
+nmap \m :action ToggleBookmark<CR>
 "    重命名
-nnoremap \r :action RenameElement<CR>
+nmap \r :action RenameElement<CR>
 "    替换
-nnoremap \p :action Replace<CR>
+nmap \p :action Replace<CR>
 "    格式化
-nnoremap \f :action ReformatCode<CR>
+nmap \f :action ReformatCode<CR>
 "    保存所有
-nnoremap \s :action SaveAll<CR>
+nmap \s :action SaveAll<CR>
 "    查找用法
-nnoremap \u :action FindUsages<CR>
+nmap \u :action FindUsages<CR>
 "    >> code navigations
 "    跳转到父类方法
-nnoremap ts :action GotoSuperMethod<CR>
+nmap ts :action GotoSuperMethod<CR>
 "    跳转到上次修改的地方
-nnoremap tc :action JumpToLastChange<CR>
+nmap tc :action JumpToLastChange<CR>
 "    跳转到实现
-nnoremap ti :action GotoImplementation<CR>
+nmap ti :action GotoImplementation<CR>
 "    跳转到声明
-nnoremap td :action GotoDeclaration<CR>
+nmap td :action GotoDeclaration<CR>
 "    展示快速文档
-nnoremap tq :action QuickJavaDoc<CR>
+nmap tq :action QuickJavaDoc<CR>
 "    展示形参信息
-nnoremap tp :action ParameterInfo<CR>
+nmap tp :action ParameterInfo<CR>
 "    调用层次结构
-nnoremap thc :action CallHierarchy<CR>
+nmap thc :action CallHierarchy<CR>
 "    类型层次结构
-nnoremap tht :action TypeHierarchy<CR>
+nmap tht :action TypeHierarchy<CR>
 "    方法层次结构
-nnoremap thm :action MethodHierarchy<CR>
+nmap thm :action MethodHierarchy<CR>
 "    >> 切换追踪 IDE 操作 id
-nnoremap ta :action VimFindActionIdAction<CR>
+nmap ta :action VimFindActionIdAction<CR>
 
 " -- others --
 "    previous method
-nnoremap [[ :action MethodUp<CR>
+nmap [[ :action MethodUp<CR>
 "    next method
-nnoremap ]] :action MethodDown<CR>
+nmap ]] :action MethodDown<CR>
