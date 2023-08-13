@@ -16,7 +16,7 @@
 
      - .gitconfig
 
-   - JetBrains IDE
+   - JetBrains IDE (Based on IntellJ IDEA)
 
      - CodingStyle.xml
      - settings.zip
