@@ -10,6 +10,8 @@
 
    - Clash for Windows
 
+     - Attention-\*.png
+     - Attention.md
      - cfw-settings.yaml
 
    - Git
