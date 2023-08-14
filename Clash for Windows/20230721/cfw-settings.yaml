@@ -20,14 +20,16 @@ proxyDelayType: 1
 latencyUrl: http://www.apple.com/library/test/success.html
 theme: 0
 mixinText: |
-  # author: Waoap
-  # version: 2023.05.03
+  # author: SeagullOddy
+  # version: 2023.08.14
   mixin: # Mixin 配置
     dns: # DNS 配置
       enable: true
       ipv6: true
-      enhanced-mode: fake-ip # redir-host / fake-ip（推荐）
-      fake-ip-filter: # 不使用 fake-ip 的列表
+
+      enhanced-mode: fake-ip
+      fake-ip-range: 198.18.0.1/16 # Fake IP 地址池 CIDR
+      fake-ip-filter: # fake-ip 排除列表
         # === Local ===
         - '*.lan'
         - '*.local'
@@ -78,6 +80,7 @@ mixinText: |
         - '*.music.tc.qq.com'
         - aqqmusic.tc.qq.com
         - '*.stream.qqmusic.qq.com'
+        - localhost.ptlogin2.qq.com
         # === Game Service ===
         ## Nintendo Switch
         - '*.n.n.srv.nintendo.net'
@@ -88,8 +91,6 @@ mixinText: |
         - '*.*.xboxlive.com'
         # === Others ===
         - wlsy.cqut.edu.cn
-        ## QQ Quick Login
-        - localhost.ptlogin2.qq.com
         ## Golang
         - proxy.golang.org
         ## STUN Server
@@ -99,46 +100,68 @@ mixinText: |
         - +.stun.*.*.*.*.*
         ## WORKGROUP
         - WORKGROUP
-      default-nameserver: # 用于查询下面的 DoH/DoT
-        - '114.114.115.115'
-        - '223.5.5.5'
-        - '1.0.0.1'
-      nameserver: # GeoIP 为 CN 时使用的 DNS NameServer
-        # 上级网关DNS，请根据实际设置（宿舍宽带）
-        # - '202.202.145.6'
-        - '192.168.3.1'
-        - '114.114.115.115' # 这里开始的DNS可以换成其他DNS，尽可能多设置几个，无需考虑污染
-        - '223.5.5.5'
-      fallback: # GeoIP 不是 CN 时使用的 DNS NameServer
-        - 'https://1.0.0.1/dns-query'
-        - 'https://doh.opendns.com/dns-query'
-        - 'https://dns.google/dns-query'
-      # fallback-filter: #好像不是很需要
-      #   geoip: true # 启用 GeoIP
-      #   geoip-code: CN
-      #   ip-cidr:
-      #     - 240.0.0.0/4
-      #   domain:
-      #     - '+.google.com'
-      #     - '+.facebook.com'
-      #     - '+.twitter.com'
-      #     - '+.youtube.com'
-      #     - '+.xn--ngstr-lra8j.com'
-      #     - '+.google.cn'
-      #     - '+.googleapis.cn'
-      #     - '+.googleapis.com'
-      #     - '+.gvt1.com'
+
+      # 这些 名称服务器(nameservers) 用于解析下列 DNS 名称服务器主机名.
+      # 仅指定 IP 地址
+      default-nameserver:
+        - '114.114.115.115' # 114DNS
+        - '119.29.29.29' # DNSPod
+        - '1.0.0.1' # Cloudflare
+        - '8.8.8.8' # Google
+      # 支持 UDP、TCP、DoT、DoH. 您可以指定要连接的端口.
+      # 所有 DNS 查询都直接发送到名称服务器, 无需代理
+      # Clash 使用第一个收到的响应作为 DNS 查询的结果.
+      nameserver:
+        # 上级网关DNS，请根据实际设置
+        # - '202.202.145.6' # 宿舍
+        # - '192.168.3.1' # 家
+        # 下面的DNS可以换成其他DNS，尽可能多设置几个，无需考虑污染
+        - '114.114.115.115' # 114DNS
+        - '119.29.29.29' # DNSPod
+        - '1.0.0.1' # Cloudflare
+        - '8.8.8.8' # Google
+      # 当 `fallback` 存在时, DNS 服务器将向此部分中的服务器
+      # 与 `nameservers` 中的服务器发送并发请求
+      # 当 GEOIP 国家不是 `CN` 时, 将使用 fallback 服务器的响应
+      fallback:
+        - 'https://dns.alidns.com/dns-query' # AliDNS, ECS Support
+        - 'https://dns.google/dns-query' # Google, ECS Support
+        - 'https://cloudflare-dns.com/dns-query' # Cloudflare
+        - 'tls://dns.alidns.com:853' # AliDNS, ECS Support
+        - 'tls://dns.google:853' # Google, ECS Support
+        - 'tls://one.one.one.one:853' # Cloudflare
+      # 当 `fallback-filter.geoip` 为 true 且 IP 地址的 GEOIP 为 `CN` 时,
+      # 将使用 `nameservers` 服务器解析的 IP 地址.
+      # 如果 `fallback-filter.geoip` 为 false, 且不匹配 `fallback-filter.ipcidr`,
+      # 则始终使用 `nameservers` 服务器的结果.
+      # 这是对抗 DNS 污染攻击的一种措施.
+      fallback-filter:
+        geoip: true # 启用 GeoIP
+        geoip-code: CN
+        # ip-cidr:
+        #   - 240.0.0.0/4
+        # domain:
+        #   - '+.google.com'
+        #   - '+.facebook.com'
+        #   - '+.twitter.com'
+        #   - '+.youtube.com'
+        #   - '+.xn--ngstr-lra8j.com'
+        #   - '+.google.cn'
+        #   - '+.googleapis.cn'
+        #   - '+.googleapis.com'
+        #   - '+.gvt1.com'
     tun: # Tun 配置
       enable: true
       stack: system # 使用 system stack 需要在防火墙放行程序
       dns-hijack:
-        - any:53
+        - 198.18.0.2:53 # 当 `fake-ip-range` 是 198.18.0.1/16, 应该劫持 198.18.0.2:53
       auto-route: true
+      # 推荐使用 `interface-name`
       auto-detect-interface: true
 profileParsersText: >
-  # author: Waoap
+  # author: SeagullOddy
 
-  # version: 2023.04.24
+  # version: 2023.08.14
 
   parsers: # array
     # - reg: ^.*$ 匹配所有订阅，或  - url: https://example.com/profile.yaml 指定订阅
@@ -207,7 +230,7 @@ profileParsersText: >
           - RULE-SET,reject,REJECT # 广告域名
           - RULE-SET,icloud,DIRECT # iCloud 国内可访问
           - RULE-SET,apple,DIRECT # Apple 国内可访问
-          #- RULE-SET,google,DIRECT # Google 国内可访问，慎用
+          - RULE-SET,google,DIRECT # Google 国内可访问
           - RULE-SET,proxy,🥰 节点选择 # 代理域名
           - RULE-SET,direct,DIRECT # 直连域名
           - RULE-SET,lancidr,DIRECT # 局域网 IP 及保留 IP
@@ -295,3 +318,5 @@ profileParsersText: >
             url: 'https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/applications.txt'
             path: ./ruleset/applications.yaml
             interval: 86400
+editor: 1
+editorFontSize: 14
