@@ -20,7 +20,6 @@
 
    - JetBrains IDE (Based on IntellJ IDEA)
 
-     - CodingStyle.xml
      - settings.zip
 
    - Prettier
