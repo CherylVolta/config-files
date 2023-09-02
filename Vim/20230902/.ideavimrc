@@ -40,6 +40,7 @@ set scrolloff=7
 " >> key maps
 "    nop
 noremap s <nop>
+noremap f <nop>
 noremap t <nop>
 "    home & end
 nnoremap L $
@@ -83,39 +84,47 @@ set idearefactormode=keep
 " >> key maps
 "    >> popup actions
 "    关闭当前文件
-nmap <leader>w :action CloseContent<CR>
+nmap <leader>x :action CloseContent<CR>
 "    最近打开的文件
-nmap <leader>f :action RecentFiles<CR>
-"    项目结构
-nmap <leader>t :action ShowProjectStructureSettings<CR>
-"    在文件中查找
-nmap <leader>x :action FindInPath<CR>
+nmap <leader>g :action RecentFiles<CR>
 "    最近的项目
-nmap <leader>j :action ManageRecentProjects<CR>
+nmap <leader>h :action ManageRecentProjects<CR>
+"    最近的位置
+nmap <leader>l :action RecentLocations<CR>
+"    项目结构
+nmap <leader>q :action ShowProjectStructureSettings<CR>
+"    在文件中查找
+nmap <leader>f :action FindInPath<CR>
+"    在文件中替换
+nmap <leader>t :action ReplaceInPath<CR>
 "   编辑/选择运行/调试配置
 nmap <leader>r :action ChooseRunConfiguration<CR>
+"   重构菜单
+nmap <leader>u :action Refactorings.QuickListPopupAction<CR>
 "    >> project actions
 "    调试
 nmap .d :action Debug<CR>
+"    恢复
+nmap .u :action Resume<CR>
 "    步进
 nmap .i :action StepInto<CR>
 "    步过
 nmap .o :action StepOver<CR>
 "    步出
 nmap .p :action StepOut<CR>
-"    恢复
-nmap .z :action Resume<CR>
-"    监听表达式
-nmap .v :action EvaluateExpression<CR>
+"    运行到光标所在行
+nmap .l :action RunToCursor<CR>
+"    表达式求值
+vmap .e :action EvaluateExpression<CR>
 "    运行
 nmap .r :action Run<CR>
-"    构建
-nmap .b :action Build<CR>
+"    构建项目
+nmap .b :action CompileDirty<CR>
 "    停止
 nmap .s :action Stop<CR>
 "    重载 maven 项目
 nmap .m :action Maven.Reimport<CR>
-"    >> code actions
+"    >> code actions (except navigations)
 "    查看断点
 nmap \v :action ViewBreakpoints<CR>
 "    切换断点
@@ -126,35 +135,44 @@ nmap \n :action XDebugger.MuteBreakpoints<CR>
 nmap \m :action ToggleBookmark<CR>
 "    重命名
 nmap \r :action RenameElement<CR>
+"    查找
+nmap \f :action Find<CR>
 "    替换
-nmap \p :action Replace<CR>
-"    格式化
-nmap \f :action ReformatCode<CR>
+nmap \t :action Replace<CR>
 "    保存所有
 nmap \s :action SaveAll<CR>
-"    查找用法
-nmap \u :action FindUsages<CR>
+"    格式化
+nmap \\ :action ReformatCode<CR>
 "    >> code navigations
 "    跳转到父类方法
 nmap ts :action GotoSuperMethod<CR>
 "    跳转到上次修改的地方
-nmap tc :action JumpToLastChange<CR>
+nmap tl :action JumpToLastChange<CR>
 "    跳转到实现
 nmap ti :action GotoImplementation<CR>
 "    跳转到声明
 nmap td :action GotoDeclaration<CR>
+"    查找用法
+nmap tu :action FindUsages<CR>
+"    >> quick summary/info
 "    展示快速文档
-nmap tq :action QuickJavaDoc<CR>
-"    展示形参信息
-nmap tp :action ParameterInfo<CR>
-"    调用层次结构
-nmap thc :action CallHierarchy<CR>
-"    类型层次结构
-nmap tht :action TypeHierarchy<CR>
-"    方法层次结构
-nmap thm :action MethodHierarchy<CR>
+nmap fd :action QuickJavaDoc<CR>
+"    展示方法实现
+nmap fi :action QuickImplementations<CR>
+"    展示方法形参信息
+nmap fp :action ParameterInfo<CR>
+"    展示方法调用层次结构
+nmap fc :action CallHierarchy<CR>
+"    展示方法类型层次结构
+nmap ft :action TypeHierarchy<CR>
+"    展示方法层次结构
+nmap fm :action MethodHierarchy<CR>
+"    展示文件结构
+nmap fq :action FileStructurePopup<CR>
+"    展示表达式求值
+vmap fe :action QuickEvaluateExpression<CR>
 "    >> 切换追踪 IDE 操作 id
-nmap ta :action VimFindActionIdAction<CR>
+nmap fa :action VimFindActionIdAction<CR>
 
 " -- others --
 "    previous method
