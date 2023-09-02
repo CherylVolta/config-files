@@ -29,9 +29,9 @@
   "centerOnLaunch": true,
   "copyFormatting": "none",
   "copyOnSelect": false,
-  "defaultProfile": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
-  "initialCols": 130,
-  "initialRows": 26,
+  "defaultProfile": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
+  "initialCols": 115,
+  "initialRows": 25,
   "newTabMenu": [
     {
       "type": "remainingProfiles"
@@ -79,6 +79,12 @@
         "hidden": true,
         "name": "Ubuntu-22.04",
         "source": "Windows.Terminal.Wsl"
+      },
+      {
+        "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
+        "hidden": false,
+        "name": "PowerShell",
+        "source": "Windows.Terminal.PowershellCore"
       }
     ]
   },
