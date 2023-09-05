@@ -21,7 +21,7 @@ latencyUrl: http://www.apple.com/library/test/success.html
 theme: 0
 mixinText: |
   # author: SeagullOddy
-  # version: 2023.08.14
+  # version: 2023.09.05
   mixin: # Mixin 配置
     dns: # DNS 配置
       enable: true
