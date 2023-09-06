@@ -20,7 +20,8 @@
 
    - JetBrains IDE (Based on IntellJ IDEA)
 
-     - settings.zip
+     - installed.txt（Installed Plugins）
+     - OddyStyle.xml（Code Style）
 
    - Prettier
 

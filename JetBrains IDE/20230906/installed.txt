@@ -1,0 +1,20 @@
+com.nasller.CodeGlancePro (DATAGRIP EXCEPT)
+AceJump
+com.intellij.zh
+com.intellij.kubernetes (DATAGRIP EXCEPT)
+Key Promoter X
+IdeaVIM
+com.github.copilot
+IdeaVimExtension
+org.jetbrains.IdeaVim-EasyMotion
+mobi.hsz.idea.gitignore (DATAGRIP EXCEPT)
+com.mallowigi
+GsonFormatPlus (IDEA ONLY)
+com.alibaba.p3c.xenoamess (IDEA ONLY)
+String Manipulation
+org.sonarlint.idea (DATAGRIP EXCEPT)
+MavenRunHelper (IDEA | AS ONLY)
+cn.yiiguxing.plugin.translate
+com.github.kikimanjaro.stickyscroll (IDEA | AS | PYCHARM ONLY)
+com.chrisrm.idea.MaterialThemeUI
+com.baomidou.plugin.idea.mybatisx (IDEA ONLY)

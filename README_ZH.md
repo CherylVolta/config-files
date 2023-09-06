@@ -16,9 +16,10 @@
 
      - .gitconfig
 
-   - JetBrains IDE (基于 IntellJ IDEA)
+   - JetBrains IDE
 
-     - settings.zip
+     - installed.txt（安装的插件）
+     - OddyStyle.xml（代码风格）
 
    - Prettier
 
