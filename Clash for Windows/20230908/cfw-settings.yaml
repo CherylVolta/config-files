@@ -1,7 +1,7 @@
 showNewVersionIcon: true
 hideAfterStartup: true
 randomControllerPort: true
-runTimeFormat: 'hh : mm : ss'
+runTimeFormat: "hh : mm : ss"
 trayOrders:
   - - icon
   - - status
@@ -10,9 +10,9 @@ trayOrders:
 hideTrayIcon: false
 connShowProcess: true
 showTrayProxyDelayIndicator: true
-connMode: false
+connMode: true
 connProfile: true
-connProxy: 0
+connProxy: 1
 latencyTimeout: .nan
 fontFamily: LXGW WenKai Screen
 proxyOrder: 1
@@ -115,7 +115,6 @@ mixinText: |
       # Clash 使用第一个收到的响应作为 DNS 查询的结果.
       nameserver:
         # 上级网关DNS，请根据实际设置
-        - '202.202.145.6' # 宿舍
         # - '192.168.3.1' # 家
         # 下面的DNS可以换成其他DNS，尽可能多设置几个，无需考虑污染
         - '114.114.115.115' # 114DNS
@@ -226,6 +225,7 @@ profileParsersText: >
         prepend-rules: # 规则由上往下遍历，如上面规则已经命中，则不再往下处理
           # 自定义规则，在这里添加自己的新规则
           - DOMAIN,www.msftconnecttest.com,🥰 节点选择
+          - DOMAIN,api.segment.io,🥰 节点选择
           # provider 的匹配规则
           - RULE-SET,applications,DIRECT # 需要直连的进程/应用
           - RULE-SET,private,DIRECT # 需要直连的私有域名
@@ -322,3 +322,9 @@ profileParsersText: >
             interval: 86400
 editor: 1
 editorFontSize: 14
+showNotifications: false
+titleBarText: 'Current Mode: %mode%, Mixin Status: %mixin%. (,,´•ω•)ノ"(´っω•｀。)'
+trayProxiesStyle: 1
+hideUnselectableGroup: true
+showProxyFilter: true
+connChainType: 2
