@@ -2,15 +2,15 @@
 
 1. 目录结构：
 
-   `{应用名称}/{更新日期}/{配置文件}`
+   `{应用名称}/{配置文件 & 更新日期文件}`
 
 2. 包括：
 
    - Clash for Windows
 
-     - Attention-\*.png
-     - Attention.md
+     - images
      - cfw-settings.yaml
+     - README.md
 
    - Git
 
@@ -18,8 +18,8 @@
 
    - JetBrains IDE
 
-     - installed.txt（安装的插件）
-     - OddyStyle.xml（代码风格）
+     - plugins-installed.txt
+     - OddyCodeStyle.xml
 
    - Prettier
 

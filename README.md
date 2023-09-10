@@ -4,15 +4,15 @@
 
 1. Directory Structure:
 
-   `{Application-Name}/{Update-Date}/{Config-Files}`
+   `{Application-Name}/{Config-Files & Update-Date-Files}`
 
 2. Including:
 
    - Clash for Windows
 
-     - Attention-\*.png
-     - Attention.md
+     - images
      - cfw-settings.yaml
+     - README.md
 
    - Git
 
@@ -20,8 +20,8 @@
 
    - JetBrains IDE (Based on IntellJ IDEA)
 
-     - installed.txt（Installed Plugins）
-     - OddyStyle.xml（Code Style）
+     - plugins-installed.txt
+     - OddyCodeStyle.xml
 
    - Prettier
 

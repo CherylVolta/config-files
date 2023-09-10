@@ -1,3 +1,5 @@
+" author: SeagullOddy
+" version: 2023.09.10
 " -- leader --
 let mapleader = ' '
 

@@ -12,15 +12,15 @@
 
 CFW 需要使用任务计划来开机自启动 `clash-core-service.exe` 提供核心服务支持。由于 Windos 的默认程序安装路径是 `C:\Program Files\`，含有空格，CFW 在设置任务计划程序时将其启动程序路径设置为 `C:\Program Files\Clash for Windows Service\clash-core-service.exe`（无引号），如下图所示：
 
-![Details 1](Attention-1.png)
+![Details 1](images/1.png)
 
 这样的配置看似正确，但实际上 Windows 会误认为启动程序路径是 `C:\Program`，参数为 `Files\Clash for Windows Service\clash-core-service.exe`，如下图所示：
 
-![Details 2](Attention-2.png)
+![Details 2](images/2.png)
 
 正确的方法是将启动程序路径设置为 `"C:\Program Files\Clash for Windows Service\clash-core-service.exe"`（带引号），如下图所示：
 
-![Details 3](Attention-3.png)
+![Details 3](images/3.png)
 
 如果你使用 Tun 模式，并且某天打开 CFW 时出现类似的 **“权限不足”** 的提示，请记得检查任务计划程序。
 
