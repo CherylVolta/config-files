@@ -57,7 +57,7 @@ nnoremap gk k
 nnoremap j gj
 nnoremap gj j
 "    ESC
-inoremap ,, <ESC>
+inoremap kj <ESC>
 "    ` & '
 "    when use m to mark a place, by default,
 "    ' jumps to the marked line,
@@ -108,12 +108,6 @@ nmap <leader>u :action Refactorings.QuickListPopupAction<CR>
 nmap .d :action Debug<CR>
 "    恢复
 nmap .u :action Resume<CR>
-"    步进
-nmap .i :action StepInto<CR>
-"    步过
-nmap .o :action StepOver<CR>
-"    步出
-nmap .p :action StepOut<CR>
 "    运行到光标所在行
 nmap .l :action RunToCursor<CR>
 "    表达式求值
@@ -121,7 +115,9 @@ vmap .e :action EvaluateExpression<CR>
 "    运行
 nmap .r :action Run<CR>
 "    构建项目
-nmap .b :action CompileDirty<CR>
+nmap .c :action CompileDirty<CR>
+"    构建工件
+nmap .b :action BuildArtifact<CR>
 "    停止
 nmap .s :action Stop<CR>
 "    重载 maven 项目
