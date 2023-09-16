@@ -102,9 +102,9 @@ source $ZSH/oh-my-zsh.sh
 alias ll="ls -alF"
 alias rm="rm -i"
 
-figlet "New days!!!"
+figlet "Let's coding!"
 
-export HOSTIP=$(cat /etc/resolv.conf | grep "nameserver" | cut -f 2 -d " ") && 
+export HOSTIP=$(cat /etc/resolv.conf | grep "nameserver" | cut -f 2 -d " ") &&
 	export http_proxy="http://$HOSTIP:7890" &&
 	export https_proxy="http://$HOSTIP:7890" &&
 	export all_proxy="socks5://$HOSTIP:7890" &&
