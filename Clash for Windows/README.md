@@ -1,5 +1,7 @@
 # 注意 Attention
 
+R.I.P CFW 😿
+
 ## 1. 问题 Problem
 
 某些情况下 **Clash for Windows**（以下简称 CFW）会出现由“任务计划”中的错误设置致使的在开启/运行 Tun 时出现 **“Access is denied”** 之类表示 **“权限不足”** 的提示。
