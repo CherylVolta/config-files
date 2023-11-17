@@ -10,7 +10,6 @@
 
    - Clash for Windows
 
-     - images
      - cfw-settings.yaml
      - README.md
 
@@ -18,8 +17,9 @@
 
      - .gitconfig
 
-   - JetBrains IDE (Based on IntellJ IDEA)
+   - JetBrains IDE
 
+     - mobi.hsz.idea.gitignore/For\*.xml
      - plugins-installed.txt
      - OddyCodeStyle.xml
 

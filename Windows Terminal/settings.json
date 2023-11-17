@@ -30,8 +30,9 @@
   "copyFormatting": "none",
   "copyOnSelect": false,
   "defaultProfile": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
-  "initialCols": 95,
-  "initialRows": 20,
+  "focusFollowMouse": false,
+  "initialCols": 90,
+  "initialRows": 24,
   "newTabMenu": [
     {
       "type": "remainingProfiles"
@@ -44,8 +45,8 @@
       "colorScheme": "Campbell",
       "cursorShape": "underscore",
       "font": {
-        "face": "\u971e\u9e5c\u6587\u6977\u7b49\u5bbd",
-        "size": 18.0
+        "face": "Monaspace Radon",
+        "size": 16.0
       },
       "opacity": 75,
       "useAcrylic": true
@@ -344,44 +345,8 @@
       "yellow": "#808000"
     }
   ],
+  "tabWidthMode": "titleLength",
   "theme": "dark",
-  "themes": [
-    {
-      "name": "legacyDark",
-      "tab": {
-        "background": null,
-        "showCloseButton": "always",
-        "unfocusedBackground": null
-      },
-      "window": {
-        "applicationTheme": "dark",
-        "useMica": false
-      }
-    },
-    {
-      "name": "legacyLight",
-      "tab": {
-        "background": null,
-        "showCloseButton": "always",
-        "unfocusedBackground": null
-      },
-      "window": {
-        "applicationTheme": "light",
-        "useMica": false
-      }
-    },
-    {
-      "name": "legacySystem",
-      "tab": {
-        "background": null,
-        "showCloseButton": "always",
-        "unfocusedBackground": null
-      },
-      "window": {
-        "applicationTheme": "system",
-        "useMica": false
-      }
-    }
-  ],
+  "themes": [],
   "useAcrylicInTabRow": true
 }

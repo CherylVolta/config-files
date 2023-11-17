@@ -1,21 +1,18 @@
-com.nasller.CodeGlancePro (DATAGRIP EXCEPT)
-AceJump
-com.intellij.zh
-com.intellij.kubernetes (AS EXCEPT)
-Key Promoter X
-IdeaVIM
-com.github.copilot
-IdeaVimExtension
-org.jetbrains.IdeaVim-EasyMotion
-mobi.hsz.idea.gitignore (DATAGRIP EXCEPT)
-com.mallowigi
-GsonFormatPlus (IDEA ONLY)
-com.alibaba.p3c.xenoamess (IDEA ONLY)
-String Manipulation
-org.sonarlint.idea (DATAGRIP EXCEPT)
-MavenRunHelper (IDEA ONLY)
+com.nasller.CodeGlancePro
+org.sonarlint.idea
 cn.yiiguxing.plugin.translate
-com.github.kikimanjaro.stickyscroll (IDEA | AS | PYCHARM ONLY)
-com.chrisrm.idea.MaterialThemeUI
+com.github.copilot
+String Manipulation
 com.baomidou.plugin.idea.mybatisx (IDEA ONLY)
+
+mobi.hsz.idea.gitignore
+
+IdeaVIM
+IdeaVimExtension
+Key Promoter X
+
+com.chrisrm.idea.MaterialThemeUI
+com.mallowigi
+com.yahorbarkouski.recent
+
 Docker
