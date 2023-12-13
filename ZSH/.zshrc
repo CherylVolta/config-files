@@ -102,7 +102,8 @@ source $ZSH/oh-my-zsh.sh
 alias ll="ls -alF"
 alias rm="rm -i"
 
-figlet "Let's coding!"
+figlet -f big "Protect all the beauty!" -w 200
+figlet -f small "                                                             for Idrila." -w 200
 
 export HOSTIP=$(cat /etc/resolv.conf | grep "nameserver" | cut -f 2 -d " ") &&
 	export http_proxy="http://$HOSTIP:7890" &&
