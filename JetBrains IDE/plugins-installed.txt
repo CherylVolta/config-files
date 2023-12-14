@@ -1,18 +1,24 @@
-com.nasller.CodeGlancePro
+# 代码规范
 org.sonarlint.idea
+
+# 开发工具
+com.nasller.CodeGlancePro
 cn.yiiguxing.plugin.translate
 com.github.copilot
 String Manipulation
 com.baomidou.plugin.idea.mybatisx (IDEA ONLY)
-
 mobi.hsz.idea.gitignore
 
+# 快捷键
 IdeaVIM
 IdeaVimExtension
 Key Promoter X
 
+# 好看
 com.chrisrm.idea.MaterialThemeUI
 com.mallowigi
 com.yahorbarkouski.recent
+some.awesome
 
+# docker
 Docker
