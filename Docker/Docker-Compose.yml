@@ -1,0 +1,43 @@
+version: '3.8'
+services:
+  # MySQL
+  mysql-server:
+    container_name: app_mysql
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_HOST: '%'
+      MYSQL_ROOT_PASSWORD: oddy
+      TZ: 'Asia/Shanghai'
+    ports:
+      - '3306:3306'
+    volumes:
+      # Use your volume name here
+      - yourvolumename:/var/lib/mysql
+    restart: always
+  # Node.js
+  node-server:
+    container_name: app_node
+    image: node:18
+    working_dir: /home/node/app
+    command: npm run dev
+    # Use your ports here
+    ports:
+      - '5173:5173'
+    # Use your volume path here
+    volumes:
+      - ./yourvolumepath:/home/node/app
+    restart: always
+  # Your application, tomcat, springboot, etc.
+  main-server:
+    container_name: app_main
+    # Use your image name or application path here, dockerfile is needed
+    build: ./yourapplicationpath
+    # Use your ports here
+    ports:
+      - '8080:8080'
+    restart: always
+
+# Set external to true if you want to use an existing volume
+volumes:
+  yourvolumename:
+    external: true

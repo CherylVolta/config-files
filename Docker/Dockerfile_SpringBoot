@@ -1,0 +1,7 @@
+FROM eclipse-temurin:17-jdk
+LABEL authors="Oddy"
+
+# Use your jar file name here
+ADD target/yourjarfile.jar /home/app.jar
+EXPOSE 8080
+CMD ["java", "-jar", "/home/app.jar"]
