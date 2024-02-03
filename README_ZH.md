@@ -1,44 +1,39 @@
-# 一些程序配置文件的备份
+# 一些配置文件的备份
 
-1. 目录结构：
+包含：
 
-   `{应用名称}/{配置文件 & 更新日期文件}`
+- Clash for Windows
 
-2. 包括：
+  - cfw-settings.yaml
 
-   - Clash for Windows
+- Docker
 
-     - cfw-settings.yaml
-     - README.md
+  - docker-compose.yml
+  - Dockerfile_SpringBoot
+  - Dockerfile_Tomcat
 
-   - Docker
+- Git
 
-     - Docker-Compose.yml
-     - Dockerfile_SpringBoot
-     - Dockerfile_Tomcat
+  - .gitconfig
 
-   - Git
+- JetBrains IDE
 
-     - .gitconfig
+  - mobi.hsz.idea.gitignore/*.xml
+  - plugins-installed.txt
+  - OddyCodeStyle.xml
 
-   - JetBrains IDE
+- Prettier
 
-     - mobi.hsz.idea.gitignore/For\*.xml
-     - plugins-installed.txt
-     - OddyCodeStyle.xml
+  - .prettierrc
 
-   - Prettier
+- Vim
 
-     - .prettierrc
+  - .ideavimrc
 
-   - Vim
+- Windows Terminal
 
-     - .ideavimrc
+  - settings.json
 
-   - Windows Terminal
+- ZSH
 
-     - settings.json
-
-   - ZSH
-
-     - .zshrc
+  - .zshrc

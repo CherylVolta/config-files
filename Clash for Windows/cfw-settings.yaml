@@ -1,7 +1,7 @@
 showNewVersionIcon: true
 hideAfterStartup: true
 randomControllerPort: true
-runTimeFormat: 'hh : mm : ss'
+runTimeFormat: "hh : mm : ss"
 trayOrders:
   - - icon
   - - status
@@ -14,7 +14,7 @@ connMode: true
 connProfile: true
 connProxy: 1
 latencyTimeout: .nan
-fontFamily: LXGW WenKai Screen
+fontFamily: LXGW WenKai
 proxyOrder: 1
 proxyDelayType: 1
 latencyUrl: http://www.apple.com/library/test/success.html
@@ -91,6 +91,8 @@ mixinText: |
         ## Microsoft Xbox
         - xbox.*.*.microsoft.com
         - '*.*.xboxlive.com'
+        ## Netease
+        - stun01.sipphone.com
         # === Others ===
         - wlsy.cqut.edu.cn
         ## Golang
@@ -100,6 +102,7 @@ mixinText: |
         - +.stun.*.*.*
         - +.stun.*.*.*.*
         - +.stun.*.*.*.*.*
+        - stunserver.*
         ## WORKGROUP
         - WORKGROUP
 

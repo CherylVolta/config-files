@@ -1,46 +1,41 @@
-# Config files backup for some applications
+# Some config files backup
 
 [中文说明](README_ZH.md)
 
-1. Directory Structure:
+Including:
 
-   `{Application-Name}/{Config-Files & Update-Date-Files}`
+- Clash for Windows
 
-2. Including:
+  - cfw-settings.yaml
 
-   - Clash for Windows
+- Docker
 
-     - cfw-settings.yaml
-     - README.md
+  - docker-compose.yml
+  - Dockerfile_SpringBoot
+  - Dockerfile_Tomcat
 
-   - Docker
+- Git
 
-     - Docker-Compose.yml
-     - Dockerfile_SpringBoot
-     - Dockerfile_Tomcat
+  - .gitconfig
 
-   - Git
+- JetBrains IDE
 
-     - .gitconfig
+  - mobi.hsz.idea.gitignore/*.xml
+  - plugins-installed.txt
+  - OddyCodeStyle.xml
 
-   - JetBrains IDE
+- Prettier
 
-     - mobi.hsz.idea.gitignore/For\*.xml
-     - plugins-installed.txt
-     - OddyCodeStyle.xml
+  - .prettierrc
 
-   - Prettier
+- Vim
 
-     - .prettierrc
+  - .ideavimrc
 
-   - Vim
+- Windows Terminal
 
-     - .ideavimrc
+  - settings.json
 
-   - Windows Terminal
+- ZSH
 
-     - settings.json
-
-   - ZSH
-
-     - .zshrc
+  - .zshrc

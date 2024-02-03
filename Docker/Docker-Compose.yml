@@ -1,43 +1,47 @@
 version: '3.8'
 services:
-  # MySQL
+  # MySQL 容器配置
   mysql-server:
     container_name: app_mysql
     image: mysql:latest
     environment:
       MYSQL_ROOT_HOST: '%'
-      MYSQL_ROOT_PASSWORD: oddy
+      # 密码根据情况修改，以 pswd 为例
+      MYSQL_ROOT_PASSWORD: pswd
       TZ: 'Asia/Shanghai'
     ports:
+      # 端口映射默认为 3306，根据情况修改
       - '3306:3306'
     volumes:
-      # Use your volume name here
-      - yourvolumename:/var/lib/mysql
+      # 卷名需要自行修改，以 yourvolume 为例
+      - yourvolume:/var/lib/mysql
     restart: always
-  # Node.js
+  # Node.js 容器配置
   node-server:
     container_name: app_node
+    # 使用 node18，可以根据自己需求更改版本
     image: node:18
     working_dir: /home/node/app
+    # 运行命令根据情况修改
     command: npm run dev
-    # Use your ports here
+    # 端口映射默认为 5173，根据情况修改
     ports:
       - '5173:5173'
-    # Use your volume path here
+    # 前端项目的相对路径需要自行修改，以 ./yournodeprj 为例
     volumes:
-      - ./yourvolumepath:/home/node/app
+      - ./yournodeprj:/home/node/app
     restart: always
-  # Your application, tomcat, springboot, etc.
+  # 你的后端应用，基于 tomcat、springboot 等
   main-server:
     container_name: app_main
-    # Use your image name or application path here, dockerfile is needed
+    # 后端项目的相对路径需要自行修改，以 ./yourapplicationpath 为例，需要 Dockerfile
     build: ./yourapplicationpath
-    # Use your ports here
+    # 端口映射默认为 8080，根据情况修改
     ports:
       - '8080:8080'
     restart: always
 
-# Set external to true if you want to use an existing volume
+# 卷配置，需要允许外部访问
 volumes:
-  yourvolumename:
+  yourvolume:
     external: true
