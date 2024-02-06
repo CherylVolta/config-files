@@ -34,8 +34,8 @@
     "copyOnSelect": false,
     "defaultProfile": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
     "focusFollowMouse": false,
-    "initialCols": 100,
-    "initialRows": 28,
+    "initialCols": 80,
+    "initialRows": 25,
     "newTabMenu":
     [
         {
@@ -55,7 +55,7 @@
             "font":
             {
                 "cellHeight": "1.5",
-                "face": "MonaspiceXe Nerd Font",
+                "face": "MonaspiceAr Nerd Font",
                 "size": 15.0
             }
         },
