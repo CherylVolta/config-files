@@ -14,22 +14,22 @@ connMode: true
 connProfile: true
 connProxy: 1
 latencyTimeout: .nan
-fontFamily: LXGW WenKai
+fontFamily: LXGW WenKai Screen
 proxyOrder: 1
 proxyDelayType: 1
 latencyUrl: http://www.apple.com/library/test/success.html
 theme: 0
 mixinText: |
   # author: SeagullOddy
-  # version: 2023.09.05
+  # version: 2024.03.01
   mixin: # Mixin 配置
     dns: # DNS 配置
       enable: true
       ipv6: true
 
       enhanced-mode: fake-ip
-      fake-ip-range: 198.18.0.1/16 # Fake IP 地址池 CIDR
-      fake-ip-filter: # fake-ip 排除列表
+      fake-ip-range: 198.18.0.1/16 # Fake IP 地址池
+      fake-ip-filter: # fake-ip 排除列表，在列表中的域名使用真实 IP 地址
         # === Local ===
         - '*.lan'
         - '*.local'
@@ -37,30 +37,31 @@ mixinText: |
         - '*.msftncsi.com'
         - '*.msftconnecttest.com'
         # === NTP Service ===
-        - time.*.com
-        - time.*.gov
-        - time.*.edu.cn
+        - 'time.*.com'
+        - 'time1.*.com'
+        - 'time2.*.com'
+        - 'time3.*.com'
+        - 'time4.*.com'
+        - 'time5.*.com'
+        - 'time6.*.com'
+        - 'time7.*.com'
+        - 'time.*.gov'
+        - 'time.*.edu.cn'
         - '*.time.edu.cn'
-        - time1.*.com
-        - time2.*.com
-        - time3.*.com
-        - time4.*.com
-        - time5.*.com
-        - time6.*.com
-        - time7.*.com
-        - ntp.*.com
-        - ntp1.*.com
-        - ntp2.*.com
-        - ntp3.*.com
-        - ntp4.*.com
-        - ntp5.*.com
-        - ntp6.*.com
-        - ntp7.*.com
-        - ntp.*.*.cn
+        - 'ntp.*.com'
+        - 'ntp1.*.com'
+        - 'ntp2.*.com'
+        - 'ntp3.*.com'
+        - 'ntp4.*.com'
+        - 'ntp5.*.com'
+        - 'ntp6.*.com'
+        - 'ntp7.*.com'
+        - 'ntp.*.*.cn'
         - '*.ntp.org.cn'
-        - '*.pool.ntp.org'
-        # === Docker ===
-        - '*.docker.internal'
+        - '+.pool.ntp.org'
+        # === Social Service ===
+        ## QQ
+        - localhost.ptlogin2.qq.com
         # === Music Service ===
         ## NetEase
         - '*.music.163.com'
@@ -82,66 +83,68 @@ mixinText: |
         - '*.music.tc.qq.com'
         - aqqmusic.tc.qq.com
         - '*.stream.qqmusic.qq.com'
-        - localhost.ptlogin2.qq.com
         # === Game Service ===
         ## Nintendo Switch
         - '*.n.n.srv.nintendo.net'
         ## Sony PlayStation
         - '*.stun.playstation.net'
         ## Microsoft Xbox
-        - xbox.*.*.microsoft.com
+        - 'xbox.*.*.microsoft.com'
         - '*.*.xboxlive.com'
         ## Netease
         - stun01.sipphone.com
-        # === Others ===
-        - wlsy.cqut.edu.cn
+        # === Coding ===
+        ## Docker
+        - '*.docker.internal'
         ## Golang
         - proxy.golang.org
+        # === Others ===
+        ## CQUT
+        - wlsy.cqut.edu.cn
         ## STUN Server
-        - +.stun.*.*
-        - +.stun.*.*.*
-        - +.stun.*.*.*.*
-        - +.stun.*.*.*.*.*
-        - stunserver.*
+        - '+.stun.*.*'
+        - '+.stun.*.*.*'
+        - '+.stun.*.*.*.*'
+        - '+.stun.*.*.*.*.*'
+        - 'stunserver.*'
         ## WORKGROUP
         - WORKGROUP
 
-      # 这些 名称服务器(nameservers) 用于解析下列 DNS 名称服务器主机名.
-      # 仅指定 IP 地址
-      default-nameserver:
+      default-nameserver: #  defalut-nameserver 用于解析其他名称服务器，仅支持 IP
         - '114.114.115.115' # 114DNS
         - '119.29.29.29' # DNSPod
         - '1.0.0.1' # Cloudflare
         - '8.8.8.8' # Google
-      # 支持 UDP、TCP、DoT、DoH. 您可以指定要连接的端口.
-      # 所有 DNS 查询都直接发送到名称服务器, 无需代理
-      # Clash 使用第一个收到的响应作为 DNS 查询的结果.
-      nameserver:
-        # 上级网关DNS，请根据实际设置
+      # nameserver、fallbackfallback 中的名称服务器支持 UDP、TCP、DoT、DoH
+      # Clash 总是使用第一个收到的响应作为 DNS 查询的结果
+      nameserver: # nameserver 用于解析国内域名
+        # 请根据需要和实际设置
         # - '192.168.3.1' # 家
-        # 下面的DNS可以换成其他DNS，尽可能多设置几个，无需考虑污染
         - '114.114.115.115' # 114DNS
         - '119.29.29.29' # DNSPod
         - '1.0.0.1' # Cloudflare
         - '8.8.8.8' # Google
-      # 当 `fallback` 存在时, DNS 服务器将向此部分中的服务器
-      # 与 `nameservers` 中的服务器发送并发请求
-      # 当 GEOIP 国家不是 `CN` 时, 将使用 fallback 服务器的响应
-      fallback:
+      # 当 fallback 存在时, Clash 将向此部分中的服务器
+      # 与 nameservers 中的服务器并发发送请求
+      fallback: # fallback 用于解析国外域名
         - 'https://dns.alidns.com/dns-query' # AliDNS, ECS Support
         - 'https://dns.google/dns-query' # Google, ECS Support
         - 'https://cloudflare-dns.com/dns-query' # Cloudflare
         - 'tls://dns.alidns.com:853' # AliDNS, ECS Support
         - 'tls://dns.google:853' # Google, ECS Support
         - 'tls://one.one.one.one:853' # Cloudflare
-      # 当 `fallback-filter.geoip` 为 true 且 IP 地址的 GEOIP 为 `CN` 时,
-      # 将使用 `nameservers` 服务器解析的 IP 地址.
-      # 如果 `fallback-filter.geoip` 为 false, 且不匹配 `fallback-filter.ipcidr`,
-      # 则始终使用 `nameservers` 服务器的结果.
-      # 这是对抗 DNS 污染攻击的一种措施.
+      # fallback-filter 用于区分域名所属区域
+      # 当 geoip 开启且 code 设置为 CN 时
+      # 此后如果域名所属国家不是 CN 时
+      # 或 ip-cidr、domain 中配置的 DNS 污染条件满足
+      # 将使用 fallback 中服务器的响应
+      # 反之将使用 nameservers 中服务器的响应
+      # 这是对抗 DNS 污染攻击的一种措施
       fallback-filter:
         geoip: true # 启用 GeoIP
         geoip-code: CN
+        # 如果域名匹配 domain 且响应的 ip 匹配 ip-cidr
+        # 说明被污染，需要使用 fallback
         # ip-cidr:
         #   - 240.0.0.0/4
         # domain:
@@ -158,14 +161,14 @@ mixinText: |
       enable: true
       stack: system # 使用 system stack 需要在防火墙放行程序
       dns-hijack:
-        - 198.18.0.2:53 # 当 `fake-ip-range` 是 198.18.0.1/16, 应该劫持 198.18.0.2:53
+        - 198.18.0.2:53 # 当 fake-ip-range 是 198.18.0.1/16, 应该劫持 198.18.0.2:53
       auto-route: true
-      # 推荐使用 `interface-name`
+      # 推荐使用 interface-name
       auto-detect-interface: true
 profileParsersText: >
   # author: SeagullOddy
 
-  # version: 2023.08.14
+  # version: 2024.03.01
 
   parsers: # array
     # - reg: ^.*$ 匹配所有订阅，或  - url: https://example.com/profile.yaml 指定订阅
@@ -196,27 +199,31 @@ profileParsersText: >
         #   proxies:
         #       - 节点名称或其他分组套娃
         prepend-proxy-groups: # 建立策略组
+          - name: 🥰 节点选择
+            type: select
+            proxies:
+              - ✈️ 自动选择
+              - 🖐️ 手动选择
+
+
           - name: ✈️ 自动选择
             type: url-test
             url: http://www.apple.com/library/test/success.html
             interval: 60
             tolerance: 150
 
-          - name: 🥰 节点选择
+          - name: 🖐️ 手动选择
             type: select
-            proxies:
-              - DIRECT
-              - ✈️ 自动选择
 
           - name: 🐟 漏网之鱼
             type: select
             proxies:
-              - 🥰 节点选择
               - DIRECT
+              - 🥰 节点选择
         # 命令
         commands:
           - proxy-groups.✈️ 自动选择.proxies.0+[]proxyNames
-          - proxy-groups.🥰 节点选择.proxies.2+[]proxyNames # 向指定策略组添加订阅中的节点名，可使用正则过滤
+          - proxy-groups.🖐️ 手动选择.proxies.0+[]proxyNames # 向指定策略组添加订阅中的节点名，可使用正则过滤
           # 一些可能用到的正则过滤节点示例，使分组更细致
           # []proxyNames|a                         # 包含a
           # []proxyNames|^(.*)(a|b)+(.*)$          # 包含a或b
@@ -227,8 +234,6 @@ profileParsersText: >
         # 添加规则
         prepend-rules: # 规则由上往下遍历，如上面规则已经命中，则不再往下处理
           # 自定义规则，在这里添加自己的新规则
-          - DOMAIN,www.msftconnecttest.com,🥰 节点选择
-          - DOMAIN,api.segment.io,🥰 节点选择
           # provider 的匹配规则
           - RULE-SET,applications,DIRECT # 需要直连的进程/应用
           - RULE-SET,private,DIRECT # 需要直连的私有域名
@@ -237,6 +242,8 @@ profileParsersText: >
           - RULE-SET,apple,DIRECT # Apple 国内可访问
           - RULE-SET,google,DIRECT # Google 国内可访问
           - RULE-SET,proxy,🥰 节点选择 # 代理域名
+          - RULE-SET,tld-not-cn,🥰 节点选择 # TLD NOT CN
+          - RULE-SET,gfw,🥰 节点选择 # GFW
           - RULE-SET,direct,DIRECT # 直连域名
           - RULE-SET,lancidr,DIRECT # 局域网 IP 及保留 IP
           - RULE-SET,cncidr,DIRECT # 中国大陆 IP
@@ -296,6 +303,20 @@ profileParsersText: >
             path: ./ruleset/private.yaml
             interval: 86400
 
+          gfw:
+            type: http
+            behavior: domain
+            url: 'https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/gfw.txt'
+            path: ./ruleset/gfw.yaml
+            interval: 86400
+
+          tld-not-cn:
+            type: http
+            behavior: domain
+            url: 'https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/tld-not-cn.txt'
+            path: ./ruleset/tld-not-cn.yaml
+            interval: 86400
+
           telegramcidr:
             type: http
             behavior: ipcidr
@@ -328,7 +349,9 @@ editorFontSize: 14
 showNotifications: false
 titleBarText: 'Current Mode: %mode%, Mixin Status: %mixin%. (,,´•ω•)ノ"(´っω•｀。)'
 trayProxiesStyle: 1
-hideUnselectableGroup: true
+hideUnselectableGroup: false
 showProxyFilter: true
 connChainType: 2
 checkForUpdates: false
+childProcessText: |
+  processes: # array
