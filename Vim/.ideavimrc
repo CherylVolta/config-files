@@ -1,5 +1,5 @@
 " author: SeagullOddy
-" version: 2023.11.16
+" version: 2024/03/09
 " description of idea specific key maps:
 "     <leader>      用于弹窗/窗口的操作
 "     s[how]        用于弹窗/窗口的文档/信息展示
@@ -127,19 +127,20 @@ nmap .c :action CompileDirty<CR>
 nmap .b :action BuildArtifact<CR>
 "    重新导入 maven 项目
 nmap .m :action Maven.Reimport<CR>
-"    >> code actions (except navigations)
+"    >> code actions (except navigation)
 "    切换/忽略（Nop）/查看断点
 nmap \b :action ToggleLineBreakpoint<CR>
 nmap \n :action XDebugger.MuteBreakpoints<CR>
 nmap \v :action ViewBreakpoints<CR>
-"    重命名/替换（查找使用 IDEA 的快捷键 F3）
+"    重命名/查找/替换
 nmap \r :action RenameElement<CR>
+nmap \f :action Find<CR>
 nmap \t :action Replace<CR>
 "    保存所有
 nmap \s :action SaveAll<CR>
 "    格式化
 nmap [] :action ReformatCode<CR>
-"    >> code navigations
+"    >> code navigation
 "    跳转到父类方法
 nmap ts :action GotoSuperMethod<CR>
 "    跳转到上次修改的地方
