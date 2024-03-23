@@ -1,6 +1,6 @@
-# 一些配置文件的备份
+# Some config files backup
 
-包含：
+Including:
 
 - Clash for Windows
 

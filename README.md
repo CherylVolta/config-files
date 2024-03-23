@@ -1,8 +1,8 @@
-# Some config files backup
+# 一些配置文件的备份
 
-[中文说明](README_ZH.md)
+[EN README](README_EN.md)
 
-Including:
+包含：
 
 - Clash for Windows
 
