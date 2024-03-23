@@ -168,7 +168,7 @@ mixinText: |
 profileParsersText: >
   # author: SeagullOddy
 
-  # version: 2024.03.01
+  # version: 2024.03.23
 
   parsers: # array
     # - reg: ^.*$ 匹配所有订阅，或  - url: https://example.com/profile.yaml 指定订阅
@@ -199,12 +199,15 @@ profileParsersText: >
         #   proxies:
         #       - 节点名称或其他分组套娃
         prepend-proxy-groups: # 建立策略组
-          - name: 🥰 节点选择
+          - name: 🥰 代之以理
             type: select
             proxies:
               - ✈️ 自动选择
+              - ⛩️ 自动选择：日本
+              - 🗽 自动选择：美国
+              - 🏫 自动选择：新加坡
+              - 🎍 自动选择：港澳台
               - 🖐️ 手动选择
-
 
           - name: ✈️ 自动选择
             type: url-test
@@ -212,18 +215,49 @@ profileParsersText: >
             interval: 60
             tolerance: 150
 
+          - name: ⛩️ 自动选择：日本
+            type: url-test
+            url: http://www.apple.com/library/test/success.html
+            interval: 60
+            tolerance: 150
+
+          - name: 🗽 自动选择：美国
+            type: url-test
+            url: http://www.apple.com/library/test/success.html
+            interval: 60
+            tolerance: 150
+
+          - name: 🏫 自动选择：新加坡
+            type: url-test
+            url: http://www.apple.com/library/test/success.html
+            interval: 60
+            tolerance: 150
+
+          - name: 🎍 自动选择：港澳台
+            type: url-test
+            url: http://www.apple.com/library/test/success.html
+            interval: 60
+            tolerance: 150
+
           - name: 🖐️ 手动选择
             type: select
+            proxies:
+              - DIRECT
 
           - name: 🐟 漏网之鱼
             type: select
             proxies:
+              - 🥰 代之以理
               - DIRECT
-              - 🥰 节点选择
+
         # 命令
         commands:
           - proxy-groups.✈️ 自动选择.proxies.0+[]proxyNames
-          - proxy-groups.🖐️ 手动选择.proxies.0+[]proxyNames # 向指定策略组添加订阅中的节点名，可使用正则过滤
+          - proxy-groups.🖐️ 手动选择.proxies.1+[]proxyNames # 向指定策略组添加订阅中的节点名，可使用正则过滤
+          - proxy-groups.⛩️ 自动选择：日本.proxies.0+[]proxyNames|日本
+          - proxy-groups.🗽 自动选择：美国.proxies.0+[]proxyNames|美国
+          - proxy-groups.🏫 自动选择：新加坡.proxies.0+[]proxyNames|新加坡
+          - proxy-groups.🎍 自动选择：港澳台.proxies.0+[]proxyNames|^(.*)(香港|澳门|台湾)(.*)$
           # 一些可能用到的正则过滤节点示例，使分组更细致
           # []proxyNames|a                         # 包含a
           # []proxyNames|^(.*)(a|b)+(.*)$          # 包含a或b
@@ -234,6 +268,8 @@ profileParsersText: >
         # 添加规则
         prepend-rules: # 规则由上往下遍历，如上面规则已经命中，则不再往下处理
           # 自定义规则，在这里添加自己的新规则
+          - DOMAIN,www.msftconnecttest.com,🥰 代之以理
+          - DOMAIN,cm-sub.pz.pe,DIRECT
           # provider 的匹配规则
           - RULE-SET,applications,DIRECT # 需要直连的进程/应用
           - RULE-SET,private,DIRECT # 需要直连的私有域名
@@ -241,13 +277,11 @@ profileParsersText: >
           - RULE-SET,icloud,DIRECT # iCloud 国内可访问
           - RULE-SET,apple,DIRECT # Apple 国内可访问
           - RULE-SET,google,DIRECT # Google 国内可访问
-          - RULE-SET,proxy,🥰 节点选择 # 代理域名
-          - RULE-SET,tld-not-cn,🥰 节点选择 # TLD NOT CN
-          - RULE-SET,gfw,🥰 节点选择 # GFW
+          - RULE-SET,proxy,🥰 代之以理 # 代理域名
           - RULE-SET,direct,DIRECT # 直连域名
           - RULE-SET,lancidr,DIRECT # 局域网 IP 及保留 IP
           - RULE-SET,cncidr,DIRECT # 中国大陆 IP
-          - RULE-SET,telegramcidr,🥰 节点选择 # Telegram IP
+          - RULE-SET,telegramcidr,🥰 代之以理 # Telegram IP
           - GEOIP,LAN,DIRECT # GEOIP 判断为局域网 IP
           - GEOIP,CN,DIRECT # GEOIP 判断为国内 IP
           - MATCH,🐟 漏网之鱼 # 漏网之鱼
@@ -303,20 +337,6 @@ profileParsersText: >
             path: ./ruleset/private.yaml
             interval: 86400
 
-          gfw:
-            type: http
-            behavior: domain
-            url: 'https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/gfw.txt'
-            path: ./ruleset/gfw.yaml
-            interval: 86400
-
-          tld-not-cn:
-            type: http
-            behavior: domain
-            url: 'https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/tld-not-cn.txt'
-            path: ./ruleset/tld-not-cn.yaml
-            interval: 86400
-
           telegramcidr:
             type: http
             behavior: ipcidr
@@ -349,7 +369,7 @@ editorFontSize: 14
 showNotifications: false
 titleBarText: 'Current Mode: %mode%, Mixin Status: %mixin%. (,,´•ω•)ノ"(´っω•｀。)'
 trayProxiesStyle: 1
-hideUnselectableGroup: false
+hideUnselectableGroup: true
 showProxyFilter: true
 connChainType: 2
 checkForUpdates: false
