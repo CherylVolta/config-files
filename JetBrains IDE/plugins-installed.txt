@@ -1,24 +1,20 @@
 # 代码规范
-org.sonarlint.idea
+SonarLint
 
-# 开发工具
-com.nasller.CodeGlancePro
-cn.yiiguxing.plugin.translate
-com.github.copilot
-String Manipulation
-com.baomidou.plugin.idea.mybatisx (IDEA ONLY)
-mobi.hsz.idea.gitignore
+# 平台支持
+Docker
 
-# 快捷键
+# 效率开发
 IdeaVIM
 IdeaVimExtension
-Key Promoter X
+Custom Postfix Templates
+Github Copilot
+Developer Tools
+String Manipulation
+CodeGlance Pro
+.ignore
+Translation
+MyBatisX (IDEA ONLY)
 
 # 好看
-com.chrisrm.idea.MaterialThemeUI
-com.mallowigi
-com.yahorbarkouski.recent
-some.awesome
-
-# docker
-Docker
+Nyan Progress
