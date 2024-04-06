@@ -22,6 +22,10 @@ Including:
   - plugins-installed.txt
   - OddyCodeStyle.xml
 
+- Maven
+
+  - settings.xml
+
 - Prettier
 
   - .prettierrc
