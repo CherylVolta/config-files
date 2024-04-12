@@ -21,17 +21,14 @@ fabric.properties
 # CMake
 cmake-build-*/
 
-# File-based project format
+# Auto Generated
 *.iws
-
-# Build
-out/</template>
-  <template name="For Maven/Gradle">#### For Auto-import
-# Comment if not using maven/gradle auto-import.
 *.iml
 *.ipr
 
-#### For Maven
+# Build
+out/</template>
+  <template name="For Maven/Gradle">#### For Maven
 target/
 pom.xml.tag
 pom.xml.releaseBackup

@@ -168,7 +168,7 @@ mixinText: |
 profileParsersText: >
   # author: SeagullOddy
 
-  # version: 2024.03.23
+  # version: 2024.04.12
 
   parsers: # array
     # - reg: ^.*$ 匹配所有订阅，或  - url: https://example.com/profile.yaml 指定订阅
@@ -270,6 +270,7 @@ profileParsersText: >
           # 自定义规则，在这里添加自己的新规则
           - DOMAIN,www.msftconnecttest.com,🥰 代之以理
           - DOMAIN,cm-sub.pz.pe,DIRECT
+          - DOMAIN-SUFFIX,cloudflare.com,DIRECT
           # provider 的匹配规则
           - RULE-SET,applications,DIRECT # 需要直连的进程/应用
           - RULE-SET,private,DIRECT # 需要直连的私有域名
