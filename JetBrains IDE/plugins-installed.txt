@@ -3,18 +3,19 @@ SonarLint
 
 # 平台支持
 Docker
+MyBatisX <IDEA Only>
+SimpleSqliteBrowser <Android Studio Only>
 
 # 效率开发
+CodeGlance Pro
+Custom Postfix Templates
+Developer Tools
+Github Copilot
 IdeaVIM
 IdeaVimExtension
-Custom Postfix Templates
-Github Copilot
-Developer Tools
 String Manipulation
-CodeGlance Pro
-.ignore
 Translation
-MyBatisX (IDEA ONLY)
+.ignore
 
 # 好看
 Nyan Progress

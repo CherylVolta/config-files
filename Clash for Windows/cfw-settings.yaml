@@ -14,7 +14,7 @@ connMode: true
 connProfile: true
 connProxy: 1
 latencyTimeout: .nan
-fontFamily: LXGW WenKai Screen
+fontFamily: Maple UI
 proxyOrder: 1
 proxyDelayType: 1
 latencyUrl: http://www.apple.com/library/test/success.html
