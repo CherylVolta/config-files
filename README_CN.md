@@ -1,8 +1,8 @@
-<!-- Title -->
+<!-- 标题 -->
 <div align="center">
-  <h1>Config Files</h1>
+  <h1>配置文件</h1>
 
-  <h4>Some useful configuration files.</h4>
+  <h4>一些有用的配置文件。</h4>
 
   <p>
     <a href="stargazers"><img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/SeagullOddy/config-files?style=flat"></a>
@@ -10,25 +10,25 @@
   </p>
 
   <p>
-    <a href="#including">Including</a> •
-    <a href="#license">License</a> •
-    <a href="README_CN.md">中文</a> •
-    English
+    <a href="#包括">包括</a> •
+    <a href="#许可">许可</a> •
+    中文 •
+    <a href="README.md">English</a>
   </p>
 </div>
 
-<!-- Table of Contents -->
+<!-- 目录 -->
 <details>
-  <summary>Table of Contents</summary>
+  <summary>目录</summary>
   <ol>
-    <li><a href="#including">Including</a></li>
-    <li><a href="#update-time">Update Time</a></li>
-    <li><a href="#license">License</a></li>
+    <li><a href="#包括">包括</a></li>
+    <li><a href="#update-time">更新时间</a></li>
+    <li><a href="#许可">许可</a></li>
   </ol>
 </details>
 
-<!-- Including -->
-## Including
+<!-- 包括 -->
+## 包括
 
 - Clash for Windows
   - cfw-settings.yaml
@@ -57,18 +57,18 @@
 - Zsh
   - .zshrc
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">（<a href="#readme-top">返回顶部</a>）</p>
 
-<!-- Update Time -->
-## Update Time
+<!-- 更新时间 -->
+## 更新时间
 
-See [UPDATE_TIME.md](UPDATE_TIME.md).
+见 [UPDATE_TIME.md](UPDATE_TIME.md).
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">（<a href="#readme-top">返回顶部</a>）</p>
 
-<!-- License -->
-## License
+<!-- 许可 -->
+## 许可
 
 [MIT](LICENSE).
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">（<a href="#readme-top">返回顶部</a>）</p>
