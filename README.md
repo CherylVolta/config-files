@@ -1,5 +1,9 @@
 <!-- Title -->
 <div align="center">
+  <a href="https://github.dev/SeagullOddy/config-files">
+    <img src="docs/images/logo.png" alt="Logo" />
+  </a>
+
   <h1>Config Files</h1>
 
   <h4>Some useful configuration files.</h4>
@@ -12,8 +16,8 @@
   <p>
     <a href="#including">Including</a> •
     <a href="#license">License</a> •
-    <a href="README_CN.md">中文</a> •
-    English
+    English •
+    <a href="README_CN.md">中文</a>
   </p>
 </div>
 
