@@ -1,8 +1,7 @@
-version: '3.8'
 services:
   # MySQL 容器配置
-  mysql-server:
-    container_name: app_mysql
+  mysql-service:
+    container_name: mysql-service
     image: mysql:latest
     environment:
       MYSQL_ROOT_HOST: '%'
@@ -17,8 +16,8 @@ services:
       - yourvolume:/var/lib/mysql
     restart: always
   # Node.js 容器配置
-  node-server:
-    container_name: app_node
+  node-service:
+    container_name: node-service
     # 使用 node18，可以根据自己需求更改版本
     image: node:18
     working_dir: /home/node/app
@@ -32,8 +31,8 @@ services:
       - ./yournodeprj:/home/node/app
     restart: always
   # 你的后端应用，基于 tomcat、springboot 等
-  main-server:
-    container_name: app_main
+  main-service:
+    container_name: main-service
     # 后端项目的相对路径需要自行修改，以 ./yourapplicationpath 为例，需要 Dockerfile
     build: ./yourapplicationpath
     # 端口映射默认为 8080，根据情况修改

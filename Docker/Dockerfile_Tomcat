@@ -1,7 +1,7 @@
-FROM tomcat:10-jdk17-temurin
+FROM tomcat:10-jdk21-temurin
 LABEL authors="Oddy"
 
-# 后端项目构建出的的 war 包的相对路径，根据情况修改，这里以 target/yourwarfile.war 为例
-ADD target/yourwarfile.war /usr/local/tomcat/webapps/
+# 后端项目构建出的的 war 包的相对路径，根据情况修改，这里以 target/yourprojname-*.war 为例
+ADD target/yourprojname-*.war /usr/local/tomcat/webapps/
 EXPOSE 8080
 CMD ["catalina.sh", "run"]
