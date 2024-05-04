@@ -1,5 +1,5 @@
 services:
-  # MySQL 容器配置
+  # ！MySQL 容器配置
   mysql-service:
     container_name: mysql-service
     image: mysql:latest
@@ -12,35 +12,39 @@ services:
       # 端口映射默认为 3306，根据情况修改
       - '3306:3306'
     volumes:
-      # 卷名需要自行修改，以 yourvolume 为例
-      - yourvolume:/var/lib/mysql
-    restart: always
-  # Node.js 容器配置
-  node-service:
-    container_name: node-service
-    # 使用 node18，可以根据自己需求更改版本
-    image: node:18
-    working_dir: /home/node/app
-    # 运行命令根据情况修改
-    command: npm run dev
+      # 卷名需要自行修改，以 your-mysql-volume 为例
+      - your-mysql-volume:/var/lib/mysql
+  # ！Redis 容器配置
+  redis-service:
+    container_name: redis-service
+    image: redis:latest
+    command: redis-server
+    ports:
+      # 端口映射默认为 6379，根据情况修改
+      - '6379:6379'
+    volumes:
+      # 卷名需要自行修改，以 your-redis-volume 为例
+      - your-redis-volume:/data
+  # ！前端应用容器配置，基于 node、vue、react 等
+  frontend-service:
+    container_name: frontend-service
+    # 前端项目的相对路径需要自行修改
+    build: /path/to/frontend/Dockerfile
     # 端口映射默认为 5173，根据情况修改
     ports:
       - '5173:5173'
-    # 前端项目的相对路径需要自行修改，以 ./yournodeprj 为例
-    volumes:
-      - ./yournodeprj:/home/node/app
-    restart: always
-  # 你的后端应用，基于 tomcat、springboot 等
-  main-service:
-    container_name: main-service
-    # 后端项目的相对路径需要自行修改，以 ./yourapplicationpath 为例，需要 Dockerfile
-    build: ./yourapplicationpath
+  # ！后端应用容器配置，基于 tomcat、springboot 等
+  backend-service:
+    container_name: backend-service
+    # 后端项目的相对路径需要自行修改
+    build: /path/to/backend/Dockerfile
     # 端口映射默认为 8080，根据情况修改
     ports:
       - '8080:8080'
-    restart: always
 
 # 卷配置，需要允许外部访问
 volumes:
-  yourvolume:
+  your-mysql-volume:
+    external: true
+  your-redis-volume:
     external: true

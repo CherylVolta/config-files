@@ -1,7 +1,10 @@
+# 请将该 Dockerfile 放在后端项目的根目录下
 FROM eclipse-temurin:21-jdk
 LABEL authors="Oddy"
 
-# 后端项目构建出的的 jar 包的相对路径，根据情况修改，这里以 target/yourproj-*.jar 为例
-ADD target/yourproj-*.jar /home/app.jar
+WORKDIR /home
+# 后端项目构建出的的 jar 包的相对路径，根据情况修改，这里以 target/your-project-name-*.jar 为例
+COPY target/your-project-name-*.jar app.jar
 EXPOSE 8080
-CMD ["java", "-jar", "/home/app.jar"]
+
+ENTRYPOINT ["java", "-jar", "app.jar"]

@@ -1,0 +1,10 @@
+# 请将该 Dockerfile 放在前端项目的根目录下
+FROM node:20
+LABEL authors="Oddy"
+
+WORKDIR /app
+COPY . .
+RUN npm install
+EXPOSE 5173
+
+ENTRYPOINT ["npm", "run", "dev"]
