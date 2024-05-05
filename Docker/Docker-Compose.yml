@@ -14,6 +14,8 @@ services:
     volumes:
       # 卷名需要自行修改，以 your_mysql_volume 为例
       - 'your_mysql_volume:/var/lib/mysql'
+    networks:
+      - persistent
   # ！Redis 容器配置
   redis_service:
     container_name: redis_service
@@ -27,6 +29,8 @@ services:
     volumes:
       # 卷名需要自行修改，以 your_redis_volume 为例
       - 'your_redis_volume:/data'
+    networks:
+      - persistent
   # ！前端应用容器配置，基于 node、vue、react 等
   frontend_service:
     container_name: frontend_service
@@ -37,6 +41,8 @@ services:
     # 端口映射默认为 5173，根据情况修改
     ports:
       - '5173:5173'
+    networks:
+      - default
   # ！后端应用容器配置，基于 tomcat、springboot 等
   backend_service:
     container_name: backend_service
@@ -51,6 +57,9 @@ services:
     # 端口映射默认为 8080，根据情况修改
     ports:
       - '8080:8080'
+    networks:
+      - persistent
+      - default
 
 # 卷配置，需要允许外部访问
 volumes:
@@ -58,3 +67,8 @@ volumes:
     external: true
   your_redis_volume:
     external: true
+
+# 隔离数据库和前端
+networks:
+  persistent:
+  default:
