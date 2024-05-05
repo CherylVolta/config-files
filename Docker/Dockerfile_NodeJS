@@ -5,6 +5,7 @@ LABEL authors="Oddy"
 WORKDIR /app
 COPY . .
 RUN npm install
+# 开放端口默认为 5173，根据情况修改
 EXPOSE 5173
 
 ENTRYPOINT ["npm", "run", "dev"]

@@ -2,9 +2,10 @@
 FROM eclipse-temurin:21-jdk
 LABEL authors="Oddy"
 
-WORKDIR /home
-# 后端项目构建出的的 jar 包的相对路径，根据情况修改，这里以 target/your-project-name-*.jar 为例
-COPY target/your-project-name-*.jar app.jar
+WORKDIR /app
+ARG ARTIFACT_NAME
+COPY target/${ARTIFACT_NAME} app.jar
+# 开放端口默认为 8080，根据情况修改
 EXPOSE 8080
 
 ENTRYPOINT ["java", "-jar", "app.jar"]

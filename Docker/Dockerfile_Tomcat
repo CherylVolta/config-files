@@ -2,8 +2,10 @@
 FROM tomcat:10-jdk21-temurin
 LABEL authors="Oddy"
 
-# 后端项目构建出的的 war 包的相对路径，根据情况修改，这里以 target/your-project-name-*.war 为例
-COPY target/your-project-name-*.war /usr/local/tomcat/webapps/
+WORKDIR /app
+ARG ARTIFACT_NAME
+COPY target/${ARTIFACT_NAME} /usr/local/tomcat/webapps/
+# 开放端口默认为 8080，根据情况修改
 EXPOSE 8080
 
 ENTRYPOINT ["catalina.sh", "run"]

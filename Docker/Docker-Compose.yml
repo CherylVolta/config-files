@@ -1,8 +1,8 @@
 services:
   # ！MySQL 容器配置
-  mysql-service:
-    container_name: mysql-service
-    image: mysql:latest
+  mysql_service:
+    container_name: mysql_service
+    image: 'mysql:lts'
     environment:
       MYSQL_ROOT_HOST: '%'
       # 密码根据情况修改，以 pswd 为例
@@ -12,39 +12,43 @@ services:
       # 端口映射默认为 3306，根据情况修改
       - '3306:3306'
     volumes:
-      # 卷名需要自行修改，以 your-mysql-volume 为例
-      - your-mysql-volume:/var/lib/mysql
+      # 卷名需要自行修改，以 your_mysql_volume 为例
+      - 'your_mysql_volume:/var/lib/mysql'
   # ！Redis 容器配置
-  redis-service:
-    container_name: redis-service
-    image: redis:latest
-    command: redis-server
+  redis_service:
+    container_name: redis_service
+    image: 'redis:latest'
+    command: 'redis_server'
     ports:
       # 端口映射默认为 6379，根据情况修改
       - '6379:6379'
     volumes:
-      # 卷名需要自行修改，以 your-redis-volume 为例
-      - your-redis-volume:/data
+      # 卷名需要自行修改，以 your_redis_volume 为例
+      - 'your_redis_volume:/data'
   # ！前端应用容器配置，基于 node、vue、react 等
-  frontend-service:
-    container_name: frontend-service
+  frontend_service:
+    container_name: frontend_service
     # 前端项目的相对路径需要自行修改
-    build: /path/to/frontend/Dockerfile
+    build: '/path/to/frontend/Dockerfile'
     # 端口映射默认为 5173，根据情况修改
     ports:
       - '5173:5173'
   # ！后端应用容器配置，基于 tomcat、springboot 等
-  backend-service:
-    container_name: backend-service
+  backend_service:
+    container_name: backend_service
     # 后端项目的相对路径需要自行修改
-    build: /path/to/backend/Dockerfile
+    build:
+      context: '/path/to/backend/Dockerfile'
+      args:
+        # ！根据情况修改，Tomcat 为 war 包，SpringBoot 为 jar 包
+        ARTIFACT_NAME: 'your-artifact-name.war'
     # 端口映射默认为 8080，根据情况修改
     ports:
       - '8080:8080'
 
 # 卷配置，需要允许外部访问
 volumes:
-  your-mysql-volume:
+  your_mysql_volume:
     external: true
-  your-redis-volume:
+  your_redis_volume:
     external: true
