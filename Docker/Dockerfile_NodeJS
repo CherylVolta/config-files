@@ -1,11 +1,14 @@
 # 请将该 Dockerfile 放在前端项目的根目录下
-FROM node:20
-LABEL authors="Oddy"
+FROM node:lts-slim
+LABEL authors="Oddy"\
+      description="构建用于运行 Web 前端项目的 Node.js 镜像"
+
+ARG SERVER_PORT=5173 # 服务端口
 
 WORKDIR /app
 VOLUME [ "/app" ]
-RUN npm install
-# 开放端口默认为 5173，根据情况修改
-EXPOSE 5173
+RUN if [! -f /app/node_modules ]; then npm install; fi
 
-ENTRYPOINT ["npm", "run", "dev"]
+EXPOSE ${SERVER_PORT}
+
+ENTRYPOINT ["sh", "-c"]
