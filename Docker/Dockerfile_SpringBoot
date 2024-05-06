@@ -3,9 +3,12 @@ FROM eclipse-temurin:21
 LABEL authors="Oddy"\
       description="构建用于运行 Spring Boot Web 后端项目的 Java 镜像"
 
-ARG ARTIFACT_NAME="default-artifact-name" # 工件名称
-ARG ARTIFACT_VERSION="0.0.1-SNAPSHOT" # 工件版本
-ARG SERVER_PORT=8080 # 服务端口
+# 工件名称
+ARG ARTIFACT_NAME="default-artifact-name"
+# 工件版本
+ARG ARTIFACT_VERSION="0.0.1-SNAPSHOT"
+# 服务端口
+ARG SERVER_PORT=8080
 
 WORKDIR /app
 COPY target/${ARTIFACT_NAME}-${ARTIFACT_VERSION}.jar app.jar

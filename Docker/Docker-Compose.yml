@@ -6,7 +6,7 @@ services:
     environment:
       MYSQL_ROOT_HOST: '%' # 允许访问的主机，% 匹配任意主机
       MYSQL_ROOT_PASSWORD: pswd # MySQL 服务密码，以 pswd 为例
-      TZ: 'Asia/Shanghai'
+      TZ: Asia/Shanghai
     ports:
       - '3306:3306'
     volumes:
@@ -17,9 +17,9 @@ services:
   redis_service:
     container_name: redis_service
     image: 'redis:latest'
-    command: 'redis_server'
+    command: 'redis-server'
     environment:
-      TZ: 'Asia/Shanghai'
+      TZ: Asia/Shanghai
     ports:
       - '6379:6379'
     volumes:
@@ -30,12 +30,12 @@ services:
   frontend_service:
     container_name: frontend_service
     build:
-      context: '/path/to/frontend/Dockerfile' # Dockerfile 所在文件夹路径
+      context: /path/to/frontend/Dockerfile # Dockerfile 所在文件夹路径
       args:
-        SERVER_PORT: '5173' # 指定镜像暴露的端口
-    command: 'npm run serve' # 运行命令
+        SERVER_PORT: 5173 # 指定镜像暴露的端口
+    command: npm run serve # 运行命令
     environment:
-      TZ: 'Asia/Shanghai'
+      TZ: Asia/Shanghai
     ports:
       - '5173:5173' # 依据 args 中的 SERVER_PORT 值，不指定时默认暴露 5173 端口
     networks:
@@ -44,13 +44,13 @@ services:
   backend_service:
     container_name: backend_service
     build:
-      context: '/path/to/backend/Dockerfile' # Dockerfile 所在文件夹路径
+      context: /path/to/backend/Dockerfile # Dockerfile 所在文件夹路径
       args:
         ARTIFACT_NAME: 'your-artifact-name' # 工件，以 your-artifact-name-0.0.1-SNAPSHOT.jar（或 .war） 为例
         ARTIFACT_VERSION: '0.0.1-SNAPSHOT'
-        SERVER_PORT: '8080' # 指定镜像暴露的端口
+        SERVER_PORT: 8080 # 指定镜像暴露的端口
     environment:
-      TZ: 'Asia/Shanghai'
+      TZ: Asia/Shanghai
     ports:
       - '8080:8080' # 依据 args 中的 SERVER_PORT 值，不指定时默认暴露 8080 端口
     networks:
