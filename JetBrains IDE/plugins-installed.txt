@@ -9,13 +9,14 @@ SimpleSqliteBrowser <Android Studio Only>
 # 效率开发
 CodeGlance Pro
 Custom Postfix Templates
-Developer Tools
 Github Copilot
 IdeaVIM
 IdeaVimExtension
 String Manipulation
 Translation
+TreeInfotip
 .ignore
 
 # 好看
 Nyan Progress
+Atom Material Icons
