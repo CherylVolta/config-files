@@ -2,6 +2,7 @@
 	defaultBranch = main
 [core]
 	ignorecase = false
+	autocrlf = false
 [user]
 	name = SeagullOddy
 	email = shabbyacc@outlook.com
