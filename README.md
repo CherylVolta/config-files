@@ -1,9 +1,7 @@
 <!-- Title -->
 <a name="readme-top"></a>
 <div align="center">
-  <a href="https://github.dev/SeagullOddy/config-files">
-    <img src="docs/images/logo.png" alt="Logo" />
-  </a>
+  <img src="docs/images/logo.png" alt="Logo" />
 
   <h1>Config Files</h1>
 
@@ -41,6 +39,7 @@
   - README.md
 - Docker
   - docker-compose.yml
+  - Dockerfile_NodeJS
   - Dockerfile_SpringBoot
   - Dockerfile_Tomcat
 - Git
@@ -49,7 +48,8 @@
   - mobi.hsz.idea.gitignore
     - ForAndroidStudio.xml
     - ForIDEA.xml
-  - OddyCodeStyle.xml
+    - ForPyCharm.xml
+  - CharlotteCodeStyle.xml
   - plugins-installed.txt
 - Maven
   - settings.xml

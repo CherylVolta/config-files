@@ -1,6 +1,6 @@
 # 请将该 Dockerfile 放在前端项目的根目录下
 FROM node:lts-slim
-LABEL authors="Oddy"\
+LABEL authors="Charlott2"\
       description="构建用于运行 Web 前端项目的 Node.js 镜像"
 
 # 服务端口

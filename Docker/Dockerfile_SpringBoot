@@ -1,6 +1,6 @@
 # 请将该 Dockerfile 放在后端项目的根目录下
 FROM eclipse-temurin:21
-LABEL authors="Oddy"\
+LABEL authors="Charlott2"\
       description="构建用于运行 Spring Boot Web 后端项目的 Java 镜像"
 
 # 工件名称

@@ -1,9 +1,7 @@
 <!-- 标题 -->
 <a name="readme-top"></a>
 <div align="center">
-  <a href="https://github.dev/SeagullOddy/config-files">
-    <img src="docs/images/logo.png" alt="Logo" />
-  </a>
+  <img src="docs/images/logo.png" alt="Logo" />
 
   <h1>配置文件</h1>
 
@@ -41,6 +39,7 @@
   - README.md
 - Docker
   - docker-compose.yml
+  - Dockerfile_NodeJS
   - Dockerfile_SpringBoot
   - Dockerfile_Tomcat
 - Git
@@ -49,7 +48,8 @@
   - mobi.hsz.idea.gitignore
     - ForAndroidStudio.xml
     - ForIDEA.xml
-  - OddyCodeStyle.xml
+    - ForPyCharm.xml
+  - CharlotteCodeStyle.xml
   - plugins-installed.txt
 - Maven
   - settings.xml
@@ -62,18 +62,18 @@
 - Zsh
   - .zshrc
 
-<p align="right">（<a href="#readme-top">返回顶部</a>）</p>
+<p align="right">（<a href="#readme-top">回到顶部</a>）</p>
 
 <!-- 更新时间 -->
 ## 更新时间
 
 见 [UPDATE_TIME.md](UPDATE_TIME.md).
 
-<p align="right">（<a href="#readme-top">返回顶部</a>）</p>
+<p align="right">（<a href="#readme-top">回到顶部</a>）</p>
 
 <!-- 许可 -->
 ## 许可
 
 [MIT](LICENSE).
 
-<p align="right">（<a href="#readme-top">返回顶部</a>）</p>
+<p align="right">（<a href="#readme-top">回到顶部</a>）</p>
