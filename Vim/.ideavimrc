@@ -1,11 +1,11 @@
-" author: SeagullOddy
-" version: 2024/03/09
+" author: Charlott2
+" version: 2024/06/04
 " description of idea specific key maps:
-"     <leader>      用于弹窗/窗口的操作
-"     s[how]        用于弹窗/窗口的文档/信息展示
+"     <leader>      用于项目弹窗/窗口操作
 "     .             用于项目构建/运行/调试
-"     \ & []        用于代码操作（除代码导航操作）
-"     t[o]          用于代码导航
+"     \             用于代码操作（除代码导航操作）
+"     K             用于代码导航
+"     s[how]        用于代码弹窗/窗口的文档/信息展示
 
 " -- leader --
 let mapleader = ' '
@@ -39,15 +39,13 @@ set scrolloff=7
 " >> key maps
 "    nop
 noremap . <nop>
-noremap t <nop>
 noremap s <nop>
+noremap K <nop>
 "    home & end
-nnoremap L $
-nnoremap H ^
-vnoremap L $
-vnoremap H ^
-cnoremap <C-H> <Home>
-cnoremap <C-L> <End>
+nnoremap <Home> ^
+nnoremap <End> $
+vnoremap <Home> ^
+vnoremap <End> $
 "    j & k
 nnoremap k gk
 nnoremap gk k
@@ -61,13 +59,15 @@ inoremap kj <ESC>
 "    ` jumps to the marked line and column, so swap them.
 nnoremap ' `
 nnoremap ` '
+"    = & +
+nnoremap = +
+nnoremap + =
 "    reselect visual block after indent/out-dent.
 vnoremap < <gv
 vnoremap > >gv
 "    copy and paste
 noremap \y "*y
 noremap \p "*p
-
 
 " -- idea specific --
 " >> settings
@@ -76,16 +76,16 @@ set ideajoin
 "    进入重构保持模式不变
 set idearefactormode=keep
 " >> key maps
-"    >> popup/window actions
-"    关闭当前文件
-nmap <leader>x :action CloseContent<CR>
+"    >> [project] popup/window actions
+"    下一个/上一个 tab
+nmap <leader>w :action NextTab<CR>
+nmap <leader>e :action PreviousTab<CR>
 "    最近的项目/文件/位置
-nmap <leader>j :action ManageRecentProjects<CR>
-nmap <leader>k :action RecentFiles<CR>
-nmap <leader>l :action RecentLocations<CR>
+nmap <leader>p :action ManageRecentProjects<CR>
+nmap <leader>o :action RecentFiles<CR>
 "    项目结构
 nmap <leader>s :action ShowProjectStructureSettings<CR>
-"    在文件中查找/替换
+"    在项目中查找/替换
 nmap <leader>f :action FindInPath<CR>
 nmap <leader>t :action ReplaceInPath<CR>
 "   编辑/选择运行/调试配置
@@ -93,7 +93,43 @@ nmap <leader>r :action ChooseRunConfiguration<CR>
 nmap <leader>d :action ChooseDebugConfiguration<CR>
 "   重构菜单
 nmap <leader>c :action Refactorings.QuickListPopupAction<CR>
-"    >> quick summary/info
+"    >> [project] build/run/debug actions
+"    调试/运行/恢复/停止
+nmap .d :action Debug<CR>
+nmap .r :action Run<CR>
+nmap .c :action Resume<CR>
+nmap .x :action Stop<CR>
+"    运行到光标所在行
+nmap .t :action RunToCursor<CR>
+"    表达式求值
+vmap .e :action EvaluateExpression<CR>
+"    >> [code] basic actions
+"    切换/查看/忽略断点
+nmap \b :action ToggleLineBreakpoint<CR>
+nmap \n :action ViewBreakpoints<CR>
+nmap \m :action XDebugger.MuteBreakpoints<CR>
+"    重命名/查找/替换
+nmap \r :action RenameElement<CR>
+nmap \f :action Find<CR>
+nmap \t :action Replace<CR>
+"    保存所有
+nmap \s :action SaveAll<CR>
+"    格式化
+nmap \\ :action ReformatCode<CR>
+"    >> [code] navigation
+"    跳转到父类方法
+nmap Ks :action GotoSuperMethod<CR>
+"    跳转到上次修改的地方
+nmap Kl :action JumpToLastChange<CR>
+"    跳转到实现
+nmap Ki :action GotoImplementation<CR>
+"    跳转到声明
+nmap Kd :action GotoDeclaration<CR>
+"    previous method
+nmap K[ :action MethodUp<CR>
+"    next method
+nmap K] :action MethodDown<CR>
+"    >> [code] show quick summary/info
 "    展示用法
 nmap su :action FindUsages<CR>
 "    展示快速文档
@@ -102,58 +138,12 @@ nmap sd :action QuickJavaDoc<CR>
 nmap si :action QuickImplementations<CR>
 "    展示方法形参信息
 nmap sp :action ParameterInfo<CR>
-"    展示方法调用层次结构
-nmap sc :action CallHierarchy<CR>
-"    展示方法类型层次结构
-nmap st :action TypeHierarchy<CR>
-"    展示方法层次结构
-nmap sm :action MethodHierarchy<CR>
 "    展示文件结构
 nmap ss :action FileStructurePopup<CR>
 "    展示表达式求值
 vmap se :action QuickEvaluateExpression<CR>
-"    >> project build/run/debug/reimport actions
-"    调试/运行/恢复/停止
-nmap .d :action Debug<CR>
-nmap .r :action Run<CR>
-nmap .u :action Resume<CR>
-nmap .s :action Stop<CR>
-"    运行到光标所在行
-nmap .l :action RunToCursor<CR>
-"    表达式求值
-vmap .e :action EvaluateExpression<CR>
-"    构建项目/工件
-nmap .c :action CompileDirty<CR>
-nmap .b :action BuildArtifact<CR>
-"    重新导入 maven 项目
-nmap .m :action Maven.Reimport<CR>
-"    >> code actions (except navigation)
-"    切换/忽略（Nop）/查看断点
-nmap \b :action ToggleLineBreakpoint<CR>
-nmap \n :action XDebugger.MuteBreakpoints<CR>
-nmap \v :action ViewBreakpoints<CR>
-"    重命名/查找/替换
-nmap \r :action RenameElement<CR>
-nmap \f :action Find<CR>
-nmap \t :action Replace<CR>
-"    保存所有
-nmap \s :action SaveAll<CR>
-"    格式化
-nmap [] :action ReformatCode<CR>
-"    >> code navigation
-"    跳转到父类方法
-nmap ts :action GotoSuperMethod<CR>
-"    跳转到上次修改的地方
-nmap tl :action JumpToLastChange<CR>
-"    跳转到实现
-nmap ti :action GotoImplementation<CR>
-"    跳转到声明
-nmap td :action GotoDeclaration<CR>
-"    previous method
-nmap t[ :action MethodUp<CR>
-"    next method
-nmap t] :action MethodDown<CR>
-"    >> vimrc specific
-nmap <leader>ve :e ~\.ideavimrc<CR>
-nmap <leader>vs :action IdeaVim.ReloadVimRc.reload<CR>
-nmap <leader>vt :action VimFindActionIdAction<CR>
+
+" -- vimrc specific --
+nmap <leader><leader>v :e ~\.ideavimrc<CR>
+nmap <leader><leader>s :action IdeaVim.ReloadVimRc.reload<CR>
+nmap <leader><leader>a :action VimFindActionIdAction<CR>

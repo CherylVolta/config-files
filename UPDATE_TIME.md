@@ -14,7 +14,7 @@
 
 - JetBrains IDE:
 
-    2024/06/02
+    2024/06/04
 
 - Maven:
 
@@ -26,7 +26,7 @@
 
 - Vim:
 
-    2024/03/09
+    2024/06/04
 
 - Windows Terminal:
 
