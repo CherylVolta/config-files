@@ -8,7 +8,7 @@
   <h4>Some useful configuration files.</h4>
 
   <p>
-    <a href="/stargazers"><img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/Charlott2/config-files?style=flat"></a>
+    <a href="../../stargazers"><img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/Charlott2/config-files?style=flat"></a>
     <a href="LICENSE"><img alt="GitHub License" src="https://img.shields.io/github/license/Charlott2/config-files"></a>
   </p>
 
