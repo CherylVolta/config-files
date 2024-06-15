@@ -16,10 +16,6 @@
             "keys": "ctrl+v"
         },
         {
-            "command": "find",
-            "keys": "ctrl+shift+f"
-        },
-        {
             "command":
             {
                 "action": "splitPane",
@@ -27,6 +23,10 @@
                 "splitMode": "duplicate"
             },
             "keys": "alt+shift+d"
+        },
+        {
+            "command": "find",
+            "keys": "ctrl+shift+f"
         }
     ],
     "centerOnLaunch": true,
@@ -54,12 +54,11 @@
             "font":
             {
                 "cellHeight": "1.8",
-                "face": "MonaspiceAr Nerd Font",
+                "face": "MonaspiceXe Nerd Font",
                 "size": 14.0
             },
             "intenseTextStyle": "all",
-            "opacity": 88,
-            "useAcrylic": true
+            "opacity": 88
         },
         "list":
         [
@@ -90,6 +89,12 @@
                 "hidden": false,
                 "name": "Ubuntu 24.04 LTS",
                 "source": "CanonicalGroupLimited.Ubuntu24.04LTS_79rhkp1fndgsc"
+            },
+            {
+                "guid": "{963ff2f7-6aed-5ce3-9d91-90d99571f53a}",
+                "hidden": true,
+                "name": "Ubuntu-24.04",
+                "source": "Windows.Terminal.Wsl"
             }
         ]
     },
