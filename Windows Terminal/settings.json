@@ -30,12 +30,13 @@
         }
     ],
     "centerOnLaunch": true,
+    "confirmCloseAllTabs": false,
     "copyFormatting": "none",
     "copyOnSelect": false,
     "defaultProfile": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
     "focusFollowMouse": false,
-    "initialCols": 100,
-    "initialRows": 30,
+    "initialCols": 90,
+    "initialRows": 25,
     "newTabMenu":
     [
         {
@@ -46,29 +47,28 @@
     {
         "defaults":
         {
-            "adjustIndistinguishableColors": "always",
-            "backgroundImage": "desktopWallpaper",
+            "adjustIndistinguishableColors": "indexed",
             "backgroundImageOpacity": 0.26,
             "colorScheme": "One Half Dark",
             "cursorShape": "underscore",
-            "experimental.retroTerminalEffect": false,
             "font":
             {
-                "cellHeight": "1.5",
-                "face": "Maple Mono NF CN",
-                "size": 16.0
-            }
+                "cellHeight": "1.8",
+                "face": "MonaspiceAr Nerd Font",
+                "size": 14.0
+            },
+            "intenseTextStyle": "all",
+            "opacity": 88,
+            "useAcrylic": true
         },
         "list":
         [
             {
-                "commandline": "%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
                 "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
                 "hidden": false,
                 "name": "Windows PowerShell"
             },
             {
-                "commandline": "%SystemRoot%\\System32\\cmd.exe",
                 "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
                 "hidden": false,
                 "name": "\u547d\u4ee4\u63d0\u793a\u7b26"
@@ -86,16 +86,10 @@
                 "source": "Windows.Terminal.PowershellCore"
             },
             {
-                "guid": "{2c4de342-38b7-51cf-b940-2309a097f518}",
-                "hidden": true,
-                "name": "Ubuntu",
-                "source": "Windows.Terminal.Wsl"
-            },
-            {
-                "guid": "{51855cb2-8cce-5362-8f54-464b92b32386}",
+                "guid": "{acbafd15-cbbb-5bb3-8a61-bed446ff4b83}",
                 "hidden": false,
-                "name": "Ubuntu",
-                "source": "CanonicalGroupLimited.Ubuntu_79rhkp1fndgsc"
+                "name": "Ubuntu 24.04 LTS",
+                "source": "CanonicalGroupLimited.Ubuntu24.04LTS_79rhkp1fndgsc"
             }
         ]
     },
@@ -301,30 +295,7 @@
             "cyan": "#3A96DD",
             "foreground": "#FFFFFF",
             "green": "#26A269",
-            "name": "Ubuntu-22.04-ColorScheme",
-            "purple": "#881798",
-            "red": "#C21A23",
-            "selectionBackground": "#FFFFFF",
-            "white": "#CCCCCC",
-            "yellow": "#A2734C"
-        },
-        {
-            "background": "#300A24",
-            "black": "#171421",
-            "blue": "#0037DA",
-            "brightBlack": "#767676",
-            "brightBlue": "#08458F",
-            "brightCyan": "#2C9FB3",
-            "brightGreen": "#26A269",
-            "brightPurple": "#A347BA",
-            "brightRed": "#C01C28",
-            "brightWhite": "#F2F2F2",
-            "brightYellow": "#A2734C",
-            "cursorColor": "#FFFFFF",
-            "cyan": "#3A96DD",
-            "foreground": "#FFFFFF",
-            "green": "#26A269",
-            "name": "Ubuntu-ColorScheme",
+            "name": "Ubuntu-24.04-ColorScheme",
             "purple": "#881798",
             "red": "#C21A23",
             "selectionBackground": "#FFFFFF",
@@ -356,7 +327,7 @@
         }
     ],
     "tabWidthMode": "titleLength",
-    "theme": "dark",
+    "theme": "system",
     "themes": [],
     "useAcrylicInTabRow": true
 }

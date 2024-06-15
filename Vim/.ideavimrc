@@ -1,5 +1,5 @@
 " author: Charlott2
-" version: 2024/06/04
+" version: 2024/06/15
 " description of idea specific key maps:
 "     <leader>      用于项目弹窗/窗口操作
 "     .             用于项目构建/运行/调试
@@ -42,10 +42,10 @@ noremap . <nop>
 noremap s <nop>
 noremap K <nop>
 "    home & end
-nnoremap <Home> ^
-nnoremap <End> $
-vnoremap <Home> ^
-vnoremap <End> $
+nnoremap H ^
+nnoremap L $
+vnoremap H ^
+vnoremap L $
 "    j & k
 nnoremap k gk
 nnoremap gk k
@@ -78,8 +78,8 @@ set idearefactormode=keep
 " >> key maps
 "    >> [project] popup/window actions
 "    下一个/上一个 tab
-nmap <leader>w :action NextTab<CR>
-nmap <leader>e :action PreviousTab<CR>
+nmap <leader>e :action NextTab<CR>
+nmap <leader>w :action PreviousTab<CR>
 "    最近的项目/文件/位置
 nmap <leader>p :action ManageRecentProjects<CR>
 nmap <leader>o :action RecentFiles<CR>

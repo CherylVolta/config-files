@@ -59,7 +59,7 @@
   - .ideavimrc
 - Windows Terminal
   - settings.json
-- Zsh
+- ZSH
   - .zshrc
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
