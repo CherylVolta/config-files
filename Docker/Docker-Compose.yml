@@ -2,28 +2,28 @@ services:
   # ！MySQL 容器配置
   mysql_service:
     container_name: mysql_service
-    image: 'mysql:lts'
+    image: "mysql:lts"
     environment:
-      MYSQL_ROOT_HOST: '%' # 允许访问的主机，% 匹配任意主机
+      MYSQL_ROOT_HOST: "%" # 允许访问的主机，% 匹配任意主机
       MYSQL_ROOT_PASSWORD: pswd # MySQL 服务密码，以 pswd 为例
       TZ: Asia/Shanghai
     ports:
-      - '3306:3306'
+      - "3306:3306"
     volumes:
-      - 'your_mysql_volume:/var/lib/mysql' # 将数据挂载到卷，以 your_mysql_volume 为例
+      - "your_mysql_volume:/var/lib/mysql" # 将数据挂载到卷，以 your_mysql_volume 为例
     networks:
       - persistent
   # ！Redis 容器配置
   redis_service:
     container_name: redis_service
-    image: 'redis:latest'
-    command: 'redis-server'
+    image: "redis:latest"
+    command: "redis-server"
     environment:
       TZ: Asia/Shanghai
     ports:
-      - '6379:6379'
+      - "6379:6379"
     volumes:
-      - 'your_redis_volume:/data' # 将数据挂载到卷，以 your_redis_volume 为例
+      - "your_redis_volume:/data" # 将数据挂载到卷，以 your_redis_volume 为例
     networks:
       - persistent
   # ！前端应用容器配置，见 `Dockerfile_NodeJs`
@@ -37,7 +37,7 @@ services:
     environment:
       TZ: Asia/Shanghai
     ports:
-      - '5173:5173' # 依据 args 中的 SERVER_PORT 值，不指定时默认暴露 5173 端口
+      - "5173:5173" # 依据 args 中的 SERVER_PORT 值，不指定时默认暴露 5173 端口
     networks:
       - default
   # ！后端应用容器配置，见 `Dockerfile_SpringBoot`、`Dockerfile_Tomcat`
@@ -46,13 +46,13 @@ services:
     build:
       context: /path/to/backend/Dockerfile # Dockerfile 所在文件夹路径
       args:
-        ARTIFACT_NAME: 'your-artifact-name' # 工件，以 your-artifact-name-0.0.1-SNAPSHOT.jar（或 .war） 为例
-        ARTIFACT_VERSION: '0.0.1-SNAPSHOT'
+        ARTIFACT_NAME: "your-artifact-name" # 工件，以 your-artifact-name-0.0.1-SNAPSHOT.jar（或 .war） 为例
+        ARTIFACT_VERSION: "0.0.1-SNAPSHOT"
         SERVER_PORT: 8080 # 指定镜像暴露的端口
     environment:
       TZ: Asia/Shanghai
     ports:
-      - '8080:8080' # 依据 args 中的 SERVER_PORT 值，不指定时默认暴露 8080 端口
+      - "8080:8080" # 依据 args 中的 SERVER_PORT 值，不指定时默认暴露 8080 端口
     networks:
       - persistent
       - default
