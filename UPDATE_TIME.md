@@ -26,7 +26,7 @@
 
 - Vim:
 
-  2024/06/15
+  2024/06/19
 
 - Windows Terminal:
 

@@ -1,33 +1,32 @@
 " author: Charlott2
-" version: 2024/06/15
-" description of idea specific key maps:
-"     <leader>      用于项目弹窗/窗口操作
-"     .             用于项目构建/运行/调试
-"     \             用于代码操作（除代码导航操作）
-"     K             用于代码导航
-"     s[how]        用于代码弹窗/窗口的文档/信息展示
+" version: 2024/06/19
 
 " -- leader --
 let mapleader = ' '
 
 " -- plugins --
-" >> settings
+" >> setup
 "    高亮复制
 set highlightedyank
-"    cs/ys/... 快速操作引号等“包围”
+"    快速操作引号等“包围”
+"    cs：更改包围，如：cs'" 将包围光标所在位置的 ' 改为 "
+"    ds：删除包围，如：ds' 将包围的 ' 删除
+"    ys：添加包围，如：ysiw[ 将一个单词用 [] 包围（有空格间隔）
+"    yss：为整行添加包围，如：yss] 将整行用 [] 包围
+"    VS：为选中的块添加包围，如：V3jS' 将所在行与往下3行用 ' 包围
+"    左括号 ([{：与所选文本对象之间有空格
+"    右括号 )]}：与所选文本对象之间无空格
+"    包围除了普通的引号、括号，还支持 HTML 标签，如：cs'<a> 将包围的 ' 改为 <a><a/>
 set surround
-"    multi cursor
-set multiple-cursors
-"    高效编辑方法参数
+"    aa/ia 方法参数
 set argtextobj
 "    ae/ie 整个文件
 set textobj-entire
 "    自动切换输入法
 set keep-english-in-normal-and-restore-in-insert
-" >> key maps
 
 " -- basic --
-" >> settings
+" >> setup
 "    搜索时忽略大小写
 set ignorecase
 "    智能大小写
@@ -36,11 +35,8 @@ set smartcase
 set number relativenumber
 "    ...
 set scrolloff=7
-" >> key maps
-"    nop
-noremap . <nop>
-noremap s <nop>
-noremap K <nop>
+" >> keymaps
+"    >> change
 "    home & end
 nnoremap H ^
 nnoremap L $
@@ -52,13 +48,7 @@ nnoremap gk k
 nnoremap j gj
 nnoremap gj j
 "    ESC
-inoremap kj <ESC>
-"    ` & '
-"    when use m to mark a place, by default,
-"    ' jumps to the marked line,
-"    ` jumps to the marked line and column, so swap them.
-nnoremap ' `
-nnoremap ` '
+inoremap qq <ESC>
 "    = & +
 nnoremap = +
 nnoremap + =
@@ -66,57 +56,91 @@ nnoremap + =
 vnoremap < <gv
 vnoremap > >gv
 "    copy and paste
-noremap \y "*y
-noremap \p "*p
+noremap 'y "*y
+noremap 'p "*p
+"    redo
+noremap U <C-R>
+"    >> nop
+"    宏很少用
+noremap q <nop>
+"    使用 IDEA 的标签功能 F11
+noremap m <nop>
+noremap ' <nop>
+"    >> nop - still preview
+"    使用 IDEA 的标签功能 F11
+noremap ` <nop>
+"    宏很少用
+noremap @ <nop>
+"    不好按
+noremap K <nop>
+noremap + <nop>
+noremap \ <nop>
+noremap . <nop>
+"    没用
+noremap <C-B> <nop>
+noremap <C-E> <nop>
+noremap <C-G> <nop>
+noremap <C-J> <nop>
+noremap <C-K> <nop>
+noremap <C-L> <nop>
+noremap <C-M> <nop>
+noremap <C-N> <nop>
+noremap <C-P> <nop>
+noremap <C-Q> <nop>
+noremap <C-T> <nop>
+noremap <C-U> <nop>
+noremap <C-W> <nop>
+noremap <C-\> <nop>
 
-" -- idea specific --
-" >> settings
+
+" -- intellij specific --
+" description of idea specific key maps:
+"     <leader>      用于项目弹窗/窗口操作
+"     m[anage]      用于项目管理操作（构建/运行/调试及其子操作）
+"     '             用于代码的普通操作
+"     q[uery]       用于代码信息展示/查询
+"     K             用于代码导航
+" >> setup
 "    J 启用 idea 连接支持
 set ideajoin
 "    进入重构保持模式不变
 set idearefactormode=keep
-" >> key maps
-"    >> [project] popup/window actions
-"    下一个/上一个 tab
+" >> keymaps
+"    >> [project] window actions
+"    下一个/上一个标签页
 nmap <leader>e :action NextTab<CR>
 nmap <leader>w :action PreviousTab<CR>
-"    最近的项目/文件/位置
-nmap <leader>p :action ManageRecentProjects<CR>
-nmap <leader>o :action RecentFiles<CR>
-"    项目结构
+"    项目结构 Structure
 nmap <leader>s :action ShowProjectStructureSettings<CR>
-"    在项目中查找/替换
-nmap <leader>f :action FindInPath<CR>
-nmap <leader>t :action ReplaceInPath<CR>
-"   编辑/选择运行/调试配置
+"    选择运行/调试配置 Run/Debug
 nmap <leader>r :action ChooseRunConfiguration<CR>
 nmap <leader>d :action ChooseDebugConfiguration<CR>
-"   重构菜单
-nmap <leader>c :action Refactorings.QuickListPopupAction<CR>
-"    >> [project] build/run/debug actions
+"    在项目中查找/替换 Find/Huan
+nmap <leader>f :action FindInPath<CR>
+nmap <leader>t :action ReplaceInPath<CR>
+"    最近的项目/文件
+nmap <leader>j :action ManageRecentProjects<CR>
+nmap <leader>i :action RecentFiles<CR>
+"    重构菜单
+nmap <leader>g :action Refactorings.QuickListPopupAction<CR>
+"    >> [project] management actions
 "    调试/运行/恢复/停止
-nmap .d :action Debug<CR>
-nmap .r :action Run<CR>
-nmap .c :action Resume<CR>
-nmap .x :action Stop<CR>
+nmap mr :action Run<CR>
+nmap md :action Debug<CR>
+nmap me :action Resume<CR>
+nmap ms :action Stop<CR>
 "    运行到光标所在行
-nmap .t :action RunToCursor<CR>
-"    表达式求值
-vmap .e :action EvaluateExpression<CR>
-"    >> [code] basic actions
+nmap mt :action RunToCursor<CR>
 "    切换/查看/忽略断点
-nmap \b :action ToggleLineBreakpoint<CR>
-nmap \n :action ViewBreakpoints<CR>
-nmap \m :action XDebugger.MuteBreakpoints<CR>
+nmap mb :action ToggleLineBreakpoint<CR>
+nmap mv :action ViewBreakpoints<CR>
+nmap mm :action XDebugger.MuteBreakpoints<CR>
+"    >> [code] basic actions
 "    重命名/查找/替换
-nmap \r :action RenameElement<CR>
-nmap \f :action Find<CR>
-nmap \t :action Replace<CR>
-"    保存所有
-nmap \s :action SaveAll<CR>
+nmap 'r :action RenameElement<CR>
 "    格式化
-nmap \\ :action ReformatCode<CR>
-"    >> [code] navigation
+nmap '' :action ReformatCode<CR>
+"    >> [code] navigation actions
 "    跳转到父类方法
 nmap Ks :action GotoSuperMethod<CR>
 "    跳转到上次修改的地方
@@ -129,21 +153,21 @@ nmap Kd :action GotoDeclaration<CR>
 nmap K[ :action MethodUp<CR>
 "    next method
 nmap K] :action MethodDown<CR>
-"    >> [code] show quick summary/info
+"    >> [code] query/quick summary/info actions
 "    展示用法
-nmap su :action FindUsages<CR>
+nmap qu :action FindUsages<CR>
 "    展示快速文档
-nmap sd :action QuickJavaDoc<CR>
+nmap qd :action QuickJavaDoc<CR>
 "    展示方法实现
-nmap si :action QuickImplementations<CR>
+nmap qi :action QuickImplementations<CR>
 "    展示方法形参信息
-nmap sp :action ParameterInfo<CR>
+nmap qp :action ParameterInfo<CR>
 "    展示文件结构
-nmap ss :action FileStructurePopup<CR>
+nmap qs :action FileStructurePopup<CR>
 "    展示表达式求值
-vmap se :action QuickEvaluateExpression<CR>
+vmap qe :action QuickEvaluateExpression<CR>
 
-" -- vimrc specific --
-nmap <leader><leader>v :e ~\.ideavimrc<CR>
-nmap <leader><leader>s :action IdeaVim.ReloadVimRc.reload<CR>
-nmap <leader><leader>a :action VimFindActionIdAction<CR>
+" -- vim specific --
+nmap <leader>v :action IdeaVim.ReloadVimRc.reload<CR>
+"    监听 IntellJ 的 Action 名称
+nmap <leader>a :action VimFindActionIdAction<CR>
