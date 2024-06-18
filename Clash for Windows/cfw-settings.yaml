@@ -1,7 +1,7 @@
 showNewVersionIcon: true
 hideAfterStartup: true
 randomControllerPort: true
-runTimeFormat: "hh : mm : ss"
+runTimeFormat: 'hh : mm : ss'
 trayOrders:
   - - icon
   - - status
