@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<userTemplates>
+  <template name="Basic">#### For JetBrains IDEs
+# .idea
+# Ignore everything but code style settings and run configurations
+# that are supposed to be shared within teams.
+.idea/*
+!.idea/codeStyles
+!.idea/runConfigurations
+
+# Plugins
+# mpeltonen/sbt-idea plugin
+.idea_modules/
+# JIRA plugin
+atlassian-ide-plugin.xml
+# Crashlytics plugin (for Android Studio and IntelliJ)
+com_crashlytics_export_strings.xml
+crashlytics.properties
+crashlytics-build.properties
+fabric.properties
+# CMake
+cmake-build-*/
+
+# Auto Generated
+*.iws
+*.iml
+*.ipr
+
+# Build
+out/</template>
+</userTemplates>
+

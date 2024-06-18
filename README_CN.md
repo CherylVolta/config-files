@@ -45,11 +45,13 @@
 - Git
   - .gitconfig
 - JetBrains IDE
+  - codeStyles
+    - Charlott2.xml
   - mobi.hsz.idea.gitignore
     - ForAndroidStudio.xml
+    - ForCLion.xml
     - ForIDEA.xml
     - ForPyCharm.xml
-  - CharlotteCodeStyle.xml
   - plugins-installed.txt
 - Maven
   - settings.xml
