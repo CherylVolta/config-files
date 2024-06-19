@@ -56,6 +56,11 @@ noremap + =
 "    选区缩进
 vnoremap < <gv
 vnoremap > >gv
+"    copy & paste
+nnoremap <c-c> "*yy
+vnoremap <c-c> "*y
+nnoremap <c-v> "*p
+vnoremap <c-v> "*p
 "    esc
 inoremap <c-m> <esc>
 "    redo
