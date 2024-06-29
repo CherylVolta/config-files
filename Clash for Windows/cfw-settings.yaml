@@ -33,126 +33,122 @@ mixinText: |
       # fake-ip 排除列表，在列表中的域名使用真实 IP 地址
       fake-ip-filter:
         # === Local ===
-        - '*.lan'
-        - '*.local'
+        - "*.lan"
+        - "*.local"
+        - "*.docker.internal"
+        - WORKGROUP
         # === Microsoft Windows Serivice ===
-        - '*.msftncsi.com'
-        - '*.msftconnecttest.com'
+        - "*.msftncsi.com"
+        - "*.msftconnecttest.com"
         # === NTP Service ===
-        - 'time.*.com'
-        - 'time1.*.com'
-        - 'time2.*.com'
-        - 'time3.*.com'
-        - 'time4.*.com'
-        - 'time5.*.com'
-        - 'time6.*.com'
-        - 'time7.*.com'
-        - 'time.*.gov'
-        - 'time.*.edu.cn'
-        - '*.time.edu.cn'
-        - 'ntp.*.com'
-        - 'ntp1.*.com'
-        - 'ntp2.*.com'
-        - 'ntp3.*.com'
-        - 'ntp4.*.com'
-        - 'ntp5.*.com'
-        - 'ntp6.*.com'
-        - 'ntp7.*.com'
-        - 'ntp.*.*.cn'
-        - '*.ntp.org.cn'
-        - '+.pool.ntp.org'
-        # === Social Service ===
-        ## QQ
+        - "time.*.com"
+        - "time1.*.com"
+        - "time2.*.com"
+        - "time3.*.com"
+        - "time4.*.com"
+        - "time5.*.com"
+        - "time6.*.com"
+        - "time7.*.com"
+        - "time.*.gov"
+        - "time.*.edu.cn"
+        - "*.time.edu.cn"
+        - "ntp.*.com"
+        - "ntp1.*.com"
+        - "ntp2.*.com"
+        - "ntp3.*.com"
+        - "ntp4.*.com"
+        - "ntp5.*.com"
+        - "ntp6.*.com"
+        - "ntp7.*.com"
+        - "ntp.*.*.cn"
+        - "*.ntp.org.cn"
+        - "+.pool.ntp.org"
+        # === Social Media Service ===
+        # QQ
         - localhost.ptlogin2.qq.com
         # === Music Service ===
-        ## NetEase
-        - '*.music.163.com'
-        - '*.126.net'
-        ## Baidu
+        # NetEase
+        - "*.music.163.com"
+        - "*.126.net"
+        # Baidu
         - musicapi.taihe.com
         - music.taihe.com
-        ## Kugou
+        # Kugou
         - songsearch.kugou.com
         - trackercdn.kugou.com
-        ## Kuwo
-        - '*.kuwo.cn'
-        ## JOOX
+        # Kuwo
+        - "*.kuwo.cn"
+        # JOOX
         - api-jooxtt.sanook.com
         - api.joox.com
         - joox.com
-        ## QQ
-        - '*.y.qq.com'
-        - '*.music.tc.qq.com'
+        # QQ
+        - "*.y.qq.com"
+        - "*.music.tc.qq.com"
         - aqqmusic.tc.qq.com
-        - '*.stream.qqmusic.qq.com'
+        - "*.stream.qqmusic.qq.com"
         # === Game Service ===
-        ## Nintendo Switch
-        - '*.n.n.srv.nintendo.net'
-        ## Sony PlayStation
-        - '*.stun.playstation.net'
-        ## Microsoft Xbox
-        - 'xbox.*.*.microsoft.com'
-        - '*.*.xboxlive.com'
-        ## Netease
-        - stun01.sipphone.com
-        # === Coding ===
-        ## Docker
-        - '*.docker.internal'
-        ## Golang
-        - proxy.golang.org
-        # === Others ===
-        ## CQUT
-        - wlsy.cqut.edu.cn
-        ## STUN Server
-        - '+.stun.*.*'
-        - '+.stun.*.*.*'
-        - '+.stun.*.*.*.*'
-        - '+.stun.*.*.*.*.*'
-        - 'stunserver.*'
-        ## WORKGROUP
-        - WORKGROUP
+        # Nintendo Switch
+        - "*.n.n.srv.nintendo.net"
+        # Sony PlayStation
+        - "*.stun.playstation.net"
+        # Microsoft Xbox
+        - "xbox.*.*.microsoft.com"
+        - "*.*.xboxlive.com"
+        # === STUN Server ===
+        - "+.stun.*.*"
+        - "+.stun.*.*.*"
+        - "+.stun.*.*.*.*"
+        - "+.stun.*.*.*.*.*"
+        - "+.stun01.*.*"
+        - "stunserver.*"
+      # Clash 总是使用第一个 DNS 查询的结果，适当设置几个响应快的 DNS 即可
+      # defalut-nameserver 用于解析 nameserver、fallback 中的 DNS
+      # 必须写明 IP，支持 UDP、TCP、DoT、DoH
+      default-nameserver:
+        - "223.5.5.5" # AliDNS IPv4
+        - "[2400:3200:baba::1]:53" # AliDNS IPv6
+        - "119.29.29.29" # DNSPod
+      # 支持 UDP、TCP、DoT、DoH
+      nameserver:
+        - "https://dns.alidns.com/dns-query" # AliDNS DoH, ECS Support
+        - "https://doh.pub/dns-query" # DNSPod DoH
+        - "https://cloudflare-dns.com/dns-query" # Cloudflare
+        - "tls://dns.alidns.com:853" # AliDNS DoT, ECS Support
+        - "tls://dnt.pub:853" # DNSPod DoT
+        - "tls://1dot1dot1dot1.cloudflare-dns.com:853" # Cloudflare
+      # 支持 UDP、TCP、DoT、DoH
+      # 配置 fallback 后默认启用 fallback-filter, geoip-code 为 cn
+      # 个人认为没有使用的必要，在此置空表示不配置，且不自动启用 fallback-filter
+      fallback:
+      #   - "https://dns.alidns.com/dns-query" # AliDNS, ECS Support
+      #   - "https://doh.pub/dns-query" # DNSPod
+      #   - "https://cloudflare-dns.com/dns-query" # Cloudflare
+      #   - "tls://dns.alidns.com:853" # AliDNS, ECS Support
+      #   - "tls://dnt.pub:853" # DNSPod
+      #   - "tls://1dot1dot1dot1.cloudflare-dns.com:853" # Cloudflare
       # fallback-filter 会对 IP 进行过滤，是对抗 DNS 污染攻击的一种措施
       # 1. 当 geoip 开启且 code 设置为 CN 时
       # 属于中国的 IP 将使用 nameserver 中的 dns
       # 其它国家的 IP 将使用 fallback 中的 dns
       # 2. 当请求的域名匹配 domain 且 dns 响应的 ip 匹配 ip-cidr
       # 强制使用 fallback 中的 dns
-      fallback-filter:
-        geoip: true
-        geoip-code: CN
-        # ip-cidr:
-        #   - 240.0.0.0/4
-        # domain:
-        #   - '+.google.com'
-        #   - '+.facebook.com'
-        #   - '+.twitter.com'
-        #   - '+.youtube.com'
-        #   - '+.xn--ngstr-lra8j.com'
-        #   - '+.google.cn'
-        #   - '+.googleapis.cn'
-        #   - '+.googleapis.com'
-        #   - '+.gvt1.com'
-      # defalut-nameserver 用于解析 nameserver、fallback 中的 DNS
-      # 仅支持 UDP、TCP
-      # Clash 总是使用第一个收到的响应作为 DNS 查询的结果
-      default-nameserver:
-        - '223.5.5.5' # Alidns IPv4
-        - '2400:3200:baba::1' # Alidns IPv6
-        - '119.29.29.29' # DNSPod
-      # 支持 UDP、TCP、DoT、DoH
-      nameserver:
-        - '223.5.5.5' # Alidns IPv4
-        - '2400:3200:baba::1' # Alidns IPv6
-        - '119.29.29.29' # DNSPod
-      # 支持 UDP、TCP、DoT、DoH
-      fallback:
-        - 'https://dns.alidns.com/dns-query' # Alidns, ECS Support
-        - 'https://doh.pub/dns-query' # DNSPod
-        - 'https://cloudflare-dns.com/dns-query' # Cloudflare
-        - 'tls://dns.alidns.com:853' # Alidns, ECS Support
-        - 'tls://dnt.pub:853' # DNSPod
-        - 'tls://1dot1dot1dot1.cloudflare-dns.com:853' # Cloudflare
-    # Tun 配置
+      # fallback-filter:
+      #   geoip: false
+      #   geoip-code: CN
+      # ip-cidr:
+      #   - 240.0.0.0/4
+      # domain:
+      #   - '+.google.com'
+      #   - '+.facebook.com'
+      #   - '+.twitter.com'
+      #   - '+.youtube.com'
+      #   - '+.xn--ngstr-lra8j.com'
+      #   - '+.google.cn'
+      #   - '+.googleapis.cn'
+      #   - '+.googleapis.com'
+      #   - '+.gvt1.com'
+    # Tun 配置（仅限 Windows）
     tun:
       enable: true
       stack: system # 使用 system stack 需要在防火墙放行程序
@@ -160,14 +156,11 @@ mixinText: |
       dns-hijack:
         - 198.18.0.2:53
       auto-route: true
-      auto-detect-interface: true # 推荐使用 interface-name
+      auto-detect-interface: true
 profileParsersText: >
   # author: Charlott2
-
   # version: 2024.06.29
-
   # 配置文件转换器，数组格式
-
   parsers:
     # - reg: ^.*$ 匹配所有订阅，或  - url: https://example.com/profile.yaml 指定订阅
     - reg: ^.*$
@@ -271,7 +264,7 @@ profileParsersText: >
           - RULE-SET,reject,📵 禁止通行 # 广告域名
           - RULE-SET,icloud,DIRECT # iCloud 国内可访问
           - RULE-SET,apple,DIRECT # Apple 国内可访问
-          - RULE-SET,google,DIRECT # Google 国内可访问
+          - RULE-SET,google,🥰 代之以理 # Google 国内可访问，但还是推荐代理
           - RULE-SET,proxy,🥰 代之以理 # 代理域名
           - RULE-SET,direct,DIRECT # 直连域名
           - RULE-SET,lancidr,DIRECT # 局域网 IP 及保留 IP
