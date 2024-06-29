@@ -2,7 +2,7 @@
 
 - Clash for Windows:
 
-  2024/06/18
+  2024/06/29
 
 - Docker:
 
@@ -14,7 +14,7 @@
 
 - JetBrains IDE:
 
-  2024/06/18
+  2024/06/29
 
 - Maven:
 

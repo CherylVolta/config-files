@@ -89,6 +89,7 @@ hs_err_pid*
 
 # Android Studio
 /*/build/
+/*/release
 /*/local.properties
 /*/out
 /*/*/build

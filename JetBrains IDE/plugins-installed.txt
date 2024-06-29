@@ -19,3 +19,4 @@ TreeInfotip
 
 # 好看
 Nyan Progress
+Extra ToolWindow Colorful Icons

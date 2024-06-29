@@ -14,57 +14,60 @@ connMode: true
 connProfile: true
 connProxy: 1
 latencyTimeout: .nan
+fontFamily: ""
 proxyOrder: 1
 proxyDelayType: 1
 latencyUrl: http://www.apple.com/library/test/success.html
 theme: 0
 mixinText: |
-  # author: SeagullOddy
-  # version: 2024.03.01
-  mixin: # Mixin 配置
-    dns: # DNS 配置
+  # author: Charlott2
+  # version: 2024.06.29
+  # Mixin 配置（覆盖配置）
+  mixin:
+    # DNS 配置
+    dns:
       enable: true
       ipv6: true
-
-      enhanced-mode: fake-ip
-      fake-ip-range: 198.18.0.1/16 # Fake IP 地址池
-      fake-ip-filter: # fake-ip 排除列表，在列表中的域名使用真实 IP 地址
+      enhanced-mode: fake-ip # 推荐使用 fake-ip 模式
+      fake-ip-range: 198.18.0.1/16 # fake-ip 使用的地址池
+      # fake-ip 排除列表，在列表中的域名使用真实 IP 地址
+      fake-ip-filter:
         # === Local ===
-        - "*.lan"
-        - "*.local"
+        - '*.lan'
+        - '*.local'
         # === Microsoft Windows Serivice ===
-        - "*.msftncsi.com"
-        - "*.msftconnecttest.com"
+        - '*.msftncsi.com'
+        - '*.msftconnecttest.com'
         # === NTP Service ===
-        - "time.*.com"
-        - "time1.*.com"
-        - "time2.*.com"
-        - "time3.*.com"
-        - "time4.*.com"
-        - "time5.*.com"
-        - "time6.*.com"
-        - "time7.*.com"
-        - "time.*.gov"
-        - "time.*.edu.cn"
-        - "*.time.edu.cn"
-        - "ntp.*.com"
-        - "ntp1.*.com"
-        - "ntp2.*.com"
-        - "ntp3.*.com"
-        - "ntp4.*.com"
-        - "ntp5.*.com"
-        - "ntp6.*.com"
-        - "ntp7.*.com"
-        - "ntp.*.*.cn"
-        - "*.ntp.org.cn"
-        - "+.pool.ntp.org"
+        - 'time.*.com'
+        - 'time1.*.com'
+        - 'time2.*.com'
+        - 'time3.*.com'
+        - 'time4.*.com'
+        - 'time5.*.com'
+        - 'time6.*.com'
+        - 'time7.*.com'
+        - 'time.*.gov'
+        - 'time.*.edu.cn'
+        - '*.time.edu.cn'
+        - 'ntp.*.com'
+        - 'ntp1.*.com'
+        - 'ntp2.*.com'
+        - 'ntp3.*.com'
+        - 'ntp4.*.com'
+        - 'ntp5.*.com'
+        - 'ntp6.*.com'
+        - 'ntp7.*.com'
+        - 'ntp.*.*.cn'
+        - '*.ntp.org.cn'
+        - '+.pool.ntp.org'
         # === Social Service ===
         ## QQ
         - localhost.ptlogin2.qq.com
         # === Music Service ===
         ## NetEase
-        - "*.music.163.com"
-        - "*.126.net"
+        - '*.music.163.com'
+        - '*.126.net'
         ## Baidu
         - musicapi.taihe.com
         - music.taihe.com
@@ -72,107 +75,102 @@ mixinText: |
         - songsearch.kugou.com
         - trackercdn.kugou.com
         ## Kuwo
-        - "*.kuwo.cn"
+        - '*.kuwo.cn'
         ## JOOX
         - api-jooxtt.sanook.com
         - api.joox.com
         - joox.com
         ## QQ
-        - "*.y.qq.com"
-        - "*.music.tc.qq.com"
+        - '*.y.qq.com'
+        - '*.music.tc.qq.com'
         - aqqmusic.tc.qq.com
-        - "*.stream.qqmusic.qq.com"
+        - '*.stream.qqmusic.qq.com'
         # === Game Service ===
         ## Nintendo Switch
-        - "*.n.n.srv.nintendo.net"
+        - '*.n.n.srv.nintendo.net'
         ## Sony PlayStation
-        - "*.stun.playstation.net"
+        - '*.stun.playstation.net'
         ## Microsoft Xbox
-        - "xbox.*.*.microsoft.com"
-        - "*.*.xboxlive.com"
+        - 'xbox.*.*.microsoft.com'
+        - '*.*.xboxlive.com'
         ## Netease
         - stun01.sipphone.com
         # === Coding ===
         ## Docker
-        - "*.docker.internal"
+        - '*.docker.internal'
         ## Golang
         - proxy.golang.org
         # === Others ===
         ## CQUT
         - wlsy.cqut.edu.cn
         ## STUN Server
-        - "+.stun.*.*"
-        - "+.stun.*.*.*"
-        - "+.stun.*.*.*.*"
-        - "+.stun.*.*.*.*.*"
-        - "stunserver.*"
+        - '+.stun.*.*'
+        - '+.stun.*.*.*'
+        - '+.stun.*.*.*.*'
+        - '+.stun.*.*.*.*.*'
+        - 'stunserver.*'
         ## WORKGROUP
         - WORKGROUP
-
-      default-nameserver: #  defalut-nameserver 用于解析其他名称服务器，仅支持 IP
-        - "114.114.115.115" # 114DNS
-        - "119.29.29.29" # DNSPod
-        - "1.0.0.1" # Cloudflare
-        - "8.8.8.8" # Google
-      # nameserver、fallbackfallback 中的名称服务器支持 UDP、TCP、DoT、DoH
-      # Clash 总是使用第一个收到的响应作为 DNS 查询的结果
-      nameserver: # nameserver 用于解析国内域名
-        # 请根据需要和实际设置
-        # - "192.168.3.1" # 家
-        - "114.114.115.115" # 114DNS
-        - "119.29.29.29" # DNSPod
-        - "1.0.0.1" # Cloudflare
-        - "8.8.8.8" # Google
-      # 当 fallback 存在时, Clash 将向此部分中的服务器
-      # 与 nameservers 中的服务器并发发送请求
-      fallback: # fallback 用于解析国外域名
-        - "https://dns.alidns.com/dns-query" # AliDNS, ECS Support
-        - "https://dns.google/dns-query" # Google, ECS Support
-        - "https://cloudflare-dns.com/dns-query" # Cloudflare
-        - "tls://dns.alidns.com:853" # AliDNS, ECS Support
-        - "tls://dns.google:853" # Google, ECS Support
-        - "tls://one.one.one.one:853" # Cloudflare
-      # fallback-filter 用于区分域名所属区域
-      # 当 geoip 开启且 code 设置为 CN 时
-      # 此后如果域名所属国家不是 CN 时
-      # 或 ip-cidr、domain 中配置的 DNS 污染条件满足
-      # 将使用 fallback 中服务器的响应
-      # 反之将使用 nameservers 中服务器的响应
-      # 这是对抗 DNS 污染攻击的一种措施
+      # fallback-filter 会对 IP 进行过滤，是对抗 DNS 污染攻击的一种措施
+      # 1. 当 geoip 开启且 code 设置为 CN 时
+      # 属于中国的 IP 将使用 nameserver 中的 dns
+      # 其它国家的 IP 将使用 fallback 中的 dns
+      # 2. 当请求的域名匹配 domain 且 dns 响应的 ip 匹配 ip-cidr
+      # 强制使用 fallback 中的 dns
       fallback-filter:
-        geoip: true # 启用 GeoIP
+        geoip: true
         geoip-code: CN
-        # 如果域名匹配 domain 且响应的 ip 匹配 ip-cidr
-        # 说明被污染，需要使用 fallback
         # ip-cidr:
         #   - 240.0.0.0/4
         # domain:
-        #   - "+.google.com"
-        #   - "+.facebook.com"
-        #   - "+.twitter.com"
-        #   - "+.youtube.com"
-        #   - "+.xn--ngstr-lra8j.com"
-        #   - "+.google.cn"
-        #   - "+.googleapis.cn"
-        #   - "+.googleapis.com"
-        #   - "+.gvt1.com"
-    tun: # Tun 配置
+        #   - '+.google.com'
+        #   - '+.facebook.com'
+        #   - '+.twitter.com'
+        #   - '+.youtube.com'
+        #   - '+.xn--ngstr-lra8j.com'
+        #   - '+.google.cn'
+        #   - '+.googleapis.cn'
+        #   - '+.googleapis.com'
+        #   - '+.gvt1.com'
+      # defalut-nameserver 用于解析 nameserver、fallback 中的 DNS
+      # 仅支持 UDP、TCP
+      # Clash 总是使用第一个收到的响应作为 DNS 查询的结果
+      default-nameserver:
+        - '223.5.5.5' # Alidns IPv4
+        - '2400:3200:baba::1' # Alidns IPv6
+        - '119.29.29.29' # DNSPod
+      # 支持 UDP、TCP、DoT、DoH
+      nameserver:
+        - '223.5.5.5' # Alidns IPv4
+        - '2400:3200:baba::1' # Alidns IPv6
+        - '119.29.29.29' # DNSPod
+      # 支持 UDP、TCP、DoT、DoH
+      fallback:
+        - 'https://dns.alidns.com/dns-query' # Alidns, ECS Support
+        - 'https://doh.pub/dns-query' # DNSPod
+        - 'https://cloudflare-dns.com/dns-query' # Cloudflare
+        - 'tls://dns.alidns.com:853' # Alidns, ECS Support
+        - 'tls://dnt.pub:853' # DNSPod
+        - 'tls://1dot1dot1dot1.cloudflare-dns.com:853' # Cloudflare
+    # Tun 配置
+    tun:
       enable: true
       stack: system # 使用 system stack 需要在防火墙放行程序
+      # 当 fake-ip-range 是 198.18.0.1/16, 应该劫持 198.18.0.2:53
       dns-hijack:
-        - 198.18.0.2:53 # 当 fake-ip-range 是 198.18.0.1/16, 应该劫持 198.18.0.2:53
+        - 198.18.0.2:53
       auto-route: true
-      # 推荐使用 interface-name
-      auto-detect-interface: true
+      auto-detect-interface: true # 推荐使用 interface-name
 profileParsersText: >
-  # author: SeagullOddy
+  # author: Charlott2
 
-  # version: 2024.04.12
+  # version: 2024.06.29
 
-  parsers: # array
+  # 配置文件转换器，数组格式
+
+  parsers:
     # - reg: ^.*$ 匹配所有订阅，或  - url: https://example.com/profile.yaml 指定订阅
     - reg: ^.*$
-
       # 删除服务商提供的 DNS、策略组、规则提供者和规则
       code: |
         module.exports.parse = (raw, { yaml }) => {
@@ -181,11 +179,11 @@ profileParsersText: >
           const proxyGroups = []
           const ruleProviders = []
           const rules = []
-          return yaml.stringify({ ...rawObj, dns,"proxy-groups": proxyGroups, "rule-providers": ruleProviders, rules })
+          return yaml.stringify({ ...rawObj, dns,'proxy-groups': proxyGroups, 'rule-providers': ruleProviders, rules })
         }
-
       # 建立自己的配置
       yaml:
+        # 建立策略组
         # 策略组示例
         # - name: 分组名
         #   type: select       # 手动选点
@@ -197,7 +195,7 @@ profileParsersText: >
         #   tolerance: 150     # 允许偏差的 ms，节点之间延迟差小于该值不切换 非必要
         #   proxies:
         #       - 节点名称或其他分组套娃
-        prepend-proxy-groups: # 建立策略组
+        prepend-proxy-groups:
           - name: 🥰 代之以理
             type: select
             proxies:
@@ -207,63 +205,60 @@ profileParsersText: >
               - 🏫 自动选择：新加坡
               - 🎍 自动选择：港澳台
               - 🖐️ 手动选择
-
+              - DIRECT
           - name: ✈️ 自动选择
             type: url-test
             url: http://www.apple.com/library/test/success.html
             interval: 60
             tolerance: 150
-
           - name: ⛩️ 自动选择：日本
             type: url-test
             url: http://www.apple.com/library/test/success.html
             interval: 60
             tolerance: 150
-
           - name: 🗽 自动选择：美国
             type: url-test
             url: http://www.apple.com/library/test/success.html
             interval: 60
             tolerance: 150
-
           - name: 🏫 自动选择：新加坡
             type: url-test
             url: http://www.apple.com/library/test/success.html
             interval: 60
             tolerance: 150
-
           - name: 🎍 自动选择：港澳台
             type: url-test
             url: http://www.apple.com/library/test/success.html
             interval: 60
             tolerance: 150
-
           - name: 🖐️ 手动选择
             type: select
+            proxies: []
+          - name: 📵 禁止通行
+            type: select
             proxies:
+              - REJECT
               - DIRECT
-
+              - 🥰 代之以理
           - name: 🐟 漏网之鱼
             type: select
             proxies:
               - 🥰 代之以理
               - DIRECT
-
         # 命令
         commands:
           - proxy-groups.✈️ 自动选择.proxies.0+[]proxyNames
-          - proxy-groups.🖐️ 手动选择.proxies.1+[]proxyNames # 向指定策略组添加订阅中的节点名，可使用正则过滤
+          - proxy-groups.🖐️ 手动选择.proxies.0+[]proxyNames # 向指定策略组添加订阅中的节点名，可使用正则过滤
           - proxy-groups.⛩️ 自动选择：日本.proxies.0+[]proxyNames|日本
           - proxy-groups.🗽 自动选择：美国.proxies.0+[]proxyNames|美国
           - proxy-groups.🏫 自动选择：新加坡.proxies.0+[]proxyNames|新加坡
-          - proxy-groups.🎍 自动选择：港澳台.proxies.0+[]proxyNames|^(.*)(香港|澳门|台湾)(.*)$
+          - proxy-groups.🎍 自动选择：港澳台.proxies.0+[]proxyNames|^(.*)(香港|澳门|台湾)+(.*)$
           # 一些可能用到的正则过滤节点示例，使分组更细致
           # []proxyNames|a                         # 包含a
           # []proxyNames|^(.*)(a|b)+(.*)$          # 包含a或b
           # []proxyNames|^(?=.*a)(?=.*b).*$        # 包含a和b
           # []proxyNames|^((?!b).)*a((?!b).)*$     # 包含a且不包含b
           # []proxyNames|^((?!b|c).)*a((?!b|c).)*$ # 包含a且不包含b或c
-
         # 添加规则
         prepend-rules: # 规则由上往下遍历，如上面规则已经命中，则不再往下处理
           # 自定义规则，在这里添加自己的新规则
@@ -273,7 +268,7 @@ profileParsersText: >
           # provider 的匹配规则
           - RULE-SET,applications,DIRECT # 需要直连的进程/应用
           - RULE-SET,private,DIRECT # 需要直连的私有域名
-          - RULE-SET,reject,REJECT # 广告域名
+          - RULE-SET,reject,📵 禁止通行 # 广告域名
           - RULE-SET,icloud,DIRECT # iCloud 国内可访问
           - RULE-SET,apple,DIRECT # Apple 国内可访问
           - RULE-SET,google,DIRECT # Google 国内可访问
@@ -285,7 +280,6 @@ profileParsersText: >
           - GEOIP,LAN,DIRECT # GEOIP 判断为局域网 IP
           - GEOIP,CN,DIRECT # GEOIP 判断为国内 IP
           - MATCH,🐟 漏网之鱼 # 漏网之鱼
-
         # 混合规则集
         mix-rule-providers:
           reject:
@@ -294,70 +288,60 @@ profileParsersText: >
             url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/reject.txt"
             path: ./ruleset/reject.yaml
             interval: 86400
-
           icloud:
             type: http
             behavior: domain
             url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/icloud.txt"
             path: ./ruleset/icloud.yaml
             interval: 86400
-
           apple:
             type: http
             behavior: domain
             url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/apple.txt"
             path: ./ruleset/apple.yaml
             interval: 86400
-
           google:
             type: http
             behavior: domain
             url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/google.txt"
             path: ./ruleset/google.yaml
             interval: 86400
-
           proxy:
             type: http
             behavior: domain
             url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/proxy.txt"
             path: ./ruleset/proxy.yaml
             interval: 86400
-
           direct:
             type: http
             behavior: domain
             url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/direct.txt"
             path: ./ruleset/direct.yaml
             interval: 86400
-
           private:
             type: http
             behavior: domain
             url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/private.txt"
             path: ./ruleset/private.yaml
             interval: 86400
-
           telegramcidr:
             type: http
             behavior: ipcidr
             url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/telegramcidr.txt"
             path: ./ruleset/telegramcidr.yaml
             interval: 86400
-
           cncidr:
             type: http
             behavior: ipcidr
             url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/cncidr.txt"
             path: ./ruleset/cncidr.yaml
             interval: 86400
-
           lancidr:
             type: http
             behavior: ipcidr
             url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/lancidr.txt"
             path: ./ruleset/lancidr.yaml
             interval: 86400
-
           applications:
             type: http
             behavior: classical
@@ -367,7 +351,7 @@ profileParsersText: >
 editor: 1
 editorFontSize: 14
 showNotifications: false
-titleBarText: "Current Mode: %mode%, Mixin Status: %mixin%. (,,´•ω•)ノ"(´っω•｀。)"
+titleBarText: 'Current Mode: %mode%, Mixin Status: %mixin%. (,,´•ω•)ノ"(´っω•｀。)'
 trayProxiesStyle: 1
 hideUnselectableGroup: true
 showProxyFilter: true
