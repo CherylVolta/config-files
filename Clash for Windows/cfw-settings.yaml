@@ -157,7 +157,7 @@ mixinText: |
         - 198.18.0.2:53
       auto-route: true
       auto-detect-interface: true
-profileParsersText: >
+profileParsersText: |
   # author: Charlott2
   # version: 2024.06.29
   # 配置文件转换器，数组格式

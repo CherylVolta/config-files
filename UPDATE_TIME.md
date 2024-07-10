@@ -2,7 +2,7 @@
 
 - Clash for Windows:
 
-  2024/06/29
+  2024/07/10
 
 - Docker:
 
