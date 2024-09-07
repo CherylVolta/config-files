@@ -1,5 +1,5 @@
 # 请将该 Dockerfile 放在前端项目的根目录下
-FROM node:20-slim
+FROM node:20-alpine
 LABEL authors="Charlott2"\
       description="基于 Node.js 20-slim 构建的用于运行 Web 前端项目的镜像"
 

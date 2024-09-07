@@ -16,7 +16,7 @@ services:
   # ！Redis 容器配置
   redis_service:
     container_name: redis_service
-    image: "redis:7"
+    image: "redis:7-alpine"
     command: "redis-server"
     environment:
       TZ: Asia/Shanghai
