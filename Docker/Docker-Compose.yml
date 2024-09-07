@@ -30,12 +30,12 @@ services:
   frontend_service:
     container_name: frontend_service
     build: /path/to/frontend/Dockerfile # Dockerfile 所在文件夹路径
-    command: npm run dev # 容器启动时运行的命令
+    command: npx vite --host 0.0.0.0 # 容器启动时运行的命令（vite 需要使用 --host 参数来对外开放）
     environment:
       SERVER_PORT: 5173 # 指定镜像暴露的端口
       TZ: Asia/Shanghai
     ports:
-      - "5173:5173" # 依据 args 中的 SERVER_PORT 值，不指定时默认暴露 5173 端口
+      - "5173:5173" # 依据 args 中的 SERVER_PORT 值，不指定时默认暴露 8081 端口
     networks:
       - default
   # ！后端应用容器配置，见 `Dockerfile_SpringBoot`、`Dockerfile_Tomcat`
