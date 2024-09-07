@@ -1,13 +1,19 @@
 # 请将该 Dockerfile 放在前端项目的根目录下
-FROM node:lts-slim
+FROM node:20-slim
 LABEL authors="Charlott2"\
-      description="构建用于运行 Web 前端项目的 Node.js 镜像"
+      description="基于 Node.js 20-slim 构建的用于运行 Web 前端项目的镜像"
 
-# 服务端口
-ARG SERVER_PORT=5173
+# 环境变量
+ENV SERVER_PORT=5173
 
+# 工作目录
 WORKDIR /app
-VOLUME [ "/app" ]
-RUN if [! -f /app/node_modules ]; then npm install; fi
 
+# 在 docker 环境中执行 npm install
+COPY . .
+RUN if [ -d "/app/node_modules" ]; then rm -rf /app/node_modules; fi && npm install
+
+# 启动参数
 EXPOSE ${SERVER_PORT}
+
+ENTRYPOINT [ "npm", "run", "dev" ]

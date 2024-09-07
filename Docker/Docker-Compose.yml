@@ -2,10 +2,10 @@ services:
   # ！MySQL 容器配置
   mysql_service:
     container_name: mysql_service
-    image: "mysql:lts"
+    image: "mysql:8"
     environment:
       MYSQL_ROOT_HOST: "%" # 允许访问的主机，% 匹配任意主机
-      MYSQL_ROOT_PASSWORD: pswd # MySQL 服务密码，以 pswd 为例
+      MYSQL_ROOT_PASSWORD: root # MySQL 服务密码，以 root 为例
       TZ: Asia/Shanghai
     ports:
       - "3306:3306"
@@ -16,7 +16,7 @@ services:
   # ！Redis 容器配置
   redis_service:
     container_name: redis_service
-    image: "redis:latest"
+    image: "redis:7"
     command: "redis-server"
     environment:
       TZ: Asia/Shanghai
@@ -29,12 +29,10 @@ services:
   # ！前端应用容器配置，见 `Dockerfile_NodeJs`
   frontend_service:
     container_name: frontend_service
-    build:
-      context: /path/to/frontend/Dockerfile # Dockerfile 所在文件夹路径
-      args:
-        SERVER_PORT: 5173 # 指定镜像暴露的端口
-    command: npm run serve # 运行命令
+    build: /path/to/frontend/Dockerfile # Dockerfile 所在文件夹路径
+    command: npm run dev # 容器启动时运行的命令
     environment:
+      SERVER_PORT: 5173 # 指定镜像暴露的端口
       TZ: Asia/Shanghai
     ports:
       - "5173:5173" # 依据 args 中的 SERVER_PORT 值，不指定时默认暴露 5173 端口
@@ -46,10 +44,9 @@ services:
     build:
       context: /path/to/backend/Dockerfile # Dockerfile 所在文件夹路径
       args:
-        ARTIFACT_NAME: "your-artifact-name" # 工件，以 your-artifact-name-0.0.1-SNAPSHOT.jar（或 .war） 为例
-        ARTIFACT_VERSION: "0.0.1-SNAPSHOT"
-        SERVER_PORT: 8080 # 指定镜像暴露的端口
+        - ARTIFACT_PATH=target # 工件所在路径，IDEA 环境下 Maven 构建的项目为 "target"，IDEA 构建的项目为 "out/artifacts/工件名称"
     environment:
+      SERVER_PORT: 8080 # 指定镜像暴露的端口
       TZ: Asia/Shanghai
     ports:
       - "8080:8080" # 依据 args 中的 SERVER_PORT 值，不指定时默认暴露 8080 端口

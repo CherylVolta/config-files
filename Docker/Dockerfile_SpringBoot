@@ -1,18 +1,21 @@
 # 请将该 Dockerfile 放在后端项目的根目录下
 FROM eclipse-temurin:21
 LABEL authors="Charlott2"\
-      description="构建用于运行 Spring Boot Web 后端项目的 Java 镜像"
+      description="基于 JDK 21 构建的用于运行 Spring Boot 后端项目的镜像"
 
-# 工件名称
-ARG ARTIFACT_NAME="default-artifact-name"
-# 工件版本
-ARG ARTIFACT_VERSION="0.0.1-SNAPSHOT"
-# 服务端口
-ARG SERVER_PORT=8080
+# 环境变量
+ARG ARTIFACT_PATH=""
+ENV ENV_ARTIFACT_PATH=${ARTIFACT_PATH}
+ENV SERVER_PORT=8080
 
+# 工作目录
 WORKDIR /app
-COPY target/${ARTIFACT_NAME}-${ARTIFACT_VERSION}.jar app.jar
 
+# 复制 .jar 文件
+COPY ${ENV_ARTIFACT_PATH} /tmp
+RUN if [ -d "/tmp" ]; then mv /tmp/*.jar app.jar; fi
+
+# 启动参数
 EXPOSE ${SERVER_PORT}
 
 ENTRYPOINT ["java", "-jar", "app.jar"]
