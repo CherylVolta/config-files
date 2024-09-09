@@ -1,5 +1,7 @@
 <!-- Title -->
+
 <a name="readme-top"></a>
+
 <div align="center">
   <img src="docs/images/logo.png" alt="Logo" />
 
@@ -8,8 +10,8 @@
   <h4>Some useful configuration files.</h4>
 
   <p>
-    <a href="../../stargazers"><img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/Charlott2/config-files?style=flat"></a>
-    <a href="LICENSE"><img alt="GitHub License" src="https://img.shields.io/github/license/Charlott2/config-files"></a>
+    <a href="../../stargazers"><img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/CherylVolta/config-files?style=flat"></a>
+    <a href="LICENSE"><img alt="GitHub License" src="https://img.shields.io/github/license/CherylVolta/config-files"></a>
   </p>
 
   <p>
@@ -31,6 +33,7 @@
 </details>
 
 <!-- Including -->
+
 ## Including
 
 - Clash for Windows
@@ -46,7 +49,7 @@
   - .gitconfig
 - JetBrains IDE
   - codeStyles
-    - Charlott2.xml
+    - CherylVolta.xml
   - mobi.hsz.idea.gitignore
     - ForAndroidStudio.xml
     - ForCLion.xml
@@ -67,6 +70,7 @@
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- Update Time -->
+
 ## Update Time
 
 See [UPDATE_TIME.md](UPDATE_TIME.md).
@@ -74,6 +78,7 @@ See [UPDATE_TIME.md](UPDATE_TIME.md).
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- License -->
+
 ## License
 
 [MIT](LICENSE).
