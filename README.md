@@ -58,6 +58,8 @@
   - plugins-installed.txt
 - Maven
   - settings.xml
+- NPM
+  - .npmrc
 - Prettier
   - .prettierrc
 - Vim
