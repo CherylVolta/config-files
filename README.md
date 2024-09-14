@@ -56,6 +56,8 @@
     - ForIDEA.xml
     - ForPyCharm.xml
   - plugins-installed.txt
+- MarkdownLint
+  - .markdownlint.json
 - Maven
   - settings.xml
 - NPM
