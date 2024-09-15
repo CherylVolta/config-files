@@ -38,7 +38,7 @@
 
 - Windows Terminal:
 
-  2024/06/18
+  2024/09/15
 
 - ZSH:
 
