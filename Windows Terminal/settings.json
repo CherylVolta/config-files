@@ -14,23 +14,23 @@
       "keys": "ctrl+v"
     },
     {
-      "command": "find",
-      "keys": "ctrl+shift+f"
-    },
-    {
       "command": {
         "action": "splitPane",
         "split": "auto",
         "splitMode": "duplicate"
       },
       "keys": "alt+shift+d"
+    },
+    {
+      "command": "find",
+      "keys": "ctrl+shift+f"
     }
   ],
   "centerOnLaunch": true,
   "confirmCloseAllTabs": false,
   "copyFormatting": "none",
   "copyOnSelect": false,
-  "defaultProfile": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
+  "defaultProfile": "{acbafd15-cbbb-5bb3-8a61-bed446ff4b83}",
   "focusFollowMouse": false,
   "initialCols": 100,
   "initialRows": 30,
@@ -47,7 +47,7 @@
       "cursorShape": "underscore",
       "font": {
         "cellHeight": "1.8",
-        "face": "MonaspiceXe Nerd Font",
+        "face": "Mononoki Nerd Font Mono",
         "size": 14.0
       },
       "intenseTextStyle": "all",
@@ -71,22 +71,16 @@
         "source": "Windows.Terminal.Azure"
       },
       {
-        "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
-        "hidden": false,
-        "name": "PowerShell",
-        "source": "Windows.Terminal.PowershellCore"
-      },
-      {
         "guid": "{acbafd15-cbbb-5bb3-8a61-bed446ff4b83}",
         "hidden": false,
         "name": "Ubuntu 24.04 LTS",
         "source": "CanonicalGroupLimited.Ubuntu24.04LTS_79rhkp1fndgsc"
       },
       {
-        "guid": "{963ff2f7-6aed-5ce3-9d91-90d99571f53a}",
-        "hidden": true,
-        "name": "Ubuntu-24.04",
-        "source": "Windows.Terminal.Wsl"
+        "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
+        "hidden": false,
+        "name": "PowerShell",
+        "source": "Windows.Terminal.PowershellCore"
       }
     ]
   },
