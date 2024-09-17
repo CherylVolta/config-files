@@ -38,7 +38,6 @@
 
 - Clash for Windows
   - cfw-settings.yaml
-  - Clash Core Service.xml
   - README.md
 - Docker
   - docker-compose.yml

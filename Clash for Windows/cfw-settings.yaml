@@ -103,7 +103,7 @@ mixinText: |
         - "+.stun01.*.*"
         - "stunserver.*"
         # === CQUT ===
-        - +.cqut.edu.cn
+        - "+.cqut.edu.cn"
       # Clash 总是使用第一个 DNS 查询的结果，适当设置几个响应快的 DNS 即可
       # defalut-nameserver 用于解析 nameserver、fallback 中的 DNS
       # 必须写明 IP，支持 UDP、TCP、DoT、DoH

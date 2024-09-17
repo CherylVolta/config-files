@@ -1,6 +1,6 @@
 # 请将该 Dockerfile 放在后端项目的根目录下
 FROM eclipse-temurin:21-jre-alpine
-LABEL authors="Charlott2"\
+LABEL authors="CherylVolta"\
       description="基于 JDK 21 构建的用于运行 Spring Boot 后端项目的镜像"
 
 # 环境变量

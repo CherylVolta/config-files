@@ -4,13 +4,16 @@ services:
     container_name: mysql_service
     image: "mysql:8"
     environment:
-      MYSQL_ROOT_HOST: "%" # 允许访问的主机，% 匹配任意主机
-      MYSQL_ROOT_PASSWORD: root # MySQL 服务密码，以 root 为例
+      # 允许访问的主机，% 表示放行任意主机
+      MYSQL_ROOT_HOST: "%"
+      # MySQL root 账户的默认密码
+      MYSQL_ROOT_PASSWORD: root
       TZ: Asia/Shanghai
     ports:
       - "3306:3306"
     volumes:
-      - "your_mysql_volume:/var/lib/mysql" # 将数据挂载到卷，以 your_mysql_volume 为例
+      # 将数据挂载到 ./mysql_data 目录
+      - "./mysql_data:/var/lib/mysql"
     networks:
       - persistent
   # ！Redis 容器配置
@@ -23,45 +26,52 @@ services:
     ports:
       - "6379:6379"
     volumes:
-      - "your_redis_volume:/data" # 将数据挂载到卷，以 your_redis_volume 为例
+      # 将数据挂载到 redis_data 目录
+      - "./redis_volume:/data"
     networks:
       - persistent
   # ！前端应用容器配置，见 `Dockerfile_NodeJs`
   frontend_service:
     container_name: frontend_service
-    build: /path/to/frontend/Dockerfile # Dockerfile 所在文件夹路径
-    command: npx vite --host 0.0.0.0 # 容器启动时运行的命令（vite 需要使用 --host 参数来对外开放）
+    # 指定构建上下文，即前端 Dockerfile 路径
+    build: /path/to/frontend/Dockerfile
+    # 应用启动命令，默认为 "npm run dev"
+    command: npm run dev
     environment:
-      SERVER_PORT: 5173 # 指定镜像暴露的端口
+      SERVER_PORT: 8081 # 请依据源码配置，指定镜像暴露的端口
       TZ: Asia/Shanghai
     ports:
-      - "5173:5173" # 依据 args 中的 SERVER_PORT 值，不指定时默认暴露 8081 端口
+      - "8081:8081" # 请依据环境变量 SERVER_PORT 设置
     networks:
       - default
   # ！后端应用容器配置，见 `Dockerfile_SpringBoot`、`Dockerfile_Tomcat`
   backend_service:
     container_name: backend_service
     build:
-      context: /path/to/backend/Dockerfile # Dockerfile 所在文件夹路径
+      # 指定构建上下文，即后端 Dockerfile 路径
+      context: /path/to/backend/Dockerfile
       args:
-        - ARTIFACT_PATH=target # 工件所在路径，IDEA 环境下 Maven 构建的项目为 "target"，IDEA 构建的项目为 "out/artifacts/工件名称"
+        # 工件所在路径，IDEA 中 Maven 构建的项目为 "target"，IDEA 构建的项目为 "out/artifacts/工件名称"
+        - ARTIFACT_PATH=target
     environment:
-      SERVER_PORT: 8080 # 指定镜像暴露的端口
+      # 请依据源码配置，指定镜像暴露的端口
+      SERVER_PORT: 8080
       TZ: Asia/Shanghai
     ports:
-      - "8080:8080" # 依据 args 中的 SERVER_PORT 值，不指定时默认暴露 8080 端口
+      # 请依据环境变量 SERVER_PORT 设置
+      - "8080:8080"
     networks:
       - persistent
       - default
 
-# 卷配置，需要允许访问外部卷
+# 卷配置，如果使用了卷，需要允许外部访问
 volumes:
-  your_mysql_volume:
-    external: true
-  your_redis_volume:
+  example_volume:
     external: true
 
-# 网络配置
+# 网络配置，让前端与持久层隔离
 networks:
-  default: # 前后端应用的容器网络
-  persistent: # 后端应用和持久层（数据库、缓存）的容器网络
+  # 前后端应用的容器网络
+  default:
+  # 后端应用和持久层（数据库、缓存）的容器网络
+  persistent:
