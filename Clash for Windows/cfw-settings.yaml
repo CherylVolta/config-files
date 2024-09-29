@@ -21,7 +21,7 @@ latencyUrl: http://www.apple.com/library/test/success.html
 theme: 0
 mixinText: |
   # author: CherylVolta
-  # version: 2024.09.13
+  # version: 2024.09.29
   # Mixin 配置（覆盖配置）
   mixin:
     # DNS 配置
@@ -36,33 +36,33 @@ mixinText: |
         - "*.lan"
         - "*.local"
         - "*.docker.internal"
-        - WORKGROUP
-        # === Microsoft Windows Serivice ===
+        # === Microsoft Windows Service ===
         - "*.msftncsi.com"
         - "*.msftconnecttest.com"
+        - WORKGROUP
         # === NTP Service ===
-        - "time.*.com"
-        - "time1.*.com"
-        - "time2.*.com"
-        - "time3.*.com"
-        - "time4.*.com"
-        - "time5.*.com"
-        - "time6.*.com"
-        - "time7.*.com"
-        - "time.*.gov"
-        - "time.*.edu.cn"
+        - time.*.com
+        - time1.*.com
+        - time2.*.com
+        - time3.*.com
+        - time4.*.com
+        - time5.*.com
+        - time6.*.com
+        - time7.*.com
+        - time.*.gov
+        - time.*.edu.cn
         - "*.time.edu.cn"
-        - "ntp.*.com"
-        - "ntp1.*.com"
-        - "ntp2.*.com"
-        - "ntp3.*.com"
-        - "ntp4.*.com"
-        - "ntp5.*.com"
-        - "ntp6.*.com"
-        - "ntp7.*.com"
-        - "ntp.*.*.cn"
+        - ntp.*.com
+        - ntp1.*.com
+        - ntp2.*.com
+        - ntp3.*.com
+        - ntp4.*.com
+        - ntp5.*.com
+        - ntp6.*.com
+        - ntp7.*.com
+        - ntp.*.*.cn
         - "*.ntp.org.cn"
-        - "+.pool.ntp.org"
+        - +.pool.ntp.org
         # === Social Media Service ===
         # NetEase
         - "*.music.163.com"
@@ -85,8 +85,6 @@ mixinText: |
         - "*.music.tc.qq.com"
         - aqqmusic.tc.qq.com
         - "*.stream.qqmusic.qq.com"
-        # ChatGPT
-        - cdn.oaistatic.com
         # === Game Service ===
         # Nintendo Switch
         - "*.n.n.srv.nintendo.net"
@@ -103,54 +101,53 @@ mixinText: |
         - "+.stun01.*.*"
         - "stunserver.*"
         # === CQUT ===
-        - "+.cqut.edu.cn"
+        - +.cqut.edu.cn
       # Clash 总是使用第一个 DNS 查询的结果，适当设置几个响应快的 DNS 即可
       # defalut-nameserver 用于解析 nameserver、fallback 中的 DNS
       # 必须写明 IP，支持 UDP、TCP、DoT、DoH
-      default-nameserver:
-        - "223.5.5.5" # AliDNS IPv4
-        - "[2400:3200:baba::1]:53" # AliDNS IPv6
-        - "119.29.29.29" # DNSPod
-      # 支持 UDP、TCP、DoT、DoH
+      # default-nameserver:
+      #   - 10.103.130.172 # 校园网宽带网关
+      #   - 180.184.1.1 # 字节跳动 IPv4
+      #   - 180.76.76.76 # 百度 IPv4
+      # nameserver 支持 UDP、TCP、DoT、DoH
       nameserver:
-        - "https://dns.alidns.com/dns-query" # AliDNS DoH, ECS Support
-        - "https://doh.pub/dns-query" # DNSPod DoH
-        - "https://cloudflare-dns.com/dns-query" # Cloudflare
-        - "tls://dns.alidns.com:853" # AliDNS DoT, ECS Support
-        - "tls://dnt.pub:853" # DNSPod DoT
-        - "tls://1dot1dot1dot1.cloudflare-dns.com:853" # Cloudflare
-      # 支持 UDP、TCP、DoT、DoH
+        - "[fe80::1999:1:]:53"
+        - "[2400:3200:baba::1]:53" # 阿里 IPv6
+        # - "[2402:4e00::]:53" # 腾讯 IPv6
+        - 10.103.130.172 # 校园网宽带网关
+        - 180.184.1.1 # 字节跳动 IPv4
+        # - 180.76.76.76 # 百度 IPv4
+      # fallback 支持 UDP、TCP、DoT、DoH
       # 配置 fallback 后默认启用 fallback-filter, geoip-code 为 cn
-      # 个人认为没有使用的必要，在此置空表示不配置，且不自动启用 fallback-filter
       fallback:
-      #   - "https://dns.alidns.com/dns-query" # AliDNS, ECS Support
-      #   - "https://doh.pub/dns-query" # DNSPod
-      #   - "https://cloudflare-dns.com/dns-query" # Cloudflare
-      #   - "tls://dns.alidns.com:853" # AliDNS, ECS Support
-      #   - "tls://dnt.pub:853" # DNSPod
-      #   - "tls://1dot1dot1dot1.cloudflare-dns.com:853" # Cloudflare
+        - https://223.5.5.5/dns-query # 阿里 DoH, ECS Support
+        # - https://1.12.12.12/dns-query # 腾讯 DoH
+        - https://1.1.1.1/dns-query # Cloudflare DoH
+        - tls://223.5.5.5:853 # 阿里 DoT, ECS Support
+        # - tls://1.12.12.12:853 # 腾讯 DoT
+        - tls://1.1.1.1:853 # Cloudflare DoT
       # fallback-filter 会对 IP 进行过滤，是对抗 DNS 污染攻击的一种措施
       # 1. 当 geoip 开启且 code 设置为 CN 时
       # 属于中国的 IP 将使用 nameserver 中的 dns
       # 其它国家的 IP 将使用 fallback 中的 dns
       # 2. 当请求的域名匹配 domain 且 dns 响应的 ip 匹配 ip-cidr
       # 强制使用 fallback 中的 dns
-      # fallback-filter:
-      #   geoip: false
-      #   geoip-code: CN
-      # ip-cidr:
-      #   - 240.0.0.0/4
-      # domain:
-      #   - '+.google.com'
-      #   - '+.facebook.com'
-      #   - '+.twitter.com'
-      #   - '+.youtube.com'
-      #   - '+.xn--ngstr-lra8j.com'
-      #   - '+.google.cn'
-      #   - '+.googleapis.cn'
-      #   - '+.googleapis.com'
-      #   - '+.gvt1.com'
-    # Tun 配置（仅限 Windows）
+      fallback-filter:
+        geoip: true
+        geoip-code: CN
+        ip-cidr:
+          - 240.0.0.0/4
+        domain:
+          - +.google.com
+          - +.facebook.com
+          - +.twitter.com
+          - +.youtube.com
+          - +.xn--ngstr-lra8j.com
+          - +.google.cn
+          - +.googleapis.cn
+          - +.googleapis.com
+          - +.gvt1.com
+    # Tun 配置（Windows 版）
     tun:
       enable: true
       stack: system # 使用 system stack 需要在防火墙放行程序
@@ -162,7 +159,7 @@ mixinText: |
 profileParsersText: >
   # author: CherylVolta
 
-  # version: 2024.06.29
+  # version: 2024.09.29
 
   # 配置文件转换器，数组格式
 
@@ -262,6 +259,7 @@ profileParsersText: >
         prepend-rules: # 规则由上往下遍历，如上面规则已经命中，则不再往下处理
           # 自定义规则，在这里添加自己的新规则
           - DOMAIN,www.msftconnecttest.com,🥰 代之以理
+          - DOMAIN,www.msftncsi.com,🥰 代之以理
           - DOMAIN,cm-sub.pz.pe,DIRECT
           # provider 的匹配规则
           - RULE-SET,reject,📵 禁止通行 # 广告域名
