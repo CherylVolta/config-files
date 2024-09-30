@@ -14,26 +14,26 @@
       "keys": "ctrl+v"
     },
     {
+      "command": "find",
+      "keys": "ctrl+shift+f"
+    },
+    {
       "command": {
         "action": "splitPane",
         "split": "auto",
         "splitMode": "duplicate"
       },
       "keys": "alt+shift+d"
-    },
-    {
-      "command": "find",
-      "keys": "ctrl+shift+f"
     }
   ],
   "centerOnLaunch": true,
   "confirmCloseAllTabs": false,
   "copyFormatting": "none",
   "copyOnSelect": false,
-  "defaultProfile": "{acbafd15-cbbb-5bb3-8a61-bed446ff4b83}",
+  "defaultProfile": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
   "focusFollowMouse": false,
-  "initialCols": 100,
-  "initialRows": 30,
+  "initialCols": 120,
+  "initialRows": 35,
   "newTabMenu": [
     {
       "type": "remainingProfiles"
@@ -46,12 +46,11 @@
       "colorScheme": "One Half Dark",
       "cursorShape": "underscore",
       "font": {
-        "cellHeight": "1.8",
-        "face": "Mononoki Nerd Font Mono",
+        "cellHeight": "1.4",
+        "face": "FantasqueSansM Nerd Font Propo",
         "size": 14.0
       },
-      "intenseTextStyle": "all",
-      "opacity": 88
+      "intenseTextStyle": "bold"
     },
     "list": [
       {
@@ -71,16 +70,22 @@
         "source": "Windows.Terminal.Azure"
       },
       {
+        "guid": "{2ece5bfe-50ed-5f3a-ab87-5cd4baafed2b}",
+        "hidden": false,
+        "name": "Git Bash",
+        "source": "Git"
+      },
+      {
         "guid": "{acbafd15-cbbb-5bb3-8a61-bed446ff4b83}",
         "hidden": false,
         "name": "Ubuntu 24.04 LTS",
         "source": "CanonicalGroupLimited.Ubuntu24.04LTS_79rhkp1fndgsc"
       },
       {
-        "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
-        "hidden": false,
-        "name": "PowerShell",
-        "source": "Windows.Terminal.PowershellCore"
+        "guid": "{963ff2f7-6aed-5ce3-9d91-90d99571f53a}",
+        "hidden": true,
+        "name": "Ubuntu-24.04",
+        "source": "Windows.Terminal.Wsl"
       }
     ]
   },
