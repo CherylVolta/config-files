@@ -1,22 +1,10 @@
-# 代码规范
-SonarLint
-
-# 平台支持
-Docker
-MyBatisX <IDEA Only>
-SimpleSqliteBrowser <Android Studio Only>
-
-# 效率开发
-CodeGlance Pro
-Custom Postfix Templates
-Github Copilot
-IdeaVIM
-IdeaVimExtension
-String Manipulation
-Translation
-TreeInfotip
+# General
 .ignore
+Github Copilot
+Translation
 
-# 好看
-Nyan Progress
-Extra ToolWindow Colorful Icons
+# IDEA
+MyBatisX
+
+# Android
+SimpleSqliteBrowser

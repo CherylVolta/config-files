@@ -3,5 +3,7 @@
 [core]
 	ignorecase = false
 [user]
-	name = CherylVolta
+	name = Lyana
 	email = shabbyacc@outlook.com
+[credential "https://gitee.com"]
+	provider = generic
