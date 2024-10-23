@@ -226,8 +226,7 @@ profileParsersText: >
               - DIRECT
         # 命令
         commands:
-          - proxy-groups.✈️ 自动选择.proxies.0+[]proxyNames
-          - proxy-groups.🖐️ 手动选择.proxies.0+[]proxyNames # 向指定策略组添加订阅中的节点名，可使用正则过滤
+          - proxy-groups.✈️ 自动选择.proxies.0+[]proxyNames # 向指定策略组添加订阅中的节点名，可使用正则过滤
           - proxy-groups.🎍 手动选择：香港.proxies.0+[]proxyNames|香港
           - proxy-groups.🌠 手动选择：台湾.proxies.0+[]proxyNames|台湾
           - proxy-groups.🏫 手动选择：新加坡.proxies.0+[]proxyNames|新加坡
